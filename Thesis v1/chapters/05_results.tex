@@ -1,136 +1,5 @@
 \chapter{Results}
 \label{ch:results}
- 
-This chapter reports the full-sample PSY analysis of the twenty-eight monthly series defined in \cref{subsec:bubble-test-variables}, estimated under the recursive specification of \cref{subsec:bubble-specification} and the wild-multiplier bootstrap of \cref{subsec:bubble-critical-values}. The results are organised in the same order as the design. \Cref{sec:results-headline} reports the GSADF statistics for the sixteen headline series and compares the ordering across AI-exposure groups. \Cref{sec:results-episodes} reports the date-stamped episodes implied by the rule in \cref{subsec:bubble-date-stamping}. \Cref{sec:results-concentration} turns to the twelve concentration-basket series and asks whether the strongest evidence of explosiveness is concentrated among a small number of AI-related market leaders. The lag-order, log-specification and wild-bootstrap-multiplier robustness exercises previewed in \cref{subsec:bubble-robustness-design} are deferred to \cref{ch:robustness}; all critical values reported below use the corrected wild multiplier.
- 
-Two conventions discipline the interpretation. First, every series is reported under both value- and equal-weighting. The gap between the two is read as the breadth diagnostic introduced in \cref{subsec:bubble-overview}: value-weighted evidence that is much stronger than equal-weighted evidence points to concentration among large firms, while similar evidence under both weightings indicates broader participation across the tested group. Second, the substantive interpretation never rests on a single rejection. Absolute indices, ratio series and date-stamped episodes are read jointly, as required by the identification limits in \cref{subsec:bubble-design-limitations}. A GSADF rejection is evidence of explosive price dynamics; it is not, by itself, evidence that prices exceed fundamentals.
- 
-% ---------------------------------------------------------------------
-\section{Full-sample GSADF: AI groups and broad-market reference}
-\label{sec:results-headline}
- 
-\Cref{tab:gsadf-headline} reports the full-sample GSADF statistic for the sixteen headline series. Fifteen of the sixteen reject the unit-root-with-drift null at the 95\,\% bootstrap critical value or above, and six reject at the 99\,\% level; the remaining series, the value-weighted No AI / S\&P~500 diagnostic, rejects only at 90\,\%. Explosive dynamics are therefore not confined to the AI-exposed cohort. The headline result is a broad post-2010 tendency toward explosive behaviour, with the strongest statistics appearing in the High-AI series and in the High-AI relative ratios.
- 
-Within the absolute-index block, the ordering is consistent with AI exposure. The High AI index produces a GSADF statistic of $4.04$ under value-weighting and $4.25$ under equal-weighting, in both cases above the 99\,\% critical value (\num{2.57} and \num{2.62}, respectively). The Moderate AI index produces $2.35$ and $2.24$, each above the 95\,\% critical value but well below the High AI statistic. The No AI index produces the smallest values among the AI groups ($1.86$ and $1.97$), exceeding 95\,\% but not 99\,\%. The S\&P~500 benchmark sits between the No AI and Moderate AI indices at $2.17$ under both weightings. Because all four absolute indices reject at the 95\,\% level, the level evidence should mainly be read as a diagnostic: the test detects explosive dynamics across the broader equity market, not only inside the AI-exposed portfolios.
- 
-The ratio series provide the sharper cross-sectional evidence. The High AI / No AI ratio --- the primary identification in \cref{subsec:bubble-test-variables} --- rejects at the 99\,\% level under both weightings ($3.15$ and $3.19$, against 99\,\% critical values of $2.46$ and $2.35$). The High AI / S\&P~500 ratio also rejects at the 99\,\% level ($3.41$ value-weighted, $2.85$ equal-weighted). By contrast, the Moderate AI / S\&P~500 ratio rejects only at the 95\,\% level under both weightings ($1.38$ and $1.57$), and the No AI / S\&P~500 placebo-style diagnostic rejects at the 90\,\% level under value-weighting and at the 95\,\% level under equal-weighting ($1.45$ and $1.63$). The placebo-style diagnostic is therefore not cleanly inside the null, which weakens a narrow AI-only interpretation. At the same time, the High AI ratios are much larger than the No AI / S\&P~500 ratio, so the cross-sectional ordering remains informative.
- 
-The breadth diagnostic points in the same direction. The High AI absolute index, the High AI / No AI ratio and the High AI / S\&P~500 ratio reject at the 99\,\% level under both value- and equal-weighting. The High-AI signal is therefore not mechanically produced by value-weighting alone; it remains visible when each firm in the High-AI cohort receives equal weight. The concentration analysis below qualifies this statement by showing that the strongest statistics are still concentrated among mega-cap leaders, but the headline High-AI result itself is not eliminated by equal-weighting.
- 
-\begin{table}[t]
-\centering
-\caption{Full-sample GSADF: headline AI-exposure series.}
-\label{tab:gsadf-headline}
-\small
-\begin{tabular}{l S[table-format=1.3] S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] c}
-\toprule
- & \multicolumn{3}{c}{Value-weighted} & \multicolumn{3}{c}{Equal-weighted} \\
-\cmidrule(lr){2-4} \cmidrule(lr){5-7}
-Series & {GSADF} & {CV$_{95}$} & sig & {GSADF} & {CV$_{95}$} & sig \\
-\midrule
-High AI (abs)              & 4.037 & 1.559 & *** & 4.247 & 1.603 & *** \\
-Moderate AI (abs)          & 2.345 & 1.493 & **  & 2.244 & 1.473 & **  \\
-No AI (abs)                & 1.860 & 1.524 & **  & 1.966 & 1.548 & **  \\
-S\&P~500 (abs)             & 2.167 & 1.488 & **  & 2.167 & 1.488 & **  \\
-High AI / S\&P~500         & 3.408 & 1.405 & *** & 2.850 & 1.460 & *** \\
-Moderate AI / S\&P~500     & 1.382 & 1.382 & **  & 1.569 & 1.395 & **  \\
-No AI / S\&P~500           & 1.453 & 1.545 & *   & 1.631 & 1.418 & **  \\
-High AI / No AI            & 3.147 & 1.426 & *** & 3.193 & 1.529 & *** \\
-\bottomrule
-\end{tabular}
-\caption*{\footnotesize \textit{Notes.} Full-sample GSADF statistic and 95\,\% wild-multiplier bootstrap critical value for each headline series, under value- and equal-weighting. Sample 2010-01 to 2026-04; $T = 195$ monthly observations; \texttt{swindow0}~$= 27$; fixed lag $k = 0$; $T_b = 50$; $n_{\mathrm{boot}} = \num{2000}$ with the corrected $\mathcal{N}(0,1)$ multiplier of \cref{subsec:bubble-critical-values}. Significance indicators $^{*}$, $^{**}$, $^{***}$ denote rejection of the unit-root-with-drift null at the 90\,\%, 95\,\% and 99\,\% bootstrap critical values respectively.}
-\end{table}
- 
-% ---------------------------------------------------------------------
-\section{Date-stamped explosive episodes}
-\label{sec:results-episodes}
- 
-\Cref{fig:groups-vw-fullsample} reports the shaded-index plots for the eight headline series under value-weighting, with graded shading at the 90\,\%, 95\,\% and 99\,\% bootstrap critical values as described in \cref{subsec:bubble-date-stamping}. \Cref{tab:episodes-headline} lists the dated episodes for the High-AI series under value-weighting; the equal-weighted counterpart and the dated episodes for the Moderate~AI, No~AI and S\&P~500 series are deferred to \cref{app:episodes-full}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{outputs/figures/main/ai_groups_vw_fullsample.png}
-\caption{Shaded-index plot of the headline AI-exposure series, value-weighted, full sample.}
-\label{fig:groups-vw-fullsample}
-\caption*{\footnotesize \textit{Notes.} Top four panels: absolute total-return indices (start $= 100$ in January 2010) for the High~AI, Moderate~AI, No~AI and S\&P~500 series. Bottom four panels: corresponding ratios to the S\&P~500 total-return index and the High~AI / No~AI within-equity contrast. Graded shading marks months in which the BSADF sequence exceeds the 90\,\%, 95\,\% and 99\,\% wild-multiplier bootstrap critical values (light to dark), with the minimum-duration filter of \cref{subsec:bubble-date-stamping} applied to the 90\,\% envelope. The dashed vertical line marks the release of ChatGPT on 30~November~2022 and is a reference marker only. $n_{\mathrm{boot}} = \num{2000}$. The equal-weighted counterpart is reported in \cref{app:psy-ew}.}
-\end{figure}
- 
-The date-stamping adds an important qualification to the full-sample GSADF results. First, the High AI absolute index is flagged in four value-weighted episodes: July~2017--September~2018 ($15$ months, peak BSADF $3.27$ in August~2018), June~2020--January~2022 ($20$ months, peak $4.04$ in August~2021), February~2024--February~2025 ($13$ months, peak $2.61$ in June~2024), and May~2025--February~2026 ($10$ months, peak $3.42$ in October~2025). Under equal-weighting, the two pre-ChatGPT episodes are similarly placed (April~2017--September~2018 and November~2020--March~2022), but the late-sample re-emergence is absent. The post-2022 High-AI level episodes are therefore mainly a value-weighted phenomenon, while the 2017--18 and 2020--21 episodes are broad enough within the High-AI cohort to survive equal-weighting.
- 
-Second, the differential High AI / No AI series is dated before the ChatGPT release. Under value-weighting, the primary ratio is flagged in February--June~2018, March~2020--February~2021, and June--November~2021. Under equal-weighting, the same basic timing recurs in February~2020--April~2021 and June--December~2021. These five differential episodes all end before November~2022. The High AI / S\&P~500 ratio shows a similar pre-ChatGPT pattern: the value-weighted ratio is dated in 2018, 2019, 2020--21 and 2021, while the equal-weighted ratio compresses much of this behaviour into a single January~2017--December~2021 window. The implication is not that AI is irrelevant after 2022. Rather, in this full-sample design the post-ChatGPT evidence appears more clearly in absolute High-AI levels and in concentration baskets than in the broad High AI / No AI differential ratio.
- 
-Third, the broad-market reference series also matter for interpretation. The No AI absolute index rejects in the full-sample table, but under value-weighting it has no 95\,\% episode that survives the five-month duration filter; its rejection is generated by shorter threshold crossings. Under equal-weighting, the No AI index has a single five-month episode between April and August~2021. The S\&P~500 benchmark is flagged in two episodes under both weightings: April--August~2021 and July~2025--February~2026. The late-sample S\&P~500 episode is mirrored in the value-weighted High-AI index, but not in the equal-weighted High-AI index or in the broad High AI / No AI ratio. This matters because group membership is fixed using the pre-ChatGPT classification: firms that became AI-relevant after the classification date remain in whichever group held them at that date, rather than being reallocated into the High-AI cohort. These episodes therefore reinforce the main identification caution: the sample contains broad-market explosiveness, so the AI interpretation has to be based on the relative strength, timing and concentration of the AI-related series rather than on the mere existence of a GSADF rejection.
- 
-\begin{table}[H]
-\centering
-\caption{Date-stamped explosive episodes: High-AI series, value-weighted.}
-\label{tab:episodes-headline}
-\small
-\begin{tabular}{l l l S[table-format=2.0] S[table-format=1.3] l}
-\toprule
-Series & Start & End & {Months} & {Peak BSADF} & Peak date \\
-\midrule
-High AI (abs)        & 2017-07 & 2018-09 & 15 & 3.269 & 2018-08 \\
-High AI (abs)        & 2020-06 & 2022-01 & 20 & 4.037 & 2021-08 \\
-High AI (abs)        & 2024-02 & 2025-02 & 13 & 2.611 & 2024-06 \\
-High AI (abs)        & 2025-05 & 2026-02 & 10 & 3.420 & 2025-10 \\
-High AI / No AI      & 2018-02 & 2018-06 &  5 & 2.167 & 2018-05 \\
-High AI / No AI      & 2020-03 & 2021-02 & 12 & 3.147 & 2020-06 \\
-High AI / No AI      & 2021-06 & 2021-11 &  6 & 2.172 & 2021-11 \\
-High AI / S\&P~500   & 2018-01 & 2018-09 &  9 & 2.592 & 2018-05 \\
-High AI / S\&P~500   & 2019-03 & 2019-07 &  5 & 1.871 & 2019-04 \\
-High AI / S\&P~500   & 2020-02 & 2021-04 & 15 & 3.408 & 2020-08 \\
-High AI / S\&P~500   & 2021-06 & 2021-11 &  6 & 1.936 & 2021-08 \\
-\bottomrule
-\end{tabular}
-\caption*{\footnotesize \textit{Notes.} Episodes in which the BSADF sequence exceeds the 95\,\% wild-multiplier bootstrap critical value for at least $\lfloor \log T \rfloor = 5$ consecutive months, as defined in \cref{subsec:bubble-date-stamping}. Value-weighted total-return indices. Peak BSADF is the supremum of the BSADF sequence within the episode; peak date is the month in which it is attained. Equal-weighted episodes and episodes for the Moderate~AI, No~AI and S\&P~500 series are reported in \cref{app:episodes-full}.}
-\end{table}
-
- 
-% ---------------------------------------------------------------------
-\section{Concentration baskets}
-\label{sec:results-concentration}
- 
-\Cref{tab:gsadf-topn} reports the GSADF statistics for the three concentration baskets defined in \cref{subsec:bubble-test-variables}: Top-5, Top-decile and Mag-7. Each basket is divided by the No-AI and High-AI denominators and tested under both value- and equal-weighting. All twelve concentration ratios reject at the 90\,\% level, nine reject at the 95\,\% level, and seven reject at the 99\,\% level. The evidence is therefore strongest for the concentration ratios relative to No AI and for the Mag-7 ratios; it is weaker when the disclosure-based Top-5 and Top-decile baskets are compared with the broader High-AI portfolio. \Cref{fig:topn-vw-fullsample} shows the corresponding shaded-ratio plots under value-weighting.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{outputs/figures/main/ai_topN_vw_fullsample.png}
-\caption{Shaded-ratio plot of the concentration baskets, value-weighted, full sample.}
-\label{fig:topn-vw-fullsample}
-\caption*{\footnotesize \textit{Notes.} Ratios of the Top-5, Top-decile and Mag-7 baskets to the No-AI and High-AI denominators, under value-weighting. Shading and reference line as in \cref{fig:groups-vw-fullsample}. The equal-weighted counterpart is reported in \cref{app:psy-ew}.}
-\end{figure}
- 
-The Mag-7 / No AI series produces the largest GSADF statistics in the analysis: $5.20$ under value-weighting and $6.72$ under equal-weighting, against 99\,\% critical values of $2.39$ and $2.45$, respectively. The dated episodes place the largest contiguous window between March~2020 and February~2021 under value-weighting, and between February~2020 and February~2021 under equal-weighting, with peak BSADF statistics of $5.20$ and $6.72$ in August~2020. Both weightings also show a second June--December~2021 episode. The Mag-7 / High AI ratio remains significant at the 99\,\% level under both weightings, with GSADF statistics of $3.33$ under value-weighting and $4.49$ under equal-weighting. Its dated episodes are especially informative: the equal-weighted series is flagged in June--October~2020, October~2024--February~2025, and May~2025--January~2026, while the value-weighted series rejects in the full-sample statistic but has no 95\,\% episode that survives the duration filter. The seven mega-cap names are therefore explosive not only relative to No AI firms but also relative to the broader High-AI portfolio, with the post-2022 Mag-7 / High AI episodes appearing most clearly under equal-weighting. Because the equal-weighted Mag-7 ratios are larger than their value-weighted counterparts, the Mag-7 result is not driven solely by the largest one or two firms in the basket. This is consistent with \citet{baselePhillipsShi2025}, who find explosive behaviour in six of the seven Mag-7 stocks over a comparable sample.
- 
-The disclosure-based Top-5 and Top-decile baskets produce smaller statistics, but they preserve the same broad ordering. The Top-5 / No AI ratio rejects at the 99\,\% level under both weightings ($4.09$ value-weighted and $2.62$ equal-weighted). Under value-weighting, its dated episodes occur in January--October~2020, June--December~2021, January--July~2024 and June--October~2025; under equal-weighting, only a short January--May~2018 episode survives the duration filter. The Top-decile / No AI ratio rejects at the 99\,\% level under value-weighting and at the 95\,\% level under equal-weighting ($3.35$ and $2.04$), but only the value-weighted series has dated 95\,\% episodes, both in 2020--21. These patterns imply that disclosure-based concentration is present, but it is more value-weighted and less persistent than the Mag-7 concentration signal.
- 
-The ratios to High AI add a useful qualification. Top-5 / High AI rejects at the 95\,\% level under value-weighting but only at 90\,\% under equal-weighting; Top-decile / High AI rejects only at 90\,\% under both weightings. Thus, the top disclosure-ranked firms are clearly explosive relative to No AI firms, but much less clearly explosive relative to the broader High-AI group. By contrast, Mag-7 / High AI remains large and significant under both weightings. This distinction matters for the interpretation: the strongest concentration evidence is not simply that the firms with the highest pre-2023 AI keyword scores dominate the High-AI portfolio, but that the market's mega-cap AI narrative stocks display exceptional relative explosiveness.
- 
-Taken together, the concentration block sharpens the headline result. The broad High AI / No AI ratio rejects strongly, but its dated episodes are mainly pre-ChatGPT. The post-2022 signal appears more clearly in value-weighted High-AI levels and in the Top-5 and Mag-7 concentration baskets. The evidence is therefore consistent with bubble-like dynamics around AI-exposed and AI-associated firms, but it is not a clean post-2022 AI-bubble verdict. It points instead to a combination of long-running technology-sector outperformance, broad-market explosiveness and a particularly strong concentration component among mega-cap AI leaders.
- 
-\begin{table}[H]
-\centering
-\caption{Full-sample GSADF: concentration baskets.}
-\label{tab:gsadf-topn}
-\small
-\begin{tabular}{l l S[table-format=1.3] S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] c}
-\toprule
- & & \multicolumn{3}{c}{Value-weighted} & \multicolumn{3}{c}{Equal-weighted} \\
-\cmidrule(lr){3-5} \cmidrule(lr){6-8}
-Basket & Denominator & {GSADF} & {CV$_{95}$} & sig & {GSADF} & {CV$_{95}$} & sig \\
-\midrule
-Top-5      & No AI    & 4.094 & 1.595 & *** & 2.617 & 1.548 & *** \\
-Top-5      & High AI  & 2.011 & 1.560 & **  & 1.593 & 1.615 & *   \\
-Top-decile & No AI    & 3.350 & 1.556 & *** & 2.044 & 1.530 & **  \\
-Top-decile & High AI  & 1.419 & 1.546 & *   & 1.377 & 1.548 & *   \\
-Mag-7      & No AI    & 5.204 & 1.490 & *** & 6.722 & 1.515 & *** \\
-Mag-7      & High AI  & 3.329 & 1.396 & *** & 4.491 & 1.435 & *** \\
-\bottomrule
-\end{tabular}
-\caption*{\footnotesize \textit{Notes.} Full-sample GSADF statistic and 95\,\% wild-multiplier bootstrap critical value for each concentration basket, divided by the No-AI and High-AI denominators, under value- and equal-weighting. Basket definitions follow \cref{subsec:bubble-test-variables}: Top-5 is the five firms with the highest pre-2023 normalised AI keyword score; Top-decile is the firms in the top decile of the score among firms with at least one AI mention; Mag-7 is NVDA, MSFT, GOOGL, AAPL, AMZN, META and TSLA. Sample, specification, bootstrap setup and significance indicators as in \cref{tab:gsadf-headline}.}
-\end{table}
- 
 
 \section{Local Projections}
 
@@ -535,3 +404,138 @@ differential --- it is silent on that mechanism --- but it can rule
 out one salient channel: the AI--path differential identified in
 \cref{sec:res-main} is not explained by financial-leverage
 heterogeneity across AI groups.
+
+
+\section{Bubbles}
+ 
+This chapter reports the full-sample PSY analysis of the twenty-eight monthly series defined in \cref{subsec:bubble-test-variables}, estimated under the recursive specification of \cref{subsec:bubble-specification} and the wild-multiplier bootstrap of \cref{subsec:bubble-critical-values}. The results are organised in the same order as the design. \Cref{sec:results-headline} reports the GSADF statistics for the sixteen headline series and compares the ordering across AI-exposure groups. \Cref{sec:results-episodes} reports the date-stamped episodes implied by the rule in \cref{subsec:bubble-date-stamping}. \Cref{sec:results-concentration} turns to the twelve concentration-basket series and asks whether the strongest evidence of explosiveness is concentrated among a small number of AI-related market leaders. The lag-order, log-specification and wild-bootstrap-multiplier robustness exercises previewed in \cref{subsec:bubble-robustness-design} are deferred to \cref{ch:robustness}; all critical values reported below use the corrected wild multiplier.
+ 
+Two conventions discipline the interpretation. First, every series is reported under both value- and equal-weighting. The gap between the two is read as the breadth diagnostic introduced in \cref{subsec:bubble-overview}: value-weighted evidence that is much stronger than equal-weighted evidence points to concentration among large firms, while similar evidence under both weightings indicates broader participation across the tested group. Second, the substantive interpretation never rests on a single rejection. Absolute indices, ratio series and date-stamped episodes are read jointly, as required by the identification limits in \cref{subsec:bubble-design-limitations}. A GSADF rejection is evidence of explosive price dynamics; it is not, by itself, evidence that prices exceed fundamentals.
+ 
+% ---------------------------------------------------------------------
+\section{Full-sample GSADF: AI groups and broad-market reference}
+\label{sec:results-headline}
+ 
+\Cref{tab:gsadf-headline} reports the full-sample GSADF statistic for the sixteen headline series. Fifteen of the sixteen reject the unit-root-with-drift null at the 95\,\% bootstrap critical value or above, and six reject at the 99\,\% level; the remaining series, the value-weighted No AI / S\&P~500 diagnostic, rejects only at 90\,\%. Explosive dynamics are therefore not confined to the AI-exposed cohort. The headline result is a broad post-2010 tendency toward explosive behaviour, with the strongest statistics appearing in the High-AI series and in the High-AI relative ratios.
+ 
+Within the absolute-index block, the ordering is consistent with AI exposure. The High AI index produces a GSADF statistic of $4.04$ under value-weighting and $4.25$ under equal-weighting, in both cases above the 99\,\% critical value (\num{2.57} and \num{2.62}, respectively). The Moderate AI index produces $2.35$ and $2.24$, each above the 95\,\% critical value but well below the High AI statistic. The No AI index produces the smallest values among the AI groups ($1.86$ and $1.97$), exceeding 95\,\% but not 99\,\%. The S\&P~500 benchmark sits between the No AI and Moderate AI indices at $2.17$ under both weightings. Because all four absolute indices reject at the 95\,\% level, the level evidence should mainly be read as a diagnostic: the test detects explosive dynamics across the broader equity market, not only inside the AI-exposed portfolios.
+ 
+The ratio series provide the sharper cross-sectional evidence. The High AI / No AI ratio --- the primary identification in \cref{subsec:bubble-test-variables} --- rejects at the 99\,\% level under both weightings ($3.15$ and $3.19$, against 99\,\% critical values of $2.46$ and $2.35$). The High AI / S\&P~500 ratio also rejects at the 99\,\% level ($3.41$ value-weighted, $2.85$ equal-weighted). By contrast, the Moderate AI / S\&P~500 ratio rejects only at the 95\,\% level under both weightings ($1.38$ and $1.57$), and the No AI / S\&P~500 placebo-style diagnostic rejects at the 90\,\% level under value-weighting and at the 95\,\% level under equal-weighting ($1.45$ and $1.63$). The placebo-style diagnostic is therefore not cleanly inside the null, which weakens a narrow AI-only interpretation. At the same time, the High AI ratios are much larger than the No AI / S\&P~500 ratio, so the cross-sectional ordering remains informative.
+ 
+The breadth diagnostic points in the same direction. The High AI absolute index, the High AI / No AI ratio and the High AI / S\&P~500 ratio reject at the 99\,\% level under both value- and equal-weighting. The High-AI signal is therefore not mechanically produced by value-weighting alone; it remains visible when each firm in the High-AI cohort receives equal weight. The concentration analysis below qualifies this statement by showing that the strongest statistics are still concentrated among mega-cap leaders, but the headline High-AI result itself is not eliminated by equal-weighting.
+ 
+\begin{table}[t]
+\centering
+\caption{Full-sample GSADF: headline AI-exposure series.}
+\label{tab:gsadf-headline}
+\small
+\begin{tabular}{l S[table-format=1.3] S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] c}
+\toprule
+ & \multicolumn{3}{c}{Value-weighted} & \multicolumn{3}{c}{Equal-weighted} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Series & {GSADF} & {CV$_{95}$} & sig & {GSADF} & {CV$_{95}$} & sig \\
+\midrule
+High AI (abs)              & 4.037 & 1.559 & *** & 4.247 & 1.603 & *** \\
+Moderate AI (abs)          & 2.345 & 1.493 & **  & 2.244 & 1.473 & **  \\
+No AI (abs)                & 1.860 & 1.524 & **  & 1.966 & 1.548 & **  \\
+S\&P~500 (abs)             & 2.167 & 1.488 & **  & 2.167 & 1.488 & **  \\
+High AI / S\&P~500         & 3.408 & 1.405 & *** & 2.850 & 1.460 & *** \\
+Moderate AI / S\&P~500     & 1.382 & 1.382 & **  & 1.569 & 1.395 & **  \\
+No AI / S\&P~500           & 1.453 & 1.545 & *   & 1.631 & 1.418 & **  \\
+High AI / No AI            & 3.147 & 1.426 & *** & 3.193 & 1.529 & *** \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Full-sample GSADF statistic and 95\,\% wild-multiplier bootstrap critical value for each headline series, under value- and equal-weighting. Sample 2010-01 to 2026-04; $T = 195$ monthly observations; \texttt{swindow0}~$= 27$; fixed lag $k = 0$; $T_b = 50$; $n_{\mathrm{boot}} = \num{2000}$ with the corrected $\mathcal{N}(0,1)$ multiplier of \cref{subsec:bubble-critical-values}. Significance indicators $^{*}$, $^{**}$, $^{***}$ denote rejection of the unit-root-with-drift null at the 90\,\%, 95\,\% and 99\,\% bootstrap critical values respectively.}
+\end{table}
+ 
+% ---------------------------------------------------------------------
+\section{Date-stamped explosive episodes}
+\label{sec:results-episodes}
+ 
+\Cref{fig:groups-vw-fullsample} reports the shaded-index plots for the eight headline series under value-weighting, with graded shading at the 90\,\%, 95\,\% and 99\,\% bootstrap critical values as described in \cref{subsec:bubble-date-stamping}. \Cref{tab:episodes-headline} lists the dated episodes for the High-AI series under value-weighting; the equal-weighted counterpart and the dated episodes for the Moderate~AI, No~AI and S\&P~500 series are deferred to \cref{app:episodes-full}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/main/ai_groups_vw_fullsample.png}
+\caption{Shaded-index plot of the headline AI-exposure series, value-weighted, full sample.}
+\label{fig:groups-vw-fullsample}
+\caption*{\footnotesize \textit{Notes.} Top four panels: absolute total-return indices (start $= 100$ in January 2010) for the High~AI, Moderate~AI, No~AI and S\&P~500 series. Bottom four panels: corresponding ratios to the S\&P~500 total-return index and the High~AI / No~AI within-equity contrast. Graded shading marks months in which the BSADF sequence exceeds the 90\,\%, 95\,\% and 99\,\% wild-multiplier bootstrap critical values (light to dark), with the minimum-duration filter of \cref{subsec:bubble-date-stamping} applied to the 90\,\% envelope. The dashed vertical line marks the release of ChatGPT on 30~November~2022 and is a reference marker only. $n_{\mathrm{boot}} = \num{2000}$. The equal-weighted counterpart is reported in \cref{app:psy-ew}.}
+\end{figure}
+ 
+The date-stamping adds an important qualification to the full-sample GSADF results. First, the High AI absolute index is flagged in four value-weighted episodes: July~2017--September~2018 ($15$ months, peak BSADF $3.27$ in August~2018), June~2020--January~2022 ($20$ months, peak $4.04$ in August~2021), February~2024--February~2025 ($13$ months, peak $2.61$ in June~2024), and May~2025--February~2026 ($10$ months, peak $3.42$ in October~2025). Under equal-weighting, the two pre-ChatGPT episodes are similarly placed (April~2017--September~2018 and November~2020--March~2022), but the late-sample re-emergence is absent. The post-2022 High-AI level episodes are therefore mainly a value-weighted phenomenon, while the 2017--18 and 2020--21 episodes are broad enough within the High-AI cohort to survive equal-weighting.
+ 
+Second, the differential High AI / No AI series is dated before the ChatGPT release. Under value-weighting, the primary ratio is flagged in February--June~2018, March~2020--February~2021, and June--November~2021. Under equal-weighting, the same basic timing recurs in February~2020--April~2021 and June--December~2021. These five differential episodes all end before November~2022. The High AI / S\&P~500 ratio shows a similar pre-ChatGPT pattern: the value-weighted ratio is dated in 2018, 2019, 2020--21 and 2021, while the equal-weighted ratio compresses much of this behaviour into a single January~2017--December~2021 window. The implication is not that AI is irrelevant after 2022. Rather, in this full-sample design the post-ChatGPT evidence appears more clearly in absolute High-AI levels and in concentration baskets than in the broad High AI / No AI differential ratio.
+ 
+Third, the broad-market reference series also matter for interpretation. The No AI absolute index rejects in the full-sample table, but under value-weighting it has no 95\,\% episode that survives the five-month duration filter; its rejection is generated by shorter threshold crossings. Under equal-weighting, the No AI index has a single five-month episode between April and August~2021. The S\&P~500 benchmark is flagged in two episodes under both weightings: April--August~2021 and July~2025--February~2026. The late-sample S\&P~500 episode is mirrored in the value-weighted High-AI index, but not in the equal-weighted High-AI index or in the broad High AI / No AI ratio. This matters because group membership is fixed using the pre-ChatGPT classification: firms that became AI-relevant after the classification date remain in whichever group held them at that date, rather than being reallocated into the High-AI cohort. These episodes therefore reinforce the main identification caution: the sample contains broad-market explosiveness, so the AI interpretation has to be based on the relative strength, timing and concentration of the AI-related series rather than on the mere existence of a GSADF rejection.
+ 
+\begin{table}[H]
+\centering
+\caption{Date-stamped explosive episodes: High-AI series, value-weighted.}
+\label{tab:episodes-headline}
+\small
+\begin{tabular}{l l l S[table-format=2.0] S[table-format=1.3] l}
+\toprule
+Series & Start & End & {Months} & {Peak BSADF} & Peak date \\
+\midrule
+High AI (abs)        & 2017-07 & 2018-09 & 15 & 3.269 & 2018-08 \\
+High AI (abs)        & 2020-06 & 2022-01 & 20 & 4.037 & 2021-08 \\
+High AI (abs)        & 2024-02 & 2025-02 & 13 & 2.611 & 2024-06 \\
+High AI (abs)        & 2025-05 & 2026-02 & 10 & 3.420 & 2025-10 \\
+High AI / No AI      & 2018-02 & 2018-06 &  5 & 2.167 & 2018-05 \\
+High AI / No AI      & 2020-03 & 2021-02 & 12 & 3.147 & 2020-06 \\
+High AI / No AI      & 2021-06 & 2021-11 &  6 & 2.172 & 2021-11 \\
+High AI / S\&P~500   & 2018-01 & 2018-09 &  9 & 2.592 & 2018-05 \\
+High AI / S\&P~500   & 2019-03 & 2019-07 &  5 & 1.871 & 2019-04 \\
+High AI / S\&P~500   & 2020-02 & 2021-04 & 15 & 3.408 & 2020-08 \\
+High AI / S\&P~500   & 2021-06 & 2021-11 &  6 & 1.936 & 2021-08 \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Episodes in which the BSADF sequence exceeds the 95\,\% wild-multiplier bootstrap critical value for at least $\lfloor \log T \rfloor = 5$ consecutive months, as defined in \cref{subsec:bubble-date-stamping}. Value-weighted total-return indices. Peak BSADF is the supremum of the BSADF sequence within the episode; peak date is the month in which it is attained. Equal-weighted episodes and episodes for the Moderate~AI, No~AI and S\&P~500 series are reported in \cref{app:episodes-full}.}
+\end{table}
+
+ 
+% ---------------------------------------------------------------------
+\section{Concentration baskets}
+\label{sec:results-concentration}
+ 
+\Cref{tab:gsadf-topn} reports the GSADF statistics for the three concentration baskets defined in \cref{subsec:bubble-test-variables}: Top-5, Top-decile and Mag-7. Each basket is divided by the No-AI and High-AI denominators and tested under both value- and equal-weighting. All twelve concentration ratios reject at the 90\,\% level, nine reject at the 95\,\% level, and seven reject at the 99\,\% level. The evidence is therefore strongest for the concentration ratios relative to No AI and for the Mag-7 ratios; it is weaker when the disclosure-based Top-5 and Top-decile baskets are compared with the broader High-AI portfolio. \Cref{fig:topn-vw-fullsample} shows the corresponding shaded-ratio plots under value-weighting.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/main/ai_topN_vw_fullsample.png}
+\caption{Shaded-ratio plot of the concentration baskets, value-weighted, full sample.}
+\label{fig:topn-vw-fullsample}
+\caption*{\footnotesize \textit{Notes.} Ratios of the Top-5, Top-decile and Mag-7 baskets to the No-AI and High-AI denominators, under value-weighting. Shading and reference line as in \cref{fig:groups-vw-fullsample}. The equal-weighted counterpart is reported in \cref{app:psy-ew}.}
+\end{figure}
+ 
+The Mag-7 / No AI series produces the largest GSADF statistics in the analysis: $5.20$ under value-weighting and $6.72$ under equal-weighting, against 99\,\% critical values of $2.39$ and $2.45$, respectively. The dated episodes place the largest contiguous window between March~2020 and February~2021 under value-weighting, and between February~2020 and February~2021 under equal-weighting, with peak BSADF statistics of $5.20$ and $6.72$ in August~2020. Both weightings also show a second June--December~2021 episode. The Mag-7 / High AI ratio remains significant at the 99\,\% level under both weightings, with GSADF statistics of $3.33$ under value-weighting and $4.49$ under equal-weighting. Its dated episodes are especially informative: the equal-weighted series is flagged in June--October~2020, October~2024--February~2025, and May~2025--January~2026, while the value-weighted series rejects in the full-sample statistic but has no 95\,\% episode that survives the duration filter. The seven mega-cap names are therefore explosive not only relative to No AI firms but also relative to the broader High-AI portfolio, with the post-2022 Mag-7 / High AI episodes appearing most clearly under equal-weighting. Because the equal-weighted Mag-7 ratios are larger than their value-weighted counterparts, the Mag-7 result is not driven solely by the largest one or two firms in the basket. This is consistent with \citet{baselePhillipsShi2025}, who find explosive behaviour in six of the seven Mag-7 stocks over a comparable sample.
+ 
+The disclosure-based Top-5 and Top-decile baskets produce smaller statistics, but they preserve the same broad ordering. The Top-5 / No AI ratio rejects at the 99\,\% level under both weightings ($4.09$ value-weighted and $2.62$ equal-weighted). Under value-weighting, its dated episodes occur in January--October~2020, June--December~2021, January--July~2024 and June--October~2025; under equal-weighting, only a short January--May~2018 episode survives the duration filter. The Top-decile / No AI ratio rejects at the 99\,\% level under value-weighting and at the 95\,\% level under equal-weighting ($3.35$ and $2.04$), but only the value-weighted series has dated 95\,\% episodes, both in 2020--21. These patterns imply that disclosure-based concentration is present, but it is more value-weighted and less persistent than the Mag-7 concentration signal.
+ 
+The ratios to High AI add a useful qualification. Top-5 / High AI rejects at the 95\,\% level under value-weighting but only at 90\,\% under equal-weighting; Top-decile / High AI rejects only at 90\,\% under both weightings. Thus, the top disclosure-ranked firms are clearly explosive relative to No AI firms, but much less clearly explosive relative to the broader High-AI group. By contrast, Mag-7 / High AI remains large and significant under both weightings. This distinction matters for the interpretation: the strongest concentration evidence is not simply that the firms with the highest pre-2023 AI keyword scores dominate the High-AI portfolio, but that the market's mega-cap AI narrative stocks display exceptional relative explosiveness.
+ 
+Taken together, the concentration block sharpens the headline result. The broad High AI / No AI ratio rejects strongly, but its dated episodes are mainly pre-ChatGPT. The post-2022 signal appears more clearly in value-weighted High-AI levels and in the Top-5 and Mag-7 concentration baskets. The evidence is therefore consistent with bubble-like dynamics around AI-exposed and AI-associated firms, but it is not a clean post-2022 AI-bubble verdict. It points instead to a combination of long-running technology-sector outperformance, broad-market explosiveness and a particularly strong concentration component among mega-cap AI leaders.
+ 
+\begin{table}[H]
+\centering
+\caption{Full-sample GSADF: concentration baskets.}
+\label{tab:gsadf-topn}
+\small
+\begin{tabular}{l l S[table-format=1.3] S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] c}
+\toprule
+ & & \multicolumn{3}{c}{Value-weighted} & \multicolumn{3}{c}{Equal-weighted} \\
+\cmidrule(lr){3-5} \cmidrule(lr){6-8}
+Basket & Denominator & {GSADF} & {CV$_{95}$} & sig & {GSADF} & {CV$_{95}$} & sig \\
+\midrule
+Top-5      & No AI    & 4.094 & 1.595 & *** & 2.617 & 1.548 & *** \\
+Top-5      & High AI  & 2.011 & 1.560 & **  & 1.593 & 1.615 & *   \\
+Top-decile & No AI    & 3.350 & 1.556 & *** & 2.044 & 1.530 & **  \\
+Top-decile & High AI  & 1.419 & 1.546 & *   & 1.377 & 1.548 & *   \\
+Mag-7      & No AI    & 5.204 & 1.490 & *** & 6.722 & 1.515 & *** \\
+Mag-7      & High AI  & 3.329 & 1.396 & *** & 4.491 & 1.435 & *** \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Full-sample GSADF statistic and 95\,\% wild-multiplier bootstrap critical value for each concentration basket, divided by the No-AI and High-AI denominators, under value- and equal-weighting. Basket definitions follow \cref{subsec:bubble-test-variables}: Top-5 is the five firms with the highest pre-2023 normalised AI keyword score; Top-decile is the firms in the top decile of the score among firms with at least one AI mention; Mag-7 is NVDA, MSFT, GOOGL, AAPL, AMZN, META and TSLA. Sample, specification, bootstrap setup and significance indicators as in \cref{tab:gsadf-headline}.}
+\end{table}
+ 
+
