@@ -1,0 +1,214 @@
+% =============================================================================
+% Chapter 3: Data and AI Exposure Classification
+% File: chapters/03_data.tex
+% -----------------------------------------------------------------------------
+% Joint chapter covering two analyses on a shared sample frame and shared AI
+% classification:
+%   (i)  Local-projection (LP) firm-level analysis of FOMC forward-guidance
+%        shocks 2005-2024.
+%   (ii) PSY explosive-behaviour analysis of AI-portfolio price indices
+%        2010-2026.
+%
+% Tables expected in:   outputs/tables/main/   and   outputs/tables/appendix/
+% Figures expected in:  outputs/figures/main/  (resolved via \graphicspath)
+% =============================================================================
+
+\chapter{Data and AI Exposure Classification}
+\label{ch:data}
+
+\section{Data overview}
+\label{sec:data-overview}
+
+The thesis carries out two empirical exercises on a shared sample frame and a shared firm-level measure of AI exposure. The first is a panel local-projection (LP) analysis of how S\&P~500 equity returns respond to high-frequency monetary-policy surprises around scheduled FOMC announcements between 2005 and 2024, where heterogeneity is measured by the firm-level AI-exposure group. The second is an explosive-behaviour analysis of AI-portfolio total-return indices between 2010 and 2026, implemented at the basket level rather than the firm level. The two exercises share three ingredients: the S\&P~500 constituent set as of \mbox{2022-12-22}, the firm-level AI-exposure ranking derived from pre-2023 SEC EDGAR 10-K filings, and CRSP as the primary source of equity prices. They diverge in their unit of observation, frequency, sample window, and outcome variable, and each requires a separate panel build. This chapter describes the shared inputs first --- the firm universe, the market data, and the AI-exposure classification --- and then the two analysis-specific data builds. The chapter closes with the final estimation samples and a short discussion of data limitations that apply to one or both analyses. \cref{tab:data_sources} lists the underlying data sources and their roles.
+
+\input{outputs/tables/main/table_data_sources}
+
+\section{Firm universe and market data}
+\label{sec:firm-universe}
+
+\paragraph{Firm universe.} The firm universe is the constituent set of the S\&P~500 index as of \mbox{2022-12-22}, taken from a historical S\&P~500 constituent file. This snapshot date is chosen because it predates the public release of ChatGPT (\mbox{2022-11-30}) but lies within the same fiscal-reporting cycle, so that the most recent SEC 10-K filings available at the snapshot reflect pre-ChatGPT disclosures (see \cref{sec:ai-exposure}). Holding the universe fixed at a single snapshot is a deliberate design choice that imposes a survivorship constraint: firms that exited the S\&P~500 before \mbox{2022-12-22} are not in the panel, and firms that entered later are not scored for AI exposure. This trade-off is discussed in \cref{sec:data-limitations}.
+
+\paragraph{Market data.} Daily and monthly security prices, returns, and shares outstanding are taken from the CRSP daily and monthly stock files, accessed through institutional academic CRSP licences. The CRSP daily file covers 1960-01-01 to 2024-12-31 and supplies the adjusted closing price \texttt{prc\_adj} used to compute LP outcomes. Yahoo Finance is used as a price source in two places. In the LP analysis, it serves only as an optional extension beyond the CRSP coverage end at the very end of the sample; no Yahoo-Finance--only synthetic firms enter the LP panel. In the PSY analysis (\cref{sec:psy-data}), Yahoo Finance bridges each firm's price series from the CRSP coverage end through to April 2026 and supplies a total-return market benchmark. CRSP delisting returns are not applied: firm-event observations in the LP panel whose return window has a missing endpoint are excluded by the data-quality filter described in \cref{sec:lp-data}, and monthly observations in the PSY panel use an end-of-month bridging filter that handles delistings cleanly (\cref{sec:psy-data}).
+
+\paragraph{Firm controls.} Three lagged firm-level controls used in the LP analysis are constructed from CRSP: log market capitalisation $\log(\text{mktcap}_{i,t-1})$, the 252-day rolling market beta $\beta^{252d}_{i,t-1}$, and 252-day rolling idiosyncratic volatility $\sigma^{\text{idio},252d}_{i,t-1}$, each evaluated on the trading day preceding the FOMC announcement. The rolling moments require at least 200 observations within the 252-day window. These controls do not enter the preferred LP specification, which absorbs them through firm and sector\,$\times$\,event fixed effects.
+
+\paragraph{Sector classification.} Each firm is assigned a GICS sector. Sector labels are largely current-era assignments; for the small number of cases where a CRSP \texttt{permno} carries a ticker that was reused by an economically unrelated firm, the modern sector may differ from the historical one (see \cref{sec:data-limitations}).
+
+\section{AI exposure from pre-2023 SEC 10-K filings}
+\label{sec:ai-exposure}
+
+AI exposure is not directly observable, and no standard industry classification cleanly separates AI-engaged firms from the rest of the market. Firms have increasingly described themselves as AI-related, but such descriptions vary in credibility, intensity, and economic relevance. Before comparing market outcomes across firms, the analysis therefore requires a transparent and reproducible firm-level measure of AI exposure. One approach is to infer exposure from firms' workforces: \citet{eisfeldtSchubertZhangTaska2023} map occupational exposure to generative AI into firm-level measures using detailed workforce composition data, an attractive design that nonetheless relies on labour-market data not publicly available for the full sample used here. A more accessible alternative is to use firms' own regulatory disclosures, in the spirit of the text-based business-description measures of \citet{loughranMcDonald2011} and \citet{hobergPhillips2016}, and applied directly to AI by \citet{anteSaggu2025}, who construct AI-related firm measures from SEC 10-K filings on the premise that firms for which AI is economically relevant are more likely to discuss AI-related technologies in their annual reports. This thesis follows that disclosure-based logic, with two design choices specific to its empirical question: a pre-ChatGPT filing window that fixes the corpus before the generative-AI boom, and a conservative keyword dictionary chosen to maximise discriminating power.
+
+\paragraph{Filing source and timing.} For each ticker in the 2022-12-22 S\&P~500 snapshot, the most recent SEC 10-K annual report filed before 1~January~2023 is retrieved as HTML from SEC EDGAR. The pre-2023 cut-off is chosen because it immediately precedes the period in which generative AI became a dominant market narrative: OpenAI released ChatGPT on 2022-11-30, but the broader repricing of AI-exposed equities unfolded primarily from early 2023 onward. By restricting the corpus to filings available before this date, the measure captures firms' pre-existing engagement with AI rather than their response to the boom itself, or the market's retrospective reinterpretation of which firms stood to benefit. The nominal calendar overlap between ChatGPT's release and the cut-off is immaterial in practice. Annual reports reflect the fiscal year just ended and are drafted over weeks to months; they cannot be meaningfully revised in response to a late-November event. The classification therefore captures pre-boom AI engagement despite the nominal overlap in calendar dates.
+
+Because the same firm-level ranking is used across all events in both analyses, the measure is best understood as a \emph{pre-ChatGPT exposure ranking} rather than as a fully ex-ante event-time exposure measure --- a 2022 filing cannot describe a firm's actual AI engagement at, for example, a 2007 FOMC event. The ranking still captures persistent cross-sectional variation in the disclosed business overlap with AI-related activities and technologies, in the spirit of \citet{davisHansenSeminarioAmez2020} and \citet{eisfeldtSchubertZhangTaska2023}. An event-time robustness variant that uses the latest filing available before each FOMC event is discussed in \cref{ch:robustness}.
+
+\paragraph{Keyword dictionary.} The main thesis classification scores each firm's 10-K against a conservative three-keyword dictionary: \emph{artificial intelligence}, \emph{machine learning}, and standalone \emph{AI}, matched with word-boundary regular expressions to prevent false positives from common words containing the letters \emph{ai}. The choice of a small, strict dictionary is deliberate. An initial screening of 65 candidate terms revealed that broader technology language --- terms such as \emph{automation}, \emph{algorithm}, \emph{cloud computing}, and \emph{data center} --- appears frequently in 10-K filings but does not reliably distinguish AI-engaged firms from the rest. A utility company operating a data center or a bank describing its fraud-detection algorithms would otherwise score alongside firms such as NVIDIA or Alphabet, reducing the discriminating power of the measure. At the other end, terms that emerged primarily after the generative-AI boom --- \emph{large language model}, \emph{generative AI}, \emph{agentic} --- have near-zero frequency in pre-2023 filings and contribute little to the cross-sectional variation. The three retained terms are the subset that is both unambiguously AI-related and disclosed with non-trivial cross-sectional dispersion before 2023.
+
+A broader eight-keyword dictionary that adds \emph{deep learning}, \emph{neural networks}, \emph{natural language processing}, \emph{computer vision}, and \emph{data science/scientist} is retained in the panel under the \texttt{*2} variable suffix and used only as a classification robustness check in \cref{ch:robustness}.
+
+\paragraph{Scoring.} Within the three-keyword dictionary, the raw count of keyword matches in a firm's 10-K is divided by the total word count of the filing and multiplied by ten thousand:
+\begin{equation}
+    \mathtt{ai\_score\_normalized}_i \;=\; \frac{\text{AI keyword mentions in firm }i\text{'s 10-K}}{\text{total whitespace tokens in firm }i\text{'s 10-K}} \times 10{,}000.
+    \label{eq:ai-score}
+\end{equation}
+Length normalisation is necessary because 10-K filings vary considerably in length: without adjustment, the measure would partly capture disclosure length rather than AI engagement. The resulting score is interpretable as AI mentions per ten thousand words and follows the per-document normalisation standard in the textual-disclosure literature \citep{loughranMcDonald2011, hobergPhillips2016}.
+
+\paragraph{Group assignment.} The cross-sectional distribution of the continuous score is heavily right-skewed, with a large mass of zeros and a thin upper tail. A standard quintile split would therefore be uninformative, because the bottom three quintiles would all consist of firms with zero AI mentions and would be effectively identical. Firms are instead partitioned into three mutually exclusive and exhaustive groups based on the natural structure of the data. Firms with zero keyword matches are assigned to \emph{No AI Exposure}. Among firms with at least one match, the median value of \texttt{ai\_score\_normalized} is the cutoff between \emph{Moderate AI} and \emph{High AI}: firms with a positive score below the median go into Moderate AI, those at or above the median go into High AI. Under the main three-keyword classification this cutoff equals 0.400. \cref{fig:ai_score_distribution} plots the cross-sectional distribution of the continuous score with the cutoff marked; \cref{tab:ai_distribution} reports the resulting group sizes within the LP estimation sample.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{figure_data_ai_score_distribution}
+    \caption{Cross-sectional distribution of the AI exposure score.}
+    \label{fig:ai_score_distribution}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} Distribution of \texttt{ai\_score\_normalized} (AI keyword mentions per ten thousand 10-K tokens) across own-filing S\&P~500 firms in the estimation sample. Firms with a score of zero are omitted from the histogram. The vertical dashed line marks the Moderate/High AI cutoff at the median score among positive-mention firms (0.400). The horizontal axis is truncated at the 99th percentile; the maximum score is 17.17.
+    \end{minipage}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{AI exposure groups in the LP estimation sample.}
+\label{tab:ai_distribution}
+\input{outputs/tables/main/table_data_ai_distribution}
+\end{table}
+
+In the estimation sample, 301 firms (66.7\%) are classified as No AI, 71 (15.7\%) as Moderate AI, and 79 (17.5\%) as High AI.\footnote{The estimation panel contains a small number of CRSP \texttt{permno}s that share a ticker string with another \texttt{permno} and would inherit a foreign company's AI score under a ticker-based merge. The thesis identifies these surgically through the firm-level flag \texttt{ai\_score\_inherited} and computes all AI descriptive statistics on the 451 own-filing firms (\texttt{ai\_score\_inherited == 0}). The implication for the regression sample is discussed in \cref{sec:final-sample} and \cref{sec:data-limitations}.} The three groups are economically distinct: the High AI group has a mean normalised score of 1.97 and a maximum of 17.17, the Moderate AI group has a mean of 0.22 within a tightly bounded range, and the No AI group is identically zero by construction.
+
+A useful sanity check on the pre-2023 measure is to compare it against the equivalent score computed on the most recent available filings. \cref{fig:ai-score-pre-post-comparison} reports such a comparison: after the generative-AI boom, AI-related disclosure became near-universal across the S\&P~500, the number of firms with at least one AI mention rose sharply, and the upper tail of the distribution extended well beyond the pre-2023 maximum. This convergence is consistent with the interpretation of the pre-2023 measure as a useful cross-sectional signal precisely because it captures a moment in which AI disclosure was still informative about firm-level differences.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{ai_score_comparison_pre_vs_post}
+    \caption{Distribution of AI exposure scores before and after the generative-AI boom.}
+    \label{fig:ai-score-pre-post-comparison}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure compares the distribution of the normalised AI exposure score across S\&P~500 firms with at least one AI-related keyword mention, between the pre-2023 corpus used for the main classification (left panel) and the most recent available filings (right panel). After the release of ChatGPT, the share of firms mentioning AI rose sharply and the distribution shifted substantially to the right, with the upper tail extending well beyond the pre-2023 maximum.
+    \end{minipage}
+\end{figure}
+
+\cref{tab:sector_ai} cross-tabulates the AI-exposure groups against GICS sectors. AI exposure is heavily concentrated in Information Technology, where 57.6\% of firms are in the High AI group, and is essentially absent from Consumer Staples, Utilities, Materials, and Real Estate. Substantial High and Moderate AI shares also appear in Health Care, Industrials, Financials, and Consumer Discretionary, indicating that AI-related disclosure is not purely a sectoral phenomenon. This within-sector dispersion is what the sector\,$\times$\,event fixed effects of the preferred LP specification (\cref{ch:empirics}) exploit for identification.
+
+\begin{table}[!htbp]
+\centering
+\caption{AI exposure by GICS sector.}
+\label{tab:sector_ai}
+\input{outputs/tables/main/table_data_sector_ai}
+\end{table}
+
+\paragraph{Use of the classification in the two analyses.} The LP analysis uses the three-group classification directly: each firm enters the panel with a fixed AI-exposure group, and the LP heterogeneity coefficients are identified by within-sector, within-event differences between High~AI, Moderate~AI, and No~AI firms (\cref{sec:lp-data}, \cref{ch:empirics}). The PSY analysis additionally uses the underlying continuous score and the firm-level ranking to construct concentration baskets --- the five top-ranked firms (Top-5), the top decile (Top-decile), and a fixed Mag-7 list --- alongside the three headline AI groups (\cref{sec:psy-data}). These additional baskets are constructed from the same scored firm panel and do not redefine the AI measure.
+
+\section{LP analysis: market data and the firm--event--horizon panel}
+\label{sec:lp-data}
+
+The LP analysis takes the AI-classified firm universe and combines it with daily CRSP returns and high-frequency monetary-policy surprises at scheduled FOMC announcements.
+
+\paragraph{FOMC events and monetary-policy shocks.} The FOMC event calendar and the high-frequency monetary-policy surprises are taken from the US Monetary Policy Database (USMPD), which assembles and updates the GSS/Swanson three-factor monetary-policy surprise series \citep{gurkaynakSackSwanson2005, swanson2021, acostaEtAl2025}. After matching each announcement to a CRSP trading day and restricting to scheduled meetings, the LP estimation sample covers 159 scheduled FOMC events from \mbox{2005-02-02} to \mbox{2024-12-18}. There are no unscheduled events in the LP estimation window. Of the 159 scheduled events, 69 release a Summary of Economic Projections (SEP) and 79 are followed by a post-meeting press conference; the relevance of the broader communication window is discussed in \cref{sec:data-limitations}.
+
+The high-frequency identification strategy follows the now-standard approach of measuring monetary surprises from changes in fed-funds futures and short-dated yields in a narrow window around each FOMC announcement \citep{bernankeKuttner2005, rigobonSack2004, nakamuraSteinsson2018}. Rotating the resulting surprises into a small number of orthogonal factors isolates components that capture distinct dimensions of policy news. The implementation here uses the three-factor rotation in \citet{swanson2021}, which separates a current-meeting target-rate surprise (\texttt{target\_3f}), a forward-guidance surprise orthogonal to the target (\texttt{path\_3f}), and a large-scale-asset-purchase surprise (\texttt{lsap\_3f}). All three factors are expressed in basis points.
+
+The main shock in the LP analysis is \texttt{path\_3f}, which captures revisions to the expected path of the policy rate over roughly the next year that are independent of the current target-rate surprise \citep{gurkaynakSackSwanson2005, swanson2021, bauerSwanson2023}. \texttt{target\_3f} and \texttt{lsap\_3f} are retained for sanity checks and as alternative shocks. The existing implementation does not orthogonalise the surprises against publicly available pre-announcement information \citep[][on the case for such orthogonalisation]{bauerSwanson2023} and does not separate policy news from central-bank-information effects at the announcement stage \citep[][]{jarocinskiKaradi2020, mirandaAgrippinoRicco2021, cieslakSchrimpf2019}. An information-effect split based on the contemporaneous equity reaction is constructed in the panel (\texttt{path\_monetary} and \texttt{path\_information}) and used in robustness analyses in \cref{ch:robustness}.
+
+\cref{tab:fomc_shocks} reports the distribution of the three surprises across the 159 scheduled events together with the event-sample composition. The three surprises have means near zero and the dispersion ordering one would expect: \texttt{target\_3f} has the widest range, while \texttt{path\_3f} is the most concentrated (standard deviation 1.79~bp) and is symmetric around zero, consistent with its construction as an orthogonal forward-guidance component. \cref{fig:shock_timeseries} plots the three surprises over time; outsized realisations cluster around the 2008--2009 crisis, the 2015 lift-off, and the 2020 pandemic response, with the post-2015 period dominated by communication-driven path surprises, consistent with the increased role of forward guidance documented by \citet{swanson2021} and \citet{gurkaynakKarasoyCanLee2022}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Monetary-policy surprises and event-sample composition.}
+\label{tab:fomc_shocks}
+\input{outputs/tables/main/table_data_fomc_shocks}
+\end{table}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{figure_data_shock_timeseries}
+    \caption{Time series of monetary-policy surprises, scheduled FOMC events 2005--2024.}
+    \label{fig:shock_timeseries}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} Three GSS/Swanson rotated factors expressed in basis points at each scheduled FOMC announcement: \texttt{target\_3f} (current target-rate surprise), \texttt{path\_3f} (forward-guidance surprise orthogonal to the target), and \texttt{lsap\_3f} (large-scale asset-purchase surprise). Source: US Monetary Policy Database \citep{acostaEtAl2025}; rotation as in \citet{gurkaynakSackSwanson2005} and \citet{swanson2021}.
+    \end{minipage}
+\end{figure}
+
+\paragraph{Panel construction.} For each AI-classified firm $i$ in the universe described in \cref{sec:firm-universe} and each scheduled FOMC event $e$, the LP panel expands to all horizons $h = 0, 1, \dots, 60$ trading days. By convention, $h=0$ is the FOMC announcement trading day and $h=60$ corresponds to roughly three calendar months after the announcement. The FOMC calendar is mapped to CRSP trading dates; the cumulative log return \texttt{cum\_ret\_h} is computed from the CRSP adjusted closing price; the three monetary-policy surprises are merged at the event level; and the three lagged firm controls are merged at the firm--event level using values from the trading day preceding the announcement. Each firm and event is assigned a Stata-safe integer identifier (\texttt{firm\_id}, \texttt{event\_id}), together with a GICS sector\,$\times$\,event identifier (\texttt{sector\_event\_id}) used to absorb sector-by-event variation in the preferred specification.
+
+Several sample flags govern which observations enter the LP analysis. \texttt{sample\_scheduled} retains only scheduled FOMC meetings. \texttt{sample\_main} requires non-missing values of the outcome, the shock, the AI group, and the lagged controls. The preferred estimation flag \texttt{sample\_preferred} restricts the panel to observations that satisfy both. The local-projection regressions described in \cref{ch:empirics} are run under \texttt{sample\_preferred == 1} together with a 2005--2024 date filter. Firm--event observations whose return window has a missing endpoint are excluded by \texttt{sample\_preferred} rather than imputed.
+
+\paragraph{Outcome variable.} The dependent variable in the LP regressions is the cumulative log return of firm $i$ from the trading day preceding event $e$ to the $h$-th trading day after the event:
+\begin{equation}
+    \texttt{cum\_ret\_h}_{i,e,h} \;=\; \log\!\left(P^{\text{adj}}_{i,t_e+h}\right) - \log\!\left(P^{\text{adj}}_{i,t_e-1}\right),
+    \label{eq:cum-ret}
+\end{equation}
+where $t_e$ is the CRSP trading date of FOMC event $e$ and $P^{\text{adj}}_{i,t}$ is the CRSP adjusted closing price. The variable is a long-difference rather than a daily return; the empirical strategy in \cref{ch:empirics} uses the panel local-projection framework of \citet{jorda2005} to trace out a horizon-indexed impulse response from $h=0$ to $h=60$. The cumulative return is not winsorised at the panel-construction stage. Two cumulative-abnormal-return variants (\texttt{car\_mktadj\_h}, \texttt{car\_betaadj\_h}) are pre-built in the panel for outcome robustness in \cref{ch:robustness}.
+
+\section{PSY analysis: monthly portfolio panel}
+\label{sec:psy-data}
+
+The PSY analysis takes the same AI-classified firm universe and constructs group-level total-return portfolio indices at monthly frequency, on which an explosive-behaviour test is run in \cref{ch:robustness}.\footnote{The PSY analysis is implemented in R; the LP analysis is implemented in Python (panel construction) and Stata (estimation). The two builds consume the same AI-exposure classification table but produce separate price panels: a firm-event daily panel for the LP analysis and a basket-month monthly panel for the PSY analysis.}
+
+\paragraph{Price panel.} The PSY price panel runs at end-of-month frequency from January 2010 to April 2026. Within each firm's CRSP coverage, adjusted prices and shares outstanding are taken directly from the CRSP daily file and aggregated to month-end values. Past the CRSP coverage end, each firm's price series is bridged to April 2026 using Yahoo Finance: the last available CRSP market capitalisation is carried forward using cumulative gross returns from Yahoo, with an end-of-month bridging filter that handles delistings cleanly and a coverage-date cut on the Yahoo side that prevents double-counting overlap months. The bridging keeps the panel on a single market-capitalisation convention across the CRSP and Yahoo segments. The S\&P~500 total-return benchmark is the Yahoo series \texttt{\^{}SP500TR}.
+
+\paragraph{Portfolio construction.} For each AI group $g \in \{\text{High AI},\,\text{Moderate AI},\,\text{No AI}\}$ and each month $m$, the analysis computes both a value-weighted (VW) and an equal-weighted (EW) total return on the constituent firms,
+\begin{align}
+    r^{VW}_{g,m} \;&=\; \frac{\sum_{i \in g} r^{\text{tot}}_{i,m} \cdot \text{mktcap}^{\text{lag}}_{i,m}}{\sum_{i \in g} \text{mktcap}^{\text{lag}}_{i,m}},
+        \label{eq:vw-portfolio} \\
+    r^{EW}_{g,m} \;&=\; \frac{1}{|g_m|} \sum_{i \in g} r^{\text{tot}}_{i,m},
+        \label{eq:ew-portfolio}
+\end{align}
+where $r^{\text{tot}}_{i,m}$ is the monthly total return of firm $i$ in month $m$ and $\text{mktcap}^{\text{lag}}_{i,m}$ is its market capitalisation as of the end of month $m-1$. Lagging the weight by one month prevents forward-looking information from entering the portfolio return. The corresponding total-return index for group $g$ under weighting $w \in \{\text{VW},\text{EW}\}$ is
+\begin{equation}
+    I^{w}_{g,m} \;=\; 100 \cdot \prod_{\tau \leq m} \big(1 + r^{w}_{g,\tau}\big),
+    \label{eq:tr-index}
+\end{equation}
+anchored at $100$ in January 2010.
+
+\paragraph{Baskets.} Six baskets are constructed under both VW and EW weighting. Three of these are the headline AI groups described above. The remaining three are concentration baskets that exploit the underlying continuous AI-exposure score: \emph{Top-5} contains the five firms with the highest \texttt{ai\_score\_normalized}, \emph{Top-decile} contains the firms in the top decile of the score among firms with at least one AI mention, and \emph{Mag-7} is the fixed list of NVIDIA, Microsoft, Alphabet, Apple, Amazon, Meta, and Tesla. The Mag-7 list is used as a market-recognised AI-adjacent concentration benchmark and as a partial replication anchor for \citet{baselePhillipsShi2025} in \cref{ch:robustness}. The Top-N baskets are not redefinitions of the AI classification; they simply re-aggregate the same scored firms at higher concentration.
+
+\paragraph{Test variables.} The PSY analysis is run on $28$ monthly series: $16$ headline series (the three AI groups plus the S\&P~500 benchmark in absolute total-return-index levels, each ratio of an AI group to the S\&P~500, and the High-AI-to-No-AI within-equity-universe contrast, each under both VW and EW weighting), together with $12$ concentration series (the three Top-N baskets each scaled by the No-AI and the High-AI denominators, under both weightings). The High-AI-to-No-AI ratio is informative because the broad-market beta cancels by construction, isolating the differential between the two ends of the AI-exposure ranking. The full sample January 2010 to April 2026 is used as a single window: the ChatGPT release date enters the price-series figures as a vertical reference line but is not used as a data split in the headline PSY analysis. The methodological details of the explosive-behaviour test --- bootstrap critical values, lag selection, and date-stamping --- are set out in \cref{ch:robustness}.
+
+\section{Final estimation samples and summary statistics}
+\label{sec:final-sample}
+
+\paragraph{LP sample.} After applying the data-quality and event filters described in \cref{sec:lp-data} and restricting to the 2005--2024 window, the preferred LP estimation sample contains 451 firms, 159 scheduled FOMC events, and 64{,}851 firm--event observations at $h=0$, with the all-horizon panel reaching 3{,}954{,}127 firm--event--horizon observations across $h \in \{0,1,\dots,60\}$. The sample summary is reported in \cref{tab:sample_overview}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Final LP estimation sample.}
+\label{tab:sample_overview}
+\input{outputs/tables/main/table_data_sample_overview}
+\end{table}
+
+\cref{tab:attrition_full} traces the path from the raw inputs to the final LP estimation sample. Beginning from the raw CRSP daily security universe, the AI-universe restriction to S\&P~500 firms with a downloaded EDGAR 10-K narrows the firm population, after which the CRSP match and the preferred 2005--2024 sample filters yield the firms that ultimately enter the panel. A separate block reports the FOMC-event narrowing from the raw USMPD record to the 159 scheduled events that survive the trading-day match. The third block reports observation-level filters at $h=0$.
+
+\begin{table}[!htbp]
+\centering
+\caption{Sample-attrition funnel: from raw inputs to the LP estimation sample.}
+\label{tab:attrition_full}
+\input{outputs/tables/main/table_data_attrition_full}
+\end{table}
+
+\cref{tab:summary_statistics} reports descriptive statistics for the main LP variables in the preferred sample. The cumulative log return \texttt{cum\_ret\_h} grows in dispersion with the horizon, from a standard deviation of 2.4 percentage points at $h=0$ to 15.4 percentage points at $h=60$, as expected for a long-difference outcome. The three monetary-policy surprises are reported event-level in basis points; \texttt{path\_3f} is centred near zero with the lowest dispersion, while \texttt{target\_3f} and \texttt{lsap\_3f} display the larger realisations associated with the crisis and pandemic episodes. The continuous AI score \texttt{ai\_score\_normalized} is highly right-skewed (median zero, maximum 17.17), motivating the categorical grouping used in the main specification. The three lagged controls have distributions conventional for a large-cap U.S. equity panel.
+
+\begin{table}[!htbp]
+\centering
+\caption{Summary statistics for the LP estimation sample.}
+\label{tab:summary_statistics}
+\input{outputs/tables/main/table_data_summary_statistics}
+\end{table}
+
+\paragraph{PSY sample.} The PSY analysis runs at the basket--month level. The basket panel is balanced across months: each of the 28 test series has $196$ monthly observations spanning January 2010 to April 2026. The three headline AI groups inherit the firm-level group sizes reported in \cref{tab:ai_distribution}; the Top-N concentration baskets are constructed from the same scored firm panel and contain 5, $\lceil 0.1 \times 150 \rceil$, and 7 firms respectively, where the Top-decile denominator excludes firms with zero AI mentions. The fixed Mag-7 list overlaps substantially with the High AI group: of its seven constituents, the majority are classified as High AI by the three-keyword measure, with the remainder distributed across the Moderate AI and No AI groups.
+
+\paragraph{Debt subsample.} A subsample with non-missing SEC EDGAR XBRL debt data is constructed in parallel for the debt-channel robustness analysis of the LP exercise in \cref{ch:robustness}. This subsample retains roughly 90\% of the firms but a smaller share of firm-event observations because XBRL coverage is not uniform across events; details and coverage diagnostics are reported with the corresponding robustness result.
+
+\cref{tab:variable_availability} and \cref{tab:horizon_balance} in the appendix report variable-by-variable non-missingness in the LP panel and the firm and event counts at selected horizons.
+
+\section{Data limitations}
+\label{sec:data-limitations}
+
+Six caveats warrant explicit acknowledgement. First, the firm universe is the 2022-12-22 S\&P~500 snapshot, so both analyses are conditioned on membership at the end of the AI-exposure measurement window and over-represent firms that survived to that date. Second, the AI ranking uses pre-2023 10-K text rather than the latest filing available before each event, so it functions as a pre-ChatGPT exposure ranking that organises cross-sectional heterogeneity, not as a fully ex-ante event-time exposure measure. Third, the keyword approach measures what firms \emph{disclose} about AI in their 10-K filings, not necessarily what they actually do with it. Apple, for instance, is classified as No AI Exposure despite operating well-known machine-learning systems, and Netflix is classified low despite its prominent recommendation engine, because neither describes these activities in AI terms in its 10-K. The measure also treats all mentions equally regardless of whether AI is discussed as a core product, a future aspiration, or a risk factor. Fourth, because AI scores are merged onto CRSP by ticker string in the LP build, a small number of \texttt{permno}s carrying a reused ticker inherit a foreign firm's score; the surgical \texttt{ai\_score\_inherited} flag isolates these cases, and the contamination biases the LP AI--non-AI contrast toward zero. Fifth, the LP path-shock window captures only the FOMC statement; on press-conference dates additional same-day policy news may enter daily returns and affect the structural interpretation of \texttt{path\_3f} \citep{jarocinskiKaradi2020, mirandaAgrippinoRicco2021, gurkaynakKarasoyCanLee2022, durante2022}. Sixth, in the PSY analysis the High AI group overlaps heavily with the broad technology sector, so explosive-behaviour signals in High-AI baskets may partly reflect general technology-sector outperformance rather than AI-specific dynamics; ratio constructions against the S\&P~500 and against the No-AI basket are designed to mitigate this concern but do not fully eliminate it.
+
+% =============================================================================

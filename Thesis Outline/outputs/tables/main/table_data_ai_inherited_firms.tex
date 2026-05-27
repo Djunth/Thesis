@@ -1,0 +1,41 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+Ticker & Permno & AI group & AI score & h=0 obs & Event window & In 2005-2024 \\
+\midrule
+BKR & 52484 & High AI Exposure & 5.560 & 70 & 2005-02-02 to 2013-09-18 & yes \\
+ANET & 83946 & High AI Exposure & 1.540 & 23 & 2005-02-02 to 2007-10-31 & yes \\
+KEYS & 83669 & High AI Exposure & 1.470 & 22 & 2005-02-02 to 2007-09-18 & yes \\
+MRNA & 80004 & High AI Exposure & 1.410 & 57 & 2005-02-02 to 2012-01-25 & yes \\
+CEG & 24221 & Moderate AI Exposure & 0.340 & 57 & 2005-02-02 to 2012-01-25 & yes \\
+CMG & 91518 & Moderate AI Exposure & 0.280 & 13 & 2008-06-25 to 2009-12-16 & yes \\
+BR & 75333 & Moderate AI Exposure & 0.170 & 10 & 2005-02-02 to 2006-03-28 & yes \\
+JCI & 42534 & Moderate AI Exposure & 0.140 & 93 & 2005-02-02 to 2016-07-27 & yes \\
+AMT & 86111 & No AI Exposure & 0.000 & 56 & 2005-02-02 to 2011-12-13 & yes \\
+CCI & 86339 & No AI Exposure & 0.000 & 72 & 2005-02-02 to 2013-12-18 & yes \\
+CHTR & 87378 & No AI Exposure & 0.000 & 34 & 2005-02-02 to 2009-03-18 & yes \\
+CTRA & 87595 & No AI Exposure & 0.000 & 9 & 2005-02-02 to 2006-01-31 & yes \\
+CZR & 13267 & No AI Exposure & 0.000 & 54 & 2013-09-18 to 2020-06-10 & yes \\
+CZR & 86447 & No AI Exposure & 0.000 & 3 & 2005-02-02 to 2005-05-03 & yes \\
+DAL & 26112 & No AI Exposure & 0.000 & 6 & 2005-02-02 to 2005-09-20 & yes \\
+DD & 11703 & No AI Exposure & 0.000 & 101 & 2005-02-02 to 2017-07-26 & yes \\
+DG & 30382 & No AI Exposure & 0.000 & 20 & 2005-02-02 to 2007-06-28 & yes \\
+DOW & 20626 & No AI Exposure & 0.000 & 101 & 2005-02-02 to 2017-07-26 & yes \\
+EQIX & 89617 & No AI Exposure & 0.000 & 80 & 2005-02-02 to 2014-12-17 & yes \\
+ES & 92389 & No AI Exposure & 0.000 & 31 & 2009-08-12 to 2013-05-01 & yes \\
+FOX & 86401 & No AI Exposure & 0.000 & 1 & 2005-02-02 to 2005-02-02 & yes \\
+GEN & 88992 & No AI Exposure & 0.000 & 64 & 2005-02-02 to 2012-12-12 & yes \\
+GEN & 92020 & No AI Exposure & 0.000 & 98 & 2008-12-16 to 2021-03-17 & yes \\
+GM & 12079 & No AI Exposure & 0.000 & 35 & 2005-02-02 to 2009-04-29 & yes \\
+HCA & 76171 & No AI Exposure & 0.000 & 15 & 2005-02-02 to 2006-10-25 & yes \\
+HLT & 23309 & No AI Exposure & 0.000 & 22 & 2005-02-02 to 2007-09-18 & yes \\
+IT & 87030 & No AI Exposure & 0.000 & 4 & 2005-02-02 to 2005-06-30 & yes \\
+KMI & 51596 & No AI Exposure & 0.000 & 19 & 2005-02-02 to 2007-05-09 & yes \\
+L & 89130 & No AI Exposure & 0.000 & 10 & 2005-02-02 to 2006-03-28 & yes \\
+LIN & 84169 & No AI Exposure & 0.000 & 9 & 2005-02-02 to 2006-01-31 & yes \\
+MGM & 85620 & No AI Exposure & 0.000 & 2 & 2005-02-02 to 2005-03-22 & yes \\
+STZ & 64899 & No AI Exposure & 0.000 & 142 & 2005-02-02 to 2022-11-02 & yes \\
+T & 10401 & No AI Exposure & 0.000 & 7 & 2005-02-02 to 2005-11-01 & yes \\
+TT & 81285 & No AI Exposure & 0.000 & 27 & 2005-02-02 to 2008-04-30 & yes \\
+\bottomrule
+\multicolumn{7}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Full list of preferred-sample firms whose AI score is inherited (ai\_score\_inherited == 1): each shares a reused ticker symbol with another company and did not file the scored 10-K, so the AI score / group shown are the inherited (foreign) values. Event window is the first-to-last FOMC trading date with a preferred h=0 observation; In 2005-2024 marks firms inside the estimation window. See Docs/TICKER\_REUSE\_AI\_MISATTRIBUTION\_NOTE.md. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}

@@ -1,0 +1,15 @@
+% Bare tabular. Wrap in \begin{table}...\caption{Continuous logAIz: VCE-sensitivity at key horizons}\label{tab:logaiz_vce_sensitivity}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Inference scheme & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\
+\hline
+Coefficient (scaled) & -0.151 & -0.101 & -0.315 & -1.294 & -1.778 & -2.493 & -3.201 \\
+\hline
+Two-way cluster (firm $\times$ event) [preferred] & ( 0.196) & ( 0.341) & --- & --- & ( 0.800) & ( 0.901) & ( 1.110) \\
+Firm cluster & ( 0.122) & ( 0.267) & ( 0.433) & ( 0.682) & ( 0.831) & ( 0.864) & ( 0.939) \\
+Event cluster & ( 0.196) & ( 0.351) & ( 0.347) & ( 0.584) & ( 0.697) & ( 0.849) & ( 1.074) \\
+Heteroskedasticity-robust & ( 0.121) & ( 0.280) & ( 0.453) & ( 0.629) & ( 0.730) & ( 0.808) & ( 0.892) \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Companion to \cref{tab:alt_ai_continuous_key}. Reports the standard error of \texttt{path\_x\_logAIz} under each variance estimator; the point estimate is constant across rows by construction.} \\
+\multicolumn{8}{l}{\footnotesize ``---'' denotes horizons where the two-way clustered SE collapses numerically. Firm-only, event-only, and heteroskedasticity-robust SEs are well-defined at every horizon.} \\
+\multicolumn{8}{l}{\footnotesize Active sample: \texttt{sample\_preferred == 1}, 2005--2024, \texttt{ai\_score\_inherited == 0}. \texttt{logAIz} mean 0, SD 1 on the active sample.} \\
+\end{tabular}

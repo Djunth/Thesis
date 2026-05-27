@@ -1,0 +1,20 @@
+\begin{tabular}{l l r r r r r}
+\toprule
+\multicolumn{7}{l}{\textit{Panel A: Distribution of monetary-policy surprises (basis points)}} \\
+\midrule
+Factor & Description & N & Mean & SD & Min & Max \\
+\midrule
+\texttt{target\_3f} & Target-rate surprise & 159 & 0.550 & 3.770 & -19.443 & 16.145 \\
+\texttt{path\_3f} & Forward-guidance surprise & 159 & -0.027 & 1.790 & -6.470 & 4.842 \\
+\texttt{lsap\_3f} & LSAP / balance-sheet surprise & 159 & 0.094 & 3.617 & -28.301 & 10.152 \\
+\midrule
+\multicolumn{7}{l}{\textit{Panel B: Event sample composition}} \\
+\midrule
+\multicolumn{6}{l}{Sample window} & 2005-02-02 -- 2024-12-18 \\
+\multicolumn{6}{l}{FOMC events (scheduled / unscheduled)} & 159 / 0 \\
+\multicolumn{6}{l}{Meetings with SEP release} & 69 \\
+\multicolumn{6}{l}{Meetings with post-meeting press conference} & 79 \\
+\multicolumn{6}{l}{Equity-reaction coverage (SPFUT / SP500)} & 159/159 / 159/159 \\
+\bottomrule
+\multicolumn{7}{p{\linewidth}}{\footnotesize \textit{Notes:} Event-level statistics at the FOMC announcement (h=0), preferred sample. Shocks are the three rotated GSS/Swanson factors \citep{gurkaynakSackSwanson2005,swanson2021} expressed in basis points: \texttt{target\_3f} is the current-meeting target-rate surprise, \texttt{path\_3f} is the forward-guidance surprise orthogonal to the target, and \texttt{lsap\_3f} is the large-scale asset-purchase surprise. SPFUT and SP500 coverage report the number of events with a non-missing contemporaneous equity reaction. SEP denotes meetings releasing a Summary of Economic Projections; PC denotes meetings with a post-meeting press conference. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables).} \\
+\end{tabular}

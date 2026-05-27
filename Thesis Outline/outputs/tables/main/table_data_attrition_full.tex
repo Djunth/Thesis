@@ -1,0 +1,22 @@
+\begin{tabular}{lrr}
+\toprule
+Stage & Unit & N \\
+\midrule
+Raw CRSP daily universe (post-1994 cutoff) & Firms & 22,459 \\
+S\&P 500 AI universe with a SEC EDGAR 10-K & Firms & 499 \\
+Matched to CRSP and in the preferred 2005-2024 sample & Firms & 485 \\
+... of which with an own-filing AI score (not ticker-inherited) & Firms & 451 \\
+Raw USMPD Monetary Events & Events & 274 \\
+Events mapped to a CRSP trading day & Events & 274 \\
+Scheduled events (sample\_scheduled == 1) & Events & 256 \\
+Full firm x matched-event grid (h=0) & Firm-event h=0 rows & 112,331 \\
+Valid return (has\_valid\_return == 1) & Firm-event h=0 rows & 112,324 \\
+Valid shock (has\_valid\_shock == 1) & Firm-event h=0 rows & 112,331 \\
+Valid AI group (has\_valid\_ai\_group == 1) & Firm-event h=0 rows & 112,331 \\
+Valid controls (has\_valid\_controls == 1) & Firm-event h=0 rows & 101,000 \\
+sample\_main == 1 & Firm-event h=0 rows & 101,000 \\
+sample\_preferred == 1 & Firm-event h=0 rows & 94,112 \\
+sample\_preferred and 2005-01-01 to 2024-12-31 (final estimation sample) & Firm-event h=0 rows & 66,218 \\
+\bottomrule
+\multicolumn{3}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Sample-attrition funnel in three blocks with different units. Block A: the raw CRSP daily universe (count of CRSP securities) narrows to the S\&P 500 AI-exposure universe with a downloaded SEC EDGAR 10-K and then to the firms matched to CRSP and kept in the final preferred 2005-2024 estimation sample (the 66,218-obs panel population); the last Block A row restricts to firms with an own-filing AI score (ai\_score\_inherited == 0) -- not flagged as inheriting a score from a ticker-sharing company, the same flag as table\_data\_ai\_inherited\_summary (Docs/TICKER\_REUSE\_AI\_MISATTRIBUTION\_NOTE.md). Firm counts are distinct firm\_id (CRSP permno), the panel unit. Block B counts FOMC events: raw USMPD Monetary Events, events mapped to a CRSP trading day, then scheduled events. Block C counts firm-event observations at h=0, from the full grid to the final preferred 2005-2024 estimation sample. The three blocks use different units and are not nested in one another; within Block C, stages applying independent data-quality filters need not be strictly monotone. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}

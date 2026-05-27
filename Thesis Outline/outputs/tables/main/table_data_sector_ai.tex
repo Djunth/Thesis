@@ -1,0 +1,19 @@
+\begin{tabular}{lrrrrr}
+\toprule
+Sector & Firms & No AI & Moderate AI & High AI & High share (\%) \\
+\midrule
+Information Technology & 59 & 20 & 5 & 34 & 57.6\% \\
+Health Care & 62 & 39 & 11 & 12 & 19.4\% \\
+Industrials & 71 & 45 & 13 & 13 & 18.3\% \\
+Financials & 66 & 38 & 18 & 10 & 15.2\% \\
+Consumer Discretionary & 49 & 35 & 7 & 7 & 14.3\% \\
+Communication Services & 24 & 19 & 3 & 2 & 8.3\% \\
+Energy & 22 & 19 & 2 & 1 & 4.5\% \\
+Consumer Staples & 37 & 32 & 5 & 0 & 0.0\% \\
+Utilities & 30 & 28 & 2 & 0 & 0.0\% \\
+Materials & 26 & 23 & 3 & 0 & 0.0\% \\
+Real Estate & 5 & 3 & 2 & 0 & 0.0\% \\
+Total & 451 & 301 & 71 & 79 & 17.5\% \\
+\bottomrule
+\multicolumn{6}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Unique firms by GICS sector x AI group (preferred sample, company-level dedup). High share (\%) = 100 x High AI / Firms. Sectors sorted by High share descending; sectors with zero High-AI firms are grouped at the bottom and ordered by firm count within that tier. Total row aggregates across all sectors. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}

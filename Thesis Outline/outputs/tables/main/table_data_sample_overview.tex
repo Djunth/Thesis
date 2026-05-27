@@ -1,0 +1,14 @@
+\begin{tabular}{lr}
+\toprule
+Statistic & Value \\
+\midrule
+Sample period & 2005-02-02 to 2024-12-18 (19.9 years; 8.0 events/year) \\
+Unique firms & 451 \\
+Unique FOMC events & 159 \\
+Horizons & h = 0, 1, ..., 60 (61 in total) \\
+Preferred firm x event obs (h=0) & 64,851 \\
+Preferred all-horizon obs & 3,954,127 \\
+Maximum grid (firms x events x horizons) & 4,374,249 (grid fill: 90.4\%) \\
+\bottomrule
+\multicolumn{2}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} The preferred sample (sample\_preferred == 1) keeps firm-event observations with a valid return, monetary-policy shock, AI group, lagged firm controls, and identifiers, restricted to scheduled FOMC events. The panel is constructed in CRSP-only mode (STRICT\_SAMPLE\_MODE = crsp\_only); YF-recovered synthetic permnos are excluded by design. Grid fill = preferred all-horizon observations divided by firms x events x horizons. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}

@@ -1,0 +1,17 @@
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Variable & N & Mean & SD & P25 & Median & P75 & Min & Max \\
+\midrule
+cum\_ret\_h (h=0) & 64,851 & 0.0026 & 0.0238 & -0.0086 & 0.0012 & 0.0121 & -0.4859 & 0.5878 \\
+cum\_ret\_h (h=20) & 64,829 & 0.0088 & 0.0893 & -0.0337 & 0.0127 & 0.0552 & -2.0250 & 3.8382 \\
+cum\_ret\_h (h=60) & 64,798 & 0.0224 & 0.1540 & -0.0503 & 0.0320 & 0.1067 & -2.8460 & 4.1146 \\
+path\_3f (bp) & 159 & -0.0265 & 1.7898 & -0.6848 & 0.0663 & 0.9416 & -6.4698 & 4.8416 \\
+target\_3f (bp) & 159 & 0.5497 & 3.7697 & -0.0114 & 0.8677 & 1.5754 & -19.4428 & 16.1449 \\
+lsap\_3f (bp) & 159 & 0.0936 & 3.6169 & -1.0374 & 0.2111 & 1.7296 & -28.3006 & 10.1524 \\
+ai\_score\_normalized & 64,851 & 0.3755 & 1.2875 & 0.0000 & 0.0000 & 0.2200 & 0.0000 & 17.1700 \\
+log\_mktcap\_lag & 64,851 & 23.5982 & 1.3074 & 22.7943 & 23.5543 & 24.3980 & 17.9412 & 28.9646 \\
+beta\_252d\_lag & 64,851 & 1.0110 & 0.4002 & 0.7537 & 0.9869 & 1.2387 & -0.4596 & 3.5351 \\
+ivol\_252d\_lag & 64,851 & 0.0155 & 0.0079 & 0.0105 & 0.0136 & 0.0181 & 0.0047 & 0.1161 \\
+\bottomrule
+\multicolumn{9}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Preferred sample. cum\_ret\_h at h=0/20/60 (firm-event); shocks event-level in bp; controls raw, lagged one trading day. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}

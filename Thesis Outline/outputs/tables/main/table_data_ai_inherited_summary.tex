@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrr}
+\toprule
+AI group & Total firms & Score inherited & Own filing & Inherited (\%) \\
+\midrule
+No AI Exposure & 327 & 26 & 301 & 8.0\% \\
+Moderate AI Exposure & 75 & 4 & 71 & 5.3\% \\
+High AI Exposure & 83 & 4 & 79 & 4.8\% \\
+Total & 485 & 34 & 451 & 7.0\% \\
+\bottomrule
+\multicolumn{5}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} AI-score inheritance by AI group (preferred sample, one row per firm). A firm's AI score is merged by ticker symbol; a permno that shares a reused ticker with another company but did not file the scored 10-K inherits that other company's score (ai\_score\_inherited == 1). Score inherited counts such firms; Own filing counts firms scored from their own 10-K. See Docs/TICKER\_REUSE\_AI\_MISATTRIBUTION\_NOTE.md. Sample: Stata baseline window 2005-2024 (reproduces current thesis tables). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb (Python; full available panel; Stata applies \$LP\_DATE\_FILTER separately).} \\
+\end{tabular}
