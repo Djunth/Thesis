@@ -1,0 +1,15 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:samplewindow_definitions}\end{table} at the call site.
+\begin{tabular}{lllrrr}\hline\hline
+ Sample & Start & End & Events & Firms & Obs \\\hline
+Preferred 2010-2026 (main) & 27 Jan 2010 & 28 Jan 2026 &       128 &       450 &    53,679 \\
+2010-2024 (no Yahoo Finance) & 27 Jan 2010 & 18 Dec 2024 &       119 &       450 &    49,863 \\
+2015-2026 & 28 Jan 2015 & 28 Jan 2026 &        88 &       445 &    37,732 \\
+2005-2026 & 02 Feb 2005 & 28 Jan 2026 &       168 &       451 &    68,667 \\
+Full 1995-2026 & 22 Aug 1995 & 28 Jan 2026 &       244 &       462 &    92,965 \\
+2010-2022 (pre-ChatGPT) & 27 Jan 2010 & 02 Nov 2022 &       102 &       447 &    42,393 \\
+2022-2026 (post-ChatGPT) & 14 Dec 2022 & 28 Jan 2026 &        26 &       442 &    11,286 \\
+2010-2026 excl. 2020 & 27 Jan 2010 & 28 Jan 2026 &       121 &       450 &    50,653 \\
+\hline\hline
+\multicolumn{6}{l}{\footnotesize Active sample gate: sample\_preferred == 1, ai\_score\_inherited == 0, and the date filter implied by the window.}
+\multicolumn{6}{l}{\footnotesize Obs at h = 0 refers to the firm-event panel at the impact horizon; obs counts at longer horizons are mechanically lower as the post-event window required to compute the outcome clips events at the end of the sample.}
+\end{tabular}

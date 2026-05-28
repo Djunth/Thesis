@@ -1,0 +1,24 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:samplewindow_key}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Sample & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\\hline
+Preferred 2010-2026 (main) & -0.625 & -0.339 & -0.600 & -4.199 & -6.485 & -7.375 & -7.596 \\
+ & ( 0.504) & ( 0.899) & ( 1.356) & ( 1.916) & ( 2.110) & ( 2.240) & ( 2.533) \\
+2010-2024 (no Yahoo Finance) & -0.709 & -0.054 &  0.451 & -3.422 & -6.013 & -6.630 & -6.536 \\
+ & ( 0.520) & ( 0.885) & ( 1.254) & ( 1.846) & ( 2.026) & ( 2.089) & ( 2.426) \\
+2015-2026 & -0.750 & -0.224 & -0.184 & -3.733 & -7.058 & -7.955 & -8.388 \\
+ & ( 0.567) & ( 0.993) & ( 1.409) & ( 1.894) & ( 2.056) & ( 2.152) & ( 2.460) \\
+2005-2026 & -0.271 & -0.456 & -1.300 & -4.753 & -6.296 & -7.754 & -8.547 \\
+ & ( 0.516) & ( 0.884) & ( 1.256) & ( 1.800) & ( 2.110) & ( 2.467) & ( 2.690) \\
+Full 1995-2026 & -0.455 & -1.200 & -1.241 & -4.047 & -4.852 & -5.780 & -6.672 \\
+ & ( 0.438) & ( 0.838) & ( 1.355) & ( 1.847) & ( 2.204) & ( 2.391) & ( 2.664) \\
+2010-2022 (pre-ChatGPT) & -1.488 & -2.275 & -2.062 & -4.906 & -6.758 & -6.907 & -6.077 \\
+ & ( 0.532) & ( 1.302) & ( 1.739) & ( 2.370) & ( 2.916) & ( 3.110) & ( 3.888) \\
+2022-2026 (post-ChatGPT) &  0.308 &  1.393 &  0.279 & -3.842 & -7.344 & -9.103 & -10.627 \\
+ & ( 0.770) & ( 1.500) & ( 2.099) & ( 2.712) & ( 2.846) & ( 3.149) & ( 2.997) \\
+2010-2026 excl. 2020 & -0.580 & -0.385 & -0.554 & -4.058 & -6.350 & -7.224 & -7.330 \\
+ & ( 0.501) & ( 0.900) & --- & ( 1.888) & ( 2.076) & ( 2.222) & ( 2.500) \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Preferred specification: firm FE + Sector $\times$ Event FE; two-way clustered SEs by firm and event in parentheses.}
+\multicolumn{8}{l}{\footnotesize Coefficients rescaled to a +25 bp shock: $\hat\beta \times 25 \times 100$, in percentage points. Reports High AI - No AI differential only; Moderate AI estimates in \cref{tab:samplewindow_key_moderate} in \cref{app:additional-results}.}
+\multicolumn{8}{l}{\footnotesize Active sample gate identical across windows except for the date filter; sample sizes for each window in \cref{tab:samplewindow_definitions}.}
+\end{tabular}

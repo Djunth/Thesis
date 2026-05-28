@@ -1,0 +1,401 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\epigraph{%
+But how do we know when irrational exuberance has unduly escalated
+asset values, which then become subject to unexpected and prolonged
+contractions \dots\ And how do we factor that assessment into
+monetary policy?%
+}{---\,\citet{greenspan1996}}
+
+
+% =============================================================================
+\section{Motivation}
+\label{sec:motivation}
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+\subsection{The recent boom in AI stocks and concentration risk}
+\label{subsec:ai-stock-boom}
+
+% beat 1: phenomenon - AI rally and concentration
+
+On 30~November 2022, OpenAI released ChatGPT. The product
+became, within weeks, a visible inflection point in market
+narratives around generative AI, and was followed by a marked
+revaluation of firms perceived to be central to the emerging
+AI economy. At the centre of that revaluation are seven
+large-capitalisation technology firms widely treated as
+builders, deployers, or enablers of AI infrastructure---Apple,
+Amazon, Alphabet, Meta Platforms, Microsoft, Nvidia, and
+Tesla---collectively known as the Magnificent~Seven.
+
+\Cref{fig:mag7-sp500} plots the cumulative return of an
+equal-weighted Magnificent~Seven portfolio against the
+S\&P~500 and the S\&P~500 with the Magnificent~Seven removed
+from January~2021 through April~2026. Before late~2022, the
+three portfolios moved broadly together, including through the
+2022 drawdown. The divergence begins in late~2022 and
+accelerates through 2023 and 2024: by early~2026 the
+Magnificent~Seven had gained roughly 200\,\% relative to the
+start of 2021, against around 80\,\% for the S\&P~500 as a
+whole and roughly 50\,\% for the remaining 493 constituents.
+The same firms have also come to occupy a much larger share of
+the index itself: their combined weight in the S\&P~500 rose
+from roughly 12\,\% at the start of 2015 to more than 34\,\%
+by end-2025, so that seven firms now account for more than a
+third of total market capitalisation \citep{motleyFoolNasdaq2026}.
+Analysis by M\&G Investments attributes roughly 70\,\% of the
+approximately \$24\,trillion in market value added to the
+S\&P~500 since ChatGPT's launch to companies linked to AI
+infrastructure and semiconductors, with around 65\,\% of the
+total index rise coming from just ten stocks
+\citep{vine2025}. Vontobel Asset Management reports that
+42~AI-related stocks accounted for more than half of total
+market returns over the same window \citep{souccar2026}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_mag7_sp500}
+    \caption{Cumulative returns: Magnificent~Seven, S\&P~500, and
+    S\&P~500 excluding the Magnificent~Seven, January~2021 to
+    April~2026}
+    \label{fig:mag7-sp500}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure plots cumulative returns for an
+    equal-weighted Magnificent~Seven portfolio, the S\&P~500 index,
+    and the S\&P~500 excluding the Magnificent~Seven. Sources:
+    CRSP via WRDS, Investing.com, and FRED.
+    \end{minipage}
+\end{figure}
+
+Concentration of this magnitude is unusual in historical
+context, and it has narrowed the breadth of the rally
+correspondingly: in 2023 and 2024, fewer than 28\,\% of
+S\&P~500 constituents outperformed the index, the narrowest
+breadth since at least~1995 \citep{firstTrust2025}. The
+structural implication is that the performance of the
+S\&P~500 has become unusually dependent on the valuation of a
+small group of firms tied to the same technological narrative.
+For investors holding passive exposure to the index through
+index funds and pension products, this is a feature of the
+allocation, not a choice. It also introduces substantial
+downside risk: during the 2022 sell-off, the Magnificent~Seven
+declined by approximately 41\,\%, roughly double the S\&P~500's
+20\,\% decline. The same mechanism that amplifies gains during
+a rally can magnify losses when sentiment turns, particularly
+when the rally is closely tied to a single investment theme.
+
+Whether the response is proportionate remains an open question.
+Behind the surge in equity valuations lies an equally striking
+surge in corporate capital expenditure.
+
+
+% -----------------------------------------------------------------------------
+\subsection{Capital expenditure and the valuation question}
+\label{subsec:capex-valuation}
+% -----------------------------------------------------------------------------
+% beat 2: real-economy counterweight, valuation tension, dot-com comparison, handoff to RQs
+
+The strong rise in AI-related stock prices raises a question
+already implicit in the preceding subsection: how much of
+this is a story about market enthusiasm, and how much reflects a
+real change in what firms are doing? One way to bring evidence to
+bear is to look at how firms are spending their money. If the
+companies at the centre of the rally believe that artificial
+intelligence will change how business is done, that belief should
+show up in investment decisions as well as in equity prices.
+
+\Cref{fig:ai-capex} shows that it does. Capital expenditure among
+the largest U.S.\ technology firms has risen sharply, reflecting
+large commitments to data centres, semiconductors, and the
+infrastructure needed to train and deploy AI systems. The spending
+is concentrated: Microsoft, Amazon, Alphabet, and Meta account for
+the bulk of AI-related capex, and their announced plans continue
+to be revised upward, with 2026 projections roughly 27\,\% above
+those made a quarter earlier \citep{paydenRygel2026}. A
+\citet{mckinsey2025} report projects \$6.7\,trillion in global
+data-centre buildout through 2030, equivalent to more than
+1\,\% of global GDP annually, with about half allocated to
+servers and chips. Nvidia's sales rose from \$24\,billion in
+2021 to \$187\,billion in 2025, driven almost entirely by demand
+from this same cluster of firms \citep{mercer2025}. The
+infrastructure investment is therefore not only large in absolute
+terms but also concentrated in the same firms whose share prices
+dominate the S\&P~500.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_ai_capex}
+    \caption{Capital expenditure among major technology firms, 2015--2027E}
+    \label{fig:ai-capex}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure reports capital expenditure among
+    major technology firms. Sources: SEC filings, FactSet consensus
+    estimates, and \citet{golan2025}.
+    \end{minipage}
+\end{figure}
+
+The scale of the spending does not on its own resolve the
+valuation question; if anything, it sharpens it. Unlike in the
+late-1990s technology cycle, the current buildout has been largely
+self-financed: U.S.\ public technology companies have funded their
+AI capital expenditure almost entirely from free cash flow, with
+the aggregate ratio of free cash flow to capital spending across
+the top 3{,}000 U.S.\ stocks remaining below one as of late~2025,
+against a dot-com peak of nearly four \citep{ojjehFronczke2026}.
+Within the Magnificent~Seven, the ratio of operating expenditure
+to capital expenditure has fallen from a long-run range of
+2.5--4$\times$ to roughly 1.5$\times$ since mid-2024, and return
+on invested capital at Meta and Alphabet has remained above
+30\,\% across the period \citep{ojjehFronczke2026}. Self-financing
+reduces the risk of a credit-driven unwind, but it does not
+eliminate the risk that the revenue these investments are
+expected to generate may not materialise at the scale or pace
+markets currently price in. OpenAI projects revenues rising from
+\$13\,billion in 2025 to \$200\,billion in 2030 against cumulative
+cash burn of roughly \$119\,billion before profitability
+\citep{mercer2025}, and competition from efficient open-source
+models has begun to put downward pressure on pricing.
+
+The natural comparison is to the late-1990s technology cycle,
+where rapid price appreciation in the leading firms ran ahead of
+realised earnings and ultimately reversed.
+\Cref{fig:price-earnings-comparison} shows the comparison
+directly: in the dot-com era, the share prices of the leading
+technology firms rose far faster than their forward-earnings
+outlook, while in the current AI episode the rise in share
+prices has been more closely accompanied by stronger earnings
+growth. This does not imply that current valuations are justified
+by fundamentals---earnings projections themselves may embed
+optimistic assumptions about adoption, monetisation, and future
+market power, and the same projections are part of what supports
+the current pricing. But the gap between prices and the
+contemporaneous earnings outlook is narrower than it was in the
+final phase of the dot-com boom, and the historical parallel is
+therefore weaker than a price-only comparison would suggest.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig_pe_dotcom}
+        \caption{Dot-com era}
+        \label{fig:pe-dotcom}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig_pe_ai}
+        \caption{AI era}
+        \label{fig:pe-ai}
+    \end{subfigure}
+    \caption{Stock prices and forward earnings in the dot-com era
+    and the current AI era}
+    \label{fig:price-earnings-comparison}
+    \begin{minipage}{0.95\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure compares the evolution of share
+    prices and forward earnings for leading technology firms in
+    the dot-com era (panel a) and the current AI era (panel b).
+    \end{minipage}
+\end{figure}
+
+What remains is a valuation question with two empirical sides.
+The first concerns the price series themselves: does the
+behaviour of AI-exposed equities, looked at across the
+cross-section of exposure, show statistical signatures that go
+beyond what fundamentals-driven pricing would imply? The second
+concerns how those same prices respond to news that should
+matter most for firms with cash flows far in the future: are
+AI-exposed firms differentially sensitive to the marginal
+monetary-policy information that markets read as relevant for
+long-duration valuations? These are the two questions the rest
+of the thesis takes up.
+
+
+% =============================================================================
+\section{Research questions and findings}
+\label{sec:intro-rq}
+
+% beat 3a+4a: PSY question + method
+% Note: this section's two questions are introduced; the soft-form
+% handoff at the end of subsec:capex-valuation already frames them,
+% so we go straight into the first question here (no separate intro
+% paragraph) to avoid restating the pair a third time.
+The first question asks whether the price behaviour of
+AI-exposed equities shows statistical signatures of exuberance
+once one looks beyond the Magnificent~Seven, across the
+cross-section of disclosed AI exposure. The thesis answers this
+by applying the recursive right-tailed unit-root procedure of
+\citet{phillipsShiYu2015a}---the PSY test, after the authors,
+whose test statistic is the generalised sup-ADF (GSADF)
+statistic---to value- and equal-weighted total-return
+portfolios of S\&P~500 firms partitioned by their pre-2023 10-K
+AI keyword score, together with within-equity-universe and
+broad-market relative ratios and three AI-concentration baskets,
+following the price-to-index ratio specification of
+\citet{baselePhillipsShi2025}. The classification is fixed on
+pre-2023 disclosures, before the rally it is used to study, so
+the partition is not constructed with hindsight. Rejection of
+the unit-root null is read as evidence of mildly explosive price
+dynamics, not as evidence of mispricing.
+
+% beat 3b+4b: LP question + method
+The second question asks whether AI-exposed firms are
+differentially sensitive to the marginal monetary-policy news
+that markets read as relevant for long-duration cash flows. The
+thesis answers this by estimating panel local projections
+\citep{jorda2005} of firm-level cumulative log returns on the
+\citet{swanson2021} forward-guidance/path-factor surprise,
+interacted with AI-exposure dummies, at horizons $h = 0$ to
+$60$ trading days after each scheduled FOMC announcement.
+Firm fixed effects and GICS-sector\,$\times$\,event fixed
+effects absorb every component of the response that is common
+to firms in the same sector on the same FOMC date, so the
+coefficients of interest identify a within-sector, within-event
+differential response of High~AI and Moderate~AI firms relative
+to No~AI firms, rather than a level effect.
+
+
+% -----------------------------------------------------------------------------
+% beat 5: findings preview - the two paragraphs already drafted
+% -----------------------------------------------------------------------------
+
+% beat 5a: PSY findings preview
+The first analysis tests for explosive price dynamics in
+value- and equal-weighted portfolios of S\&P~500 firms sorted
+by pre-2023 10-K AI exposure, using the recursive right-tailed
+unit-root procedure of \citet{phillipsShiYu2015a} on the
+price-to-index ratio specification of \citet{baselePhillipsShi2025}.
+Over the monthly sample 2010-01 to 2026-04, the High AI / No AI
+ratio rejects the unit-root-with-drift null at the 99\,\% level
+under both weightings (GSADF $3.15$ value-weighted, $3.19$
+equal-weighted). The strongest concentration signal lies in the
+Mag-7 / No AI ratio (GSADF $5.20$ value-weighted and $6.72$
+equal-weighted, both at the 99\,\% level), with the
+Mag-7 / High AI ratio also rejecting at 99\,\% under both
+weightings. The Moderate AI series rejects only at the 95\,\%
+level (GSADF $2.35$ value-weighted, $2.24$ equal-weighted) and
+yields a single short 2021 episode under each weighting,
+placing it closer to the No AI benchmark than to High AI.
+Date-stamping qualifies the headline: the broad High AI / No AI
+ratio is flagged mainly in pre-ChatGPT episodes (2018; 2020--21),
+while the post-2022 signal appears most clearly in the
+value-weighted High-AI absolute index and in the Mag-7
+concentration baskets relative to both denominators. The
+evidence is consistent with bubble-like dynamics around
+AI-exposed and AI-associated firms, but it is not a clean
+post-2022 AI-bubble verdict: the High AI cohort overlaps with
+a longer-running pattern of technology-sector outperformance,
+and rejection of the unit-root null is evidence of mildly
+explosive trajectories, not of mispricing per se.
+
+% beat 5b: LP findings preview
+The second analysis estimates the differential equity-return
+response of AI-exposed firms to forward-guidance monetary-policy
+shocks. Panel local projections \citep{jorda2005} of cumulative
+log returns on the \citet{swanson2021} path-factor surprise
+interacted with AI-exposure dummies, with firm and
+sector\,$\times$\,event fixed effects and two-way clustered
+standard errors, deliver a horizon profile that is precisely
+zero on impact and significantly negative at long horizons.
+For High AI firms relative to No AI firms in the same GICS
+sector on the same FOMC date, a $+25$ basis-point hawkish path
+surprise is associated with a cumulative return $6.49$
+percentage points lower at $h = 40$ trading days
+(SE $2.11$, 95\,\% CI $[-10.62, -2.35]$) and $7.60$ percentage
+points lower at $h = 60$ (SE $2.53$, 95\,\% CI $[-12.56, -2.63]$).
+At shorter horizons ($h \leq 20$) the differential is small in
+absolute value and the 95\,\% confidence interval contains zero
+at every key horizon. The Moderate AI differential is small at
+every key horizon and not statistically distinguishable from
+zero, so the pattern is tail-versus-rest rather than a graded
+dose-response in measured AI exposure. The differential
+survives alternative sample windows, alternative AI
+classifications, abnormal-return outcomes, and a partition of
+the path shock by the sign of contemporaneous S\&P futures
+reaction \citep{bauerSwanson2023}; a leverage-amplification
+check rules out financial leverage as the source of the
+heterogeneity. The estimand is a within-sector, within-event
+differential rather than a level effect, and the design does
+not separate discount-rate, cash-flow, and risk-premium
+channels.
+
+
+% =============================================================================
+\section{Contribution}
+\label{sec:intro-contribution}
+
+% beat 6a: contribution
+
+The thesis contributes to two literatures and one combination of them.
+
+First, it adds AI exposure as a firm-level heterogeneity dimension
+in the literature on monetary transmission to equity prices.
+That literature has so far focused on financial and structural
+firm characteristics, with leverage and debt structure receiving
+the most attention \citep{ottonelloWinberry2020,
+gurkaynakKarasoyCanLee2022, cloyneEtAl2023, arinEtAl2025}; AI
+exposure is not currently among them. The differential identified
+in \cref{ch:results} survives a leverage-amplification check
+(\cref{sec:res-heterogeneity}), so it is not a relabelled
+financial-leverage differential and stands as a candidate
+characteristic for inclusion in this literature alongside the
+established financial dimensions.
+
+Second, it extends the bubble-detection evidence on the recent AI
+boom along a cross-sectional and relative-pricing dimension.
+\citet{baselePhillipsShi2025} apply the PSY procedure to the
+Nasdaq aggregate and to the seven individual Magnificent~Seven
+stocks; the thesis applies the same procedure and bootstrap
+framework to value- and equal-weighted portfolios of S\&P~500
+firms partitioned by their pre-2023 disclosure-based AI exposure,
+together with within-equity-universe and broad-market ratios and
+three AI-concentration baskets. This locates the source of
+explosive dynamics within the cross-section of AI engagement,
+rather than reading them off a single index or a fixed mega-cap
+basket.
+
+Third, the most distinctive contribution comes from holding the
+same AI-exposure partition fixed across two non-nested empirical
+exercises on a common sample window. The local-projection
+exercise alone could be read as evidence that AI-exposed firms
+inherit the discount-rate sensitivity of growth firms documented
+in the prior asset-pricing literature; the PSY exercise alone
+could be read as a cross-sectional extension of an
+already-documented Magnificent~Seven phenomenon. The joint
+finding---that the same partition along which the
+shock-conditional differential is strongest is also the partition
+along which explosive price-level dynamics are most
+pronounced---is the substantive content of the thesis. It is
+reported as a pattern across two designs, not as an identified
+mechanism.
+
+
+% =============================================================================
+\section{Roadmap}
+\label{sec:intro-roadmap}
+
+The remainder of the thesis is organised as follows.
+\Cref{ch:literature} reviews the literatures the empirical
+strategy builds on---high-frequency identification and
+forward-guidance shocks; the equity-valuation channels of a
+present-value decomposition; firm-level heterogeneity in
+monetary transmission; the AI-investment and intangibles
+literature; and the recursive right-tailed unit-root testing
+framework---and locates the thesis's contribution within them.
+\Cref{ch:data} describes the S\&P~500 firm universe, the
+pre-2023 10-K AI-exposure classification shared by both
+analyses, and the two analysis-specific data builds.
+\Cref{ch:empirical_strategi} sets out the panel local-projection
+design and the PSY recursive testing design, including the
+identification limits of each. \Cref{ch:results} reports the
+main empirical results. \Cref{ch:robustness} reports the
+specification, sample, and inference robustness exercises for
+both analyses. \Cref{ch:conclusion} concludes.

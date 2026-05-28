@@ -1,0 +1,880 @@
+\chapter{Literature and Theoretical Background}
+\label{ch:literature}
+
+\section{LP}
+
+This chapter reviews the literatures on which the empirical strategy
+of the thesis builds and locates the thesis's contribution within
+them.
+
+The chapter is organized argumentatively rather than chronologically.
+\Cref{sec:literature-hfi} introduces the high-frequency-identification
+approach and the empirical finding that a single target-rate surprise
+is insufficient to summarize asset-price responses to FOMC announcements,
+which motivates the use of a forward-guidance shock as the primary
+empirical object. \Cref{sec:literature-forward-guidance} examines the
+forward-guidance dimension specifically and the central-bank
+information-effect concerns that complicate its interpretation; this
+section also motivates the path-information split used as a robustness
+check later in the thesis. \Cref{sec:literature-equity-valuation}
+turns to the equity-valuation literature, establishing how monetary
+surprises move equity prices through the discount-rate, cash-flow,
+and risk-premium channels of a present-value decomposition, and how
+firms with growth-firm characteristics are differentially exposed to
+the discount-rate component. \Cref{sec:literature-firm-heterogeneity}
+reviews the firm-level heterogeneity literature on monetary
+transmission, which establishes that responses vary systematically
+along financial and structural firm characteristics without yet
+incorporating AI exposure as one of those characteristics.
+\Cref{sec:literature-ai-intangibles} develops the asset-pricing
+bridge from the AI-investment literature to the duration-based view
+of equity valuation, and is the section in which the thesis's
+mechanism narrative is assembled. \Cref{sec:literature-gap} states
+the gap that the thesis fills and the boundaries of the contribution.
+
+Three framing points apply throughout. First, the thesis's measure of
+AI exposure is textual, constructed from pre-2023 SEC 10-K filings;
+it captures disclosed AI engagement rather than AI adoption directly,
+and the literature reviewed below is used to motivate the design
+rather than to validate any specific equivalence between text-based
+exposure and underlying technology use. Second, the empirical design
+estimates differential equity-return responses by AI exposure group
+relative to a No AI Exposure reference group, within sector and FOMC
+event; the literature on average equity responses to monetary
+surprises is relevant for sign and magnitude intuition, but the
+thesis's identification operates at the differential level rather
+than the level of average effects. Third, no single paper in the
+reviewed literature documents the full chain from AI exposure to
+differential forward-guidance sensitivity. The mechanism narrative
+developed in \cref{sec:literature-ai-intangibles} is a synthesis
+across four literatures rather than a single causal claim, and the
+empirical results in subsequent chapters should be read accordingly.
+
+\section{Monetary-policy shocks and high-frequency identification}
+\label{sec:literature-hfi}
+
+Measuring the causal effect of monetary policy on asset prices requires
+isolating the unexpected component of policy announcements from
+information that markets had already priced in. The high-frequency
+identification (HFI) approach addresses this problem by measuring
+changes in interest-rate-sensitive financial instruments inside narrow
+windows around scheduled Federal Open Market Committee (FOMC)
+announcements. The identifying assumption is that, within a sufficiently
+short window, the only material news affecting these instruments is the
+content of the FOMC announcement itself, so that the in-window price
+change identifies the surprise component of the policy decision
+\citep{gurkaynakSackSwanson2005}. This logic is consistent with the
+efficient-markets premise that public information is rapidly impounded
+into prices \citep{fama1970}, and it has become the dominant empirical
+strategy for measuring monetary-policy effects on financial markets.
+
+A central empirical finding of this literature is that a single
+target-rate surprise is insufficient to summarize the asset-price
+response to FOMC announcements. \citet{gurkaynakSackSwanson2005} show
+that two factors are needed to characterize the joint movement of
+short- and longer-dated interest-rate futures around FOMC events: one
+factor captures the contemporaneous surprise to the federal funds
+target, and a second, orthogonal factor captures news about the
+expected future path of the policy rate that is conveyed by FOMC
+statements rather than by the immediate rate decision. The second
+factor accounts for a substantial share of the variation in
+longer-dated yields around announcement windows, indicating that
+``statements'' --- not only ``actions'' --- carry quantitatively
+important market-moving information.
+
+\citet{swanson2021} extends this framework to the post-2008 environment
+in which the federal funds rate was constrained at the effective lower
+bound for extended periods. Using FOMC announcements from 1991 through
+2019, he identifies three orthogonal factors --- a federal funds rate
+surprise, a forward-guidance surprise, and a large-scale asset purchase
+(LSAP) surprise --- and documents that each factor has economically
+large and statistically significant effects on yields across the term
+structure, on equity indices, and on exchange rates. The forward-guidance
+factor in \citet{swanson2021} is the empirical object that this thesis
+uses as its primary shock, and its construction directly motivates the
+use of a path-shock series rather than a target-rate series for studying
+medium-horizon equity responses. \Cref{sec:literature-forward-guidance}
+returns to the interpretation of forward-guidance shocks and to the
+information-effect concerns that complicate that interpretation.
+
+A separate but related line of work establishes that high-frequency
+surprises carry macroeconomic content and not only financial-market
+noise. \citet{gertlerKaradi2015} use high-frequency FOMC surprises as
+external instruments in a structural vector autoregression and find
+that the identified shocks generate output, price-level, and credit-spread
+responses consistent with standard monetary transmission. This evidence
+matters for the present thesis because it supports interpreting movements
+in HFI-identified shocks as economically meaningful policy news, rather
+than as residual variation orthogonal to the macroeconomy.
+
+% [OPTIONAL — keep or cut. Brief signpost only; full LP discussion in Chapter 4.]
+While the empirical literature on monetary-policy effects on asset
+prices originated in event-window settings, recent work increasingly
+estimates dynamic responses horizon by horizon using local projections
+\citep{jorda2005,jordaTaylor2025}. \Cref{ch:empirical-strategy} discusses
+the local-projection design used in this thesis; for the purposes of the
+literature review it is sufficient to note that the identification of
+the shock and the estimation of its dynamic effects are separable steps.
+
+Two qualifications to this literature are important for what follows.
+First, the validity of high-frequency identification depends on the
+window being narrow enough that no other material news arrives within
+it, an assumption that is more plausible for scheduled FOMC meetings
+than for unscheduled communications \citep{gurkaynakSackSwanson2005}.
+The empirical sample in this thesis is accordingly restricted to
+scheduled FOMC events. Second, even within a clean announcement
+window, the identified surprise need not reflect a pure shift in the
+stance of monetary policy: it may also reflect the central bank's
+revelation of private information about the economic outlook, or the
+market's updating of its beliefs about the policy rule. These concerns
+are addressed in \cref{sec:literature-forward-guidance}.
+
+\section{Forward guidance, path shocks, and information-effect concerns}
+\label{sec:literature-forward-guidance}
+
+The forward-guidance dimension of monetary-policy surprises is central
+to this thesis because it is the empirical object that the path shock
+\citep{swanson2021} is designed to measure: news about the expected
+future path of the policy rate that is conveyed by FOMC statements,
+beyond the contemporaneous surprise to the federal funds target. This
+dimension is empirically large --- statement-based factors account for
+a substantial share of the market response at FOMC announcements
+\citep{gurkaynakSackSwanson2005,swanson2021} --- and it is also the
+dimension most vulnerable to the identification concern that high-frequency
+surprises do not always reflect pure monetary-policy news. This section
+reviews that concern and the empirical strategies that have been proposed
+to address it.
+
+The central challenge is that an FOMC announcement bundles a policy
+decision with new information conveyed by the central bank about the
+economic outlook. \citet{nakamuraSteinsson2018} document that
+high-frequency surprises within FOMC windows move not only nominal
+yields but also real interest rates and survey-based forecasts of
+output and inflation. They interpret this co-movement as evidence that
+markets infer information about the state of the economy from FOMC
+announcements --- a ``Fed information effect'' --- which implies that
+the same measured surprise can reflect a mix of policy news and
+disclosure of the central bank's private outlook. For forward-guidance
+shocks specifically, this concern is sharper than for contemporaneous
+target-rate shocks, because forward guidance is conveyed primarily
+through the statement language that markets read as informative about
+both the policy rule and the macroeconomic environment
+\citep{cieslakSchrimpf2019,hansenMcMahonTong2019}.
+
+\citet{jarocinskiKaradi2020} propose an identification strategy that
+separates monetary-policy shocks from information shocks using the
+sign of the joint movement of interest rates and broad equity indices
+inside the announcement window. The intuition is that a contractionary
+monetary-policy shock raises rates and lowers equity prices, whereas a
+positive disclosure about the economic outlook raises both rates and
+equities. Sign restrictions on this co-movement therefore identify
+two distinct shocks within the announcement window. Applying this
+decomposition to FOMC and ECB announcements, they find that a
+non-trivial share of the variation in conventional high-frequency
+surprises reflects information shocks rather than policy shocks, and
+that the macroeconomic responses of the two components differ in
+direction and persistence. The Jarociński--Karadi sign restriction
+provides the empirical template for the path-information split that
+this thesis uses as a robustness check.
+
+\citet{bauerSwanson2023} offer an alternative interpretation of the
+empirical evidence that has been read as a Fed information effect,
+which they label the ``Fed response to news'' channel. They show
+that economic news released between the timing of professional
+forecast surveys and the subsequent FOMC announcement is correlated
+with both the forecast revision and the high-frequency monetary
+policy surprise, so that standard regressions used to detect a Fed
+information effect suffer from omitted-variables bias; once such
+news is controlled for, the puzzling positive coefficient reverses
+sign. They rationalise this pattern with a model in which the
+private sector has incomplete knowledge of the Fed's monetary policy
+rule and therefore underestimates ex ante how strongly the Fed will
+respond to publicly available macroeconomic news. Under this
+interpretation, the co-movement that \citet{nakamuraSteinsson2018}
+and \citet{jarocinskiKaradi2020} attribute to information shocks
+reflects a different economic object --- the joint response of the
+Fed and private forecasters to common public news, combined with
+revisions to the perceived policy rule --- rather than disclosure of
+the central bank's private outlook. For the present thesis, the
+practical implication of this debate is that the path-information
+split should be interpreted with appropriate caution: it isolates
+the component of forward-guidance surprises that co-moves with
+equities in a way consistent with non-policy news, but the
+structural label attached to that component is contested.
+
+\citet{jarocinski2024} provides further refinement by decomposing FOMC
+surprises in the unconventional-policy period into multiple components,
+including a standard monetary-policy shock, an Odyssean forward-guidance
+shock (commitments about the future policy path), a Delphic forward-guidance
+shock (revelations about the central bank's outlook), and an LSAP shock.
+This decomposition reinforces the more general point that a
+forward-guidance surprise measured from announcement-window co-movement
+is a composite object whose internal mix of policy news and information
+news can vary across episodes. The path shock used in this thesis
+\citep{swanson2021} does not distinguish these sub-components; instead,
+the empirical strategy addresses the concern at the regression stage by
+running the path-information split as a robustness check
+(\cref{ch:robustness}).
+
+Three implications follow for the empirical design of this thesis.
+First, the path shock is the appropriate primary shock for studying
+medium-horizon equity responses because it captures the dimension of
+monetary news with the largest effect on longer-dated yields and on
+discount-rate-sensitive equity prices; this is the conclusion of
+\citet{gurkaynakSackSwanson2005} and \citet{swanson2021}, and it
+motivates the use of \texttt{path\_3f} as the main regressor.
+Second, the same identification properties that make the path shock
+informative also make it the surprise dimension most exposed to the
+information-effect concern; a credible empirical specification must
+therefore acknowledge this caveat and provide a robustness check that
+mitigates --- though does not resolve --- the ambiguity. Third, the
+appropriate robustness check, following \citet{jarocinskiKaradi2020},
+is to split path surprises by the sign of the contemporaneous equity
+reaction within the announcement window, retaining those with
+opposite-sign rate and equity movements as the more monetary-leaning
+subset and treating same-sign movements as the more information-leaning
+subset. This is precisely the construction implemented in the thesis,
+and the interpretation of the heterogeneity results in
+\cref{ch:results} is conditioned accordingly.
+
+\section{Monetary policy and equity valuation}
+\label{sec:literature-equity-valuation}
+
+The previous sections motivated the use of a forward-guidance/path
+shock and discussed the identification concerns that surround it. This
+section turns to the second component of the empirical strategy: the
+outcome variable. The thesis estimates the response of firm-level
+cumulative log returns to path shocks, and the relevant literature is
+the body of work that documents how monetary-policy surprises move
+equity prices and through which channels they do so.
+
+\Citet{bernankeKuttner2005} provide the empirical benchmark for the
+average response of broad equity indices to FOMC surprises. Using
+high-frequency federal funds rate surprises and a Campbell--Ammer
+log-linear return decomposition, they document that an unanticipated
+25-basis-point cut in the federal funds rate target is associated
+with roughly a one percent increase in broad U.S. equity indices on
+average. Decomposing this response into news about real interest
+rates, future dividends, and expected future excess returns
+(risk premia), they find that the dominant channel is news about
+expected future excess returns, with revisions to expected dividends
+contributing a secondary and sample-dependent share, and revisions
+to expected real interest rates playing a negligible direct role.
+The \citet{rigobonSack2004} heteroskedasticity-based identification
+delivers a quantitatively similar response using a different
+identification strategy, lending robustness to the basic empirical
+fact that monetary-policy surprises move equity prices in the
+expected direction and with economically meaningful magnitudes. The
+sign convention adopted in this thesis follows directly from this
+literature: a positive path surprise corresponds to a hawkish/tightening
+surprise, and a negative coefficient on the path-shock interaction
+therefore means the affected firms fall by more than the reference
+group.
+
+A separate body of work decomposes equity-return variation into news
+about expected cash flows and news about discount rates.
+\Citet{campbellAmmer1993} apply a present-value identity to monthly
+U.S. equity and bond returns and show that variation in long-horizon
+equity returns can be attributed to a mix of expected-cash-flow news,
+expected-real-rate news, expected-inflation news, and expected-excess-return
+(risk-premium) news. This decomposition is not a monetary-shock event
+study; rather, it provides the accounting framework within which the
+average equity response to a monetary surprise can be interpreted as
+the sum of contributions from these channels. \Citet{campbellVuolteenaho2004}
+develop this framework further by distinguishing ``cash-flow beta''
+from ``discount-rate beta'': two assets with the same overall market
+exposure can have very different sensitivities to discount-rate news
+versus cash-flow news, and these two betas command different risk
+premia in the cross-section. \Citet{campbellPolkVuolteenaho2010} apply this decomposition to the growth--value cross-section and document that growth stocks carry
+disproportionately high ``good betas'' with market discount-rate
+news, whereas value stocks carry disproportionately high ``bad
+betas'' with market cash-flow news. They further show that these
+patterns are driven by the cash-flow fundamentals of growth and
+value firms rather than by transitory shifts in investor sentiment,
+which sharpens the asset-pricing interpretation: growth firms' high
+sensitivity to market discount-rate news is a property of their
+cash-flow structure, not of their pricing alone. This finding is
+central to the mechanism narrative developed in
+\cref{sec:literature-ai-intangibles}, because it provides the
+asset-pricing channel through which firms with growth-firm
+characteristics --- long-duration cash flows, large intangible
+capital, prominent growth options --- are expected to be more
+sensitive to news about expected future policy rates.
+
+\Citet{vanBinsbergen2020} formalizes the closely related
+duration-based view of equity valuation. In a present-value framework,
+the sensitivity of a stock's price to a change in the discount rate is
+increasing in the average maturity of its expected cash flows, in
+direct analogy with bond duration. Stocks whose value derives
+disproportionately from cash flows far in the future are mechanically
+more sensitive to changes in the expected discount-rate path than
+stocks whose value derives mostly from near-term cash flows. For the
+purposes of this thesis, the relevant implication is that path
+surprises --- which move expectations about the policy rate over
+multiple quarters and years --- are the dimension of monetary news
+that should differentially affect long-duration equities, conditional
+on the channels through which the path shock is transmitted to
+discount rates being effectively present in the data.
+
+A central limitation of the discount-rate-only narrative is that it
+attributes the equity response to monetary surprises to a single
+channel, whereas the present-value identity in \citet{campbellAmmer1993}
+admits at least three. Recent work has reopened the question of which
+channel is quantitatively dominant. \Citet{acostaEtAl2025} use dividend
+strips, inflation swaps, and the term structure of interest rates to
+decompose the equity response to FOMC communication surprises and
+find that revisions to expected risk premia and to expected dividends
+contribute substantially to the negative equity response, alongside
+the standard discount-rate channel. For this thesis, the implication
+is that the heterogeneity results --- if found --- should not be
+interpreted as evidence of a single mechanism. Differential responses
+of AI-exposed firms relative to non-AI firms within sector and event
+could reflect differences along any of the channels in the
+\citet{campbellAmmer1993} decomposition, and the empirical design does
+not separately identify them.
+
+A smaller body of work studies firm-level equity responses to FOMC
+announcements directly, and is therefore the closest empirical
+parallel to the design of this thesis. \Citet{gurkaynakKarasoyCanLee2022}
+estimate firm-level stock-price responses to high-frequency monetary
+surprises and show that the cross-sectional variation in these
+responses is systematically related to firms' debt structure ---
+the type of debt and its maturity --- and to the forward-guidance
+component of the surprise. The paper provides two pieces of evidence
+that are directly relevant to the present thesis. First, it
+establishes that firm-level equity reactions to FOMC surprises are
+sufficiently heterogeneous and well-measured to be analyzed
+cross-sectionally, which validates the basic feasibility of a
+firm-level event-panel design. Second, it documents that
+forward-guidance surprises in particular interact with firm
+characteristics in shaping the equity response, which is the type
+of interaction the present thesis estimates using AI exposure as the
+firm characteristic. The literature does not, however, study AI
+exposure as a heterogeneity dimension, and the cumulative-return
+horizon studied here (h up to sixty trading days) is longer than the
+announcement-window response that is the primary focus of
+\citet{gurkaynakKarasoyCanLee2022}; both differences are revisited in
+\cref{sec:literature-gap}.
+
+\section{Firm-level heterogeneity in monetary-policy transmission}
+\label{sec:literature-firm-heterogeneity}
+
+The literature on firm-level monetary transmission documents that the
+response of firms to monetary-policy shocks varies systematically with
+observable firm characteristics. This is the strand of work in which
+the heterogeneity hypothesis of the present thesis is most naturally
+situated: AI exposure is proposed as an additional dimension along
+which firm-level responses differ, complementing but not replacing the
+financial and structural characteristics that the existing literature
+has already identified. This section reviews that evidence, with two
+emphases. First, the literature is not uniform in the direction of the
+heterogeneity it finds, and the apparent tensions are informative for
+how the present thesis should interpret its own results. Second, almost
+none of this work uses AI exposure as the heterogeneity dimension, and
+the small number of papers that study firm-level equity responses to
+forward-guidance shocks do so along orthogonal characteristics. The
+gap that the present thesis addresses is therefore one of
+characteristic, not of method or design.
+
+A widely cited firm-panel finding is that monetary-policy shocks have
+larger real effects on firms that look constrained on conventional
+measures. \Citet{cloyneEtAl2023} estimate firm-level investment
+responses to monetary surprises in U.S. data and find that younger
+firms and firms that do not pay dividends respond more strongly than
+older or dividend-paying firms, a pattern they interpret as consistent
+with a financial-accelerator mechanism in which weaker access to
+external finance amplifies the transmission of monetary policy.
+\Citet{durante2022} report a complementary pattern in a panel of
+roughly nine million European firm-year observations: younger firms
+respond more, firms with higher leverage respond more, and firms in
+durable-goods sectors respond more, with high-frequency identified
+monetary shocks as the source of variation.
+
+A counterweight to this constraints-amplify-transmission narrative
+comes from \citet{ottonelloWinberry2020}. They estimate firm-level
+investment responses to monetary shocks in U.S. Compustat data and
+document the opposite pattern in the dimension of default risk:
+firms with low leverage, high distance to default, and high credit
+ratings respond more strongly than firms with high default risk on
+the same measures. They reconcile this finding with a
+heterogeneous-firm New Keynesian model with default risk in which
+high-default-risk firms face a steeper marginal cost curve for
+financing investment, while low-risk firms face a flat region of
+that curve. A monetary shock shifts out the marginal benefit of
+investment; high-risk firms, sitting on the steep part of the
+marginal cost curve, absorb part of the shock into higher
+borrowing costs rather than into higher investment, dampening their
+response relative to low-risk firms. The \citet{ottonelloWinberry2020}
+result does not contradict the broader financial-heterogeneity
+literature so much as it qualifies it: ``more financially
+vulnerable'' is not synonymous with ``more responsive to monetary
+policy.'' Reading across this literature, the direction of the
+heterogeneity appears to depend on which margin a given firm is
+operating against --- the investment opportunity that monetary
+policy stimulates, the external-finance cost it works through, or
+the proximity to default that bounds it above --- and the
+AI-exposure heterogeneity studied below is proposed as a further
+such dimension.
+
+A related body of work refines the analysis by separating debt
+structure from debt levels. \Citet{caglioEtAl2021} use loan-level and
+firm-level data to show that highly leveraged firms and firms that
+pledge collateral respond more strongly to monetary surprises through
+the credit channel. \Citet{deng2022} report that debt maturity is an
+independent dimension of heterogeneity: firms with shorter-maturity
+debt respond more strongly to monetary surprises, independently of
+total leverage, consistent with rollover risk shaping the transmission
+of short-rate news to firm-level investment. \Citet{bahajEtAl2022}
+study employment rather than investment as the real outcome and find
+that younger and more leveraged firms in the United Kingdom respond
+more strongly to monetary shocks, with residential collateral providing
+a measurable transmission channel. Taken together, these papers
+establish that the heterogeneity literature is multi-dimensional ---
+leverage, maturity, collateral, age, dividend status, and sector all
+enter --- and that the marginal contribution of any new heterogeneity
+dimension must be evaluated against this multidimensional benchmark.
+
+A smaller body of work studies firm-level \emph{equity} responses to
+monetary surprises, which is the most direct precedent for the design
+of this thesis. \Citet{arinEtAl2025} estimate cross-firm variation in
+equity responses to identified conventional and unconventional monetary
+shocks and find that leverage is the dominant characteristic explaining
+heterogeneity, more so than firm size or age. The firm-level
+event-study precedent set by \citet{gurkaynakKarasoyCanLee2022},
+already introduced in \cref{sec:literature-equity-valuation},
+strengthens the same point in the direction of debt structure: the
+type of debt and its maturity, interacted with the forward-guidance
+component of the surprise, materially shape the equity response. The
+present thesis builds on this firm-level equity-response design and
+extends it along a characteristic dimension that this literature has
+not used.
+
+Two implications follow for the present thesis. First, AI exposure
+should not be presented as a substitute for the financial-heterogeneity
+dimensions that the existing literature has established; it is at most
+a complementary dimension, and any heterogeneity attributed to AI
+exposure must be defended against the alternative explanation that it
+reflects an omitted financial characteristic correlated with AI
+exposure in the cross-section. The thesis addresses this in
+\cref{ch:robustness} by re-estimating the preferred specification on
+the SEC-debt subsample and by interacting the path shock with debt-to-assets
+on top of AI exposure; the specifications are documented in
+\cref{ch:empirical-strategy}. Second, the literature does not give a
+unique sign prediction for the AI-exposure interaction. A
+constraints-amplify view would predict larger responses among firms
+that are young, leveraged, or rapidly investing --- a description that
+fits part of the AI-exposed group but not all of it --- while an
+\citet{ottonelloWinberry2020}-style view would predict the opposite in
+the leverage dimension. The mechanism narrative through which AI
+exposure is expected to matter for equity responses is therefore not
+financial heterogeneity, and the next section develops the alternative
+asset-pricing channel through growth options, intangible capital, and
+long-duration equity.
+
+\section{AI exposure, intangibles, growth options, and long-duration equity}
+\label{sec:literature-ai-intangibles}
+
+The closing paragraph of \cref{sec:literature-firm-heterogeneity}
+argued that the mechanism through which AI exposure is hypothesized
+to matter for firm-level equity responses to forward-guidance shocks
+is not financial heterogeneity. This section develops the alternative.
+The argument runs in three steps. First, AI engagement is measurable
+at the firm level from corporate disclosures, and the resulting
+measures are priced by markets in ways consistent with substantive
+content rather than pure narrative. Second, AI-investing firms display
+the empirical features of growth firms: higher growth, more innovation,
+larger market valuations, and elevated systematic risk. Third, growth
+firms with these features --- long-duration cash flows, large intangible
+capital, and prominent growth options --- are the firms that
+asset-pricing theory identifies as disproportionately sensitive to
+news about expected discount rates. The chain connects ``AI exposure''
+to ``differential response to forward-guidance surprises'' through
+established asset-pricing mechanisms rather than through a direct
+AI-monetary-policy channel, which the existing literature has not
+documented.
+
+\subsection*{Measuring AI engagement from corporate disclosures}
+
+\Citet{anteSaggu2025} provide the most direct methodological precedent
+for the AI-exposure measure constructed in this thesis. Using natural
+language processing on SEC 10-K filings for 3{,}395 NASDAQ-listed
+firms over 2010 to 2022, they construct firm-level AI engagement
+metrics from the frequency of AI-related terms in annual disclosures,
+adjusted for document length, and validate the resulting classification
+by an event study around the November 2022 launch of ChatGPT. Their
+central finding is that firms classified as AI-related on the basis
+of their 10-K text exhibit significantly larger positive cumulative
+abnormal returns following the ChatGPT launch than firms that are not
+so classified. The validation is not a test of monetary transmission,
+but it establishes that 10-K-based AI engagement measures track
+market-perceived AI involvement in a manner that is detectable in
+returns. The thesis adopts the same methodological family --- keyword
+counts on pre-event 10-K filings, normalized by document length ---
+while differing in three respects: the universe is the S\&P 500 rather
+than NASDAQ-listed firms; the keyword set is broader, covering
+machine learning, deep learning, neural networks, natural language
+processing, computer vision, large language models, and generative
+AI alongside ``artificial intelligence''; and the exposure measure is
+fixed pre-ChatGPT to prevent the AI-boom narrative from contaminating
+the classification used to study events that include the post-2022
+period. The use of \citet{anteSaggu2025} here is methodological:
+their results validate the broader idea that 10-K-based AI exposure is
+informative about market-perceived AI involvement, not a claim that
+their specific measure equals AI \emph{adoption}.
+
+\Citet{anteSaggu2025} are explicit about the disclosure-vs-adoption
+gap. They observe that ``AI'' appears in 10-K filings in heterogeneous
+contexts --- some firms describe genuine integration, others mention
+competitors' use of AI, and some only state future intentions --- and
+they note that the SEC has charged investment advisers for misleading
+AI-related claims (``AI washing''). For this thesis, the implication
+is that the AI exposure measure should be interpreted as a textual
+measure of disclosed AI engagement, capturing some combination of
+substantive technological involvement, disclosure choices, sectoral
+patterns, and narrative strategy. The pre-2023 timing of the SEC
+filings used to build the exposure measure mitigates one specific
+concern --- post-ChatGPT strategic AI disclosure --- but it does not
+resolve the more general adoption-vs-disclosure distinction. This
+caveat is carried forward to the interpretation of the heterogeneity
+results in \cref{ch:results}.
+
+\subsection*{AI investment, firm growth, and systematic risk}
+
+A separate literature documents the firm-level fundamentals of AI
+investment. \Citet{babinaEtAl2024} construct a firm-level measure of
+AI investment from job-posting data on AI-related skill demand and
+estimate the effect of AI investment on firm growth using exposure to
+universities' supply of AI graduates as an instrument. They find that
+AI-investing firms experience higher sales growth, higher employment
+growth, and higher market valuations, with product innovation as the
+proximate channel. The result establishes AI investment as
+empirically associated with the textbook features of growth firms ---
+rapid expansion and high valuation multiples --- but it does not by
+itself say anything about monetary-policy transmission.
+
+\Citet{babinaEtAlSystematicRisk} extend the analysis to the risk
+characteristics of AI-investing firms and find that AI investment
+is associated with elevated market beta, measured against the
+standard CAPM and confirmed in the Carhart four-factor model.
+They interpret this pattern through a growth-options channel and
+support it with three concrete pieces of evidence. First,
+AI-investing firms experience declining loadings on the
+high-minus-low value factor and rising correlation with growth
+firms, becoming empirically more growth-like in the value--growth
+cross-section. Second, the increase in market beta concentrates
+in upside beta --- comovement on days when the market return is
+above average --- rather than downside beta, consistent with the
+option-like payoff structure of AI-driven product innovation.
+Third, the increase in beta is larger on days with elevated AI
+news and search attention. Together these results support the
+proposition that AI-investing firms identified by 10-K text
+measures are not only larger and faster-growing but also more
+exposed to systematic risk along the same growth-firm dimension
+that the asset-pricing literature in
+\cref{sec:literature-equity-valuation} associates with stronger
+sensitivity to discount-rate news.
+
+\Citet{eisfeldtSchubertZhangTaska2023} provide a final piece of
+validation that AI is priced as a firm characteristic. Using a
+workforce-exposure measure constructed from occupational tasks
+amenable to generative AI, they document that firms with greater
+exposure to generative AI experienced higher returns following the
+launch of ChatGPT, with the effect strongest where firms also possess
+large data assets. The result is methodologically independent of
+\citet{anteSaggu2025} --- different exposure measure, different sample,
+different identification --- and arrives at the same qualitative
+conclusion: AI exposure, however measured, is a priced firm
+characteristic. The \citet{eisfeldtSchubertZhangTaska2023} sample
+includes the ChatGPT event itself, which is by construction excluded
+from the present thesis's pre-ChatGPT exposure measure; the two
+designs are therefore complementary rather than overlapping.
+
+\subsection*{Intangibles, growth options, and long-duration equity}
+
+The asset-pricing bridge from the previous subsection to the
+mechanism narrative of this thesis runs through the intangibles and
+growth-options literature. \Citet{petersTaylor2017} show that
+better measurement of intangible capital substantially strengthens
+the empirical investment-Q relation, implying that intangible-intensive
+firms are mismeasured by standard balance-sheet metrics in ways that
+matter for asset-pricing tests. \Citet{eisfeldtPapanikolaou2013}
+provide complementary evidence that firms with more organization
+capital --- a form of intangible capital --- have distinct
+cross-sectional risk and return characteristics, again implying
+that intangible-intensive firms are not interchangeable with
+their tangible-capital counterparts in asset-pricing models. AI
+investment is plausibly correlated with intangible capital
+\citep{petersTaylor2017,eisfeldtPapanikolaou2013}, although the
+mapping from textual AI exposure to a balance-sheet intangibles
+measure is not one-to-one and is not estimated here.
+
+The asset-pricing implication of intangibles-intensity and
+growth-options-intensity is the duration of expected cash flows.
+\Citet{campbellPolkVuolteenaho2010} document that growth stocks
+carry disproportionately high covariances of returns with market
+discount-rate news, while value stocks carry disproportionately
+high covariances with market cash-flow news, and they show that
+these differential exposures are driven by the cash-flow
+fundamentals of growth and value firms rather than by transitory
+shifts in investor sentiment. \Citet{vanBinsbergen2020} formalises
+the closely related duration-based view of equity valuation: the
+sensitivity of a stock's price to a change in the expected
+discount-rate path is increasing in the average maturity of its
+expected cash flows, in direct analogy with bond duration. The
+\citet{campbellPolkVuolteenaho2010} finding is the empirical
+counterpart, and the fundamentals-not-sentiment qualification
+matters for the mechanism narrative because it locates the source
+of growth firms' discount-rate sensitivity in the structure of
+their cash flows rather than in investor sentiment about them. 
+Putting the chain together: AI-investing firms display
+growth-firm characteristics \citep{babinaEtAl2024,babinaEtAlSystematicRisk};
+growth firms have longer-duration cash flows
+\citep{campbellPolkVuolteenaho2010,vanBinsbergen2020}; and
+longer-duration cash flows make a firm's equity price more sensitive
+to news about the expected future policy-rate path
+\citep{vanBinsbergen2020}. The forward-guidance/path shock used in
+this thesis (\cref{sec:literature-forward-guidance}) is the empirical
+counterpart to news about the expected discount-rate path, and the
+chain therefore predicts that AI-exposed firms should respond more
+strongly than non-AI firms to path shocks of a given magnitude, in
+the direction consistent with the discount-rate channel.
+
+\subsection*{Status of the mechanism narrative}
+
+Two qualifications are essential. First, the mechanism narrative
+above is a synthesis assembled from four distinct literatures rather
+than a single causal chain documented in one paper. No paper in the
+verified evidence base of this thesis establishes ``AI exposure $\rightarrow$
+longer cash-flow duration $\rightarrow$ stronger response to
+forward-guidance shocks'' end-to-end. Each link is supported by
+existing work, but the composite claim is the thesis's own. Second,
+the asset-pricing chain identifies one channel through which AI
+exposure could matter; the present empirical design cannot separately
+identify it from the other channels in the \citet{campbellAmmer1993}
+decomposition. A finding that AI-exposed firms respond more strongly
+than non-AI firms to path shocks within sector and event would be
+consistent with the discount-rate mechanism described here, but it
+would also be consistent with cash-flow-news or risk-premium channels
+operating differentially across the AI groups, and the thesis does
+not attempt to discriminate among these alternatives.
+
+\section{Gap and contribution}
+\label{sec:literature-gap}
+
+The literatures reviewed in
+\cref{sec:literature-hfi,sec:literature-forward-guidance,sec:literature-equity-valuation,sec:literature-firm-heterogeneity,sec:literature-ai-intangibles}
+form four largely separate strands. The first --- high-frequency
+identification of monetary-policy surprises --- has converged on a
+small set of widely used shock series, including the forward-guidance
+factor used in this thesis \citep{gurkaynakSackSwanson2005,swanson2021}.
+The second --- the asset-pricing literature on monetary policy and
+equity valuation --- has established that monetary surprises move
+equity prices through a composite of discount-rate, cash-flow, and
+risk-premium channels, with growth firms disproportionately exposed
+to the discount-rate component \citep{bernankeKuttner2005,campbellAmmer1993,campbellPolkVuolteenaho2010}.
+The third --- firm-level heterogeneity in monetary transmission ---
+has documented that responses differ systematically along financial
+and structural characteristics such as leverage, debt maturity, age,
+and collateral \citep{cloyneEtAl2023,ottonelloWinberry2020,durante2022,arinEtAl2025}.
+The fourth --- AI investment and firm fundamentals --- has shown that
+AI-exposed firms are priced as a distinct asset-pricing characteristic
+and display the empirical features of growth firms
+\citep{anteSaggu2025,babinaEtAl2024,eisfeldtSchubertZhangTaska2023}.
+
+The intersection of these four strands has not been studied. To the
+best of the verified evidence base of this thesis, no existing work
+estimates firm-level equity responses to forward-guidance shocks
+along an AI-exposure heterogeneity dimension, using pre-ChatGPT 10-K
+filings to measure exposure and panel local projections to recover
+the dynamic response across horizons. Each strand individually
+motivates the design --- the shock series is established, the
+asset-pricing channels are established, the firm-level heterogeneity
+methodology is established, and the AI-exposure measurement methodology
+is established --- but the intersection is empirically open.
+
+The contribution of this thesis is therefore primarily empirical: it
+adds AI exposure as a new dimension of firm-level heterogeneity in
+the literature on monetary transmission to equity prices. Three design
+features delimit the scope of this contribution.
+
+First, AI exposure is measured from pre-2023 SEC 10-K filings. This
+timing choice prevents the post-ChatGPT AI narrative from contaminating
+the classification used to study events that include the post-2022
+period. The cost of this choice is that the AI exposure measure is
+fixed within firm and does not capture the substantial rise in AI
+disclosure documented by \citet{anteSaggu2025} from 2016 onward; it is
+a cross-sectional rather than time-varying characteristic. The
+benefit is that the classification is predetermined relative to every
+FOMC event in the post-ChatGPT subsample, which protects against
+look-ahead bias in the heterogeneity estimates.
+
+Second, the empirical design estimates differential responses by AI
+exposure group relative to a No AI Exposure reference group, within
+sector and FOMC event. The preferred specification absorbs firm
+fixed effects and sector-event fixed effects, so that the coefficients
+on the AI-exposure interactions measure within-sector, within-event
+differential responses rather than unconditional level effects. This
+design is conservative: it removes any sector-level response to a
+given FOMC event, which is precisely the variation a less demanding
+specification would attribute to AI exposure if AI-intensive sectors
+respond systematically more to forward-guidance surprises than other
+sectors. The implication is that any estimated AI heterogeneity must
+be present \emph{within} sector to register in the preferred
+specification, which is a higher bar than a cross-sectoral comparison
+would impose.
+
+Third, the design does not separately identify the channel through
+which AI exposure matters. As emphasized in
+\cref{sec:literature-equity-valuation} and again in
+\cref{sec:literature-ai-intangibles}, an AI-exposure differential in
+the response to forward-guidance surprises could reflect discount-rate-channel
+heterogeneity, cash-flow-news heterogeneity, or risk-premium heterogeneity
+across the AI groups. The mechanism narrative developed in
+\cref{sec:literature-ai-intangibles} is one consistent interpretation
+of such a finding --- AI-exposed firms as longer-duration, more
+discount-rate-sensitive equity --- but the data do not discriminate
+among the channels in the \citet{campbellAmmer1993} decomposition,
+and the thesis does not claim to do so.
+
+Three additional features further delimit the contribution. The AI
+exposure measure is textual, capturing disclosed AI engagement rather
+than AI adoption directly \citep{anteSaggu2025}. The forward-guidance
+surprise inherits the information-effect concerns reviewed in
+\cref{sec:literature-forward-guidance}; the thesis addresses these
+through a path-information split rather than resolving them. The
+medium-horizon estimation window (cumulative log returns up to sixty
+trading days) extends beyond the announcement-window horizon that is
+the focus of most firm-level event studies in this literature; this
+extension produces estimates of how long any AI differential persists,
+but the longer horizons mix the announcement effect with subsequent
+information arrivals and are therefore most cleanly read as
+reduced-form persistence rather than causal long-run effects of the
+announcement.
+
+The remainder of the thesis is organized accordingly.
+\Cref{ch:data} describes the construction of the firm-level panel,
+the AI exposure measure, and the shock series.
+\Cref{ch:empirical-strategy} develops the panel local-projection design,
+states the preferred specification, and discusses identification.
+\Cref{ch:results} reports the main impulse-response estimates for the
+preferred categorical AI specification, and \cref{ch:robustness}
+reports the path-information split and the financial-control
+robustness checks discussed in
+\cref{sec:literature-forward-guidance,sec:literature-firm-heterogeneity}.
+\Cref{ch:conclusion} concludes.
+
+
+\section{Bubbles}
+
+This chapter develops the conceptual framework that motivates the empirical analysis. \Cref{sec:asset-prices-fundamental-value} introduces the present-value model of asset pricing and defines a speculative bubble formally, alongside the main interpretations of rapid asset-price increases that coexist in the literature. \Cref{sec:technology-speculation} reviews the historical pattern linking technological innovation to speculative excess, and notes that the formal test used in this thesis has previously detected canonical historical episodes. \Cref{sec:productivity-paradox} turns to the productivity paradox literature, which shows why the economic benefits of transformative technologies can lag market valuations by years or decades, and why this lag is relevant for AI. \Cref{sec:detecting-bubbles} presents the PSY econometric procedure used to detect explosive price dynamics, together with its main applications. \Cref{sec:bubbles-gap-contribution} draws these strands together and sets out the gap this thesis addresses.
+
+\section{Asset prices and fundamental value}
+\label{sec:asset-prices-fundamental-value}
+
+The starting point for any analysis of speculative excess is the present-value model of asset pricing. Under standard assumptions, the price of an asset is determined by
+
+\begin{equation}
+P_t = \sum_{i=0}^{\infty} \left( \frac{1}{1+r_f} \right)^i E_t \left( D_{t+i} + U_{t+i} \right) + B_t,
+\label{eq:present-value-bubble}
+\end{equation}
+
+\noindent where $P_t$ is the asset price, $r_f$ is the risk-free rate, $D_t$ denotes the payoff (such as dividends), $U_t$ represents unobservable factors, and $B_t$ is a bubble component. When $B_t = 0$, the asset is priced by fundamentals alone in this representation. The empirical implication used by the PSY literature is that the relevant price or valuation series should not exhibit persistent explosive behaviour under the no-bubble null. A speculative bubble arises when $B_0 > 0$, in which case the bubble component satisfies the submartingale property
+
+\begin{equation}
+E_t(B_{t+1}) = (1+r_f)\, B_t.
+\label{eq:bubble-submartingale}
+\end{equation}
+
+\noindent When $B_t$ is present, it dominates price dynamics and transmits explosive behaviour to the observed price series \citep{phillipsShiYu2015a}.
+
+The decomposition in \cref{eq:present-value-bubble} formalises what a bubble is, but it does not settle when one should be invoked. Three views about how to interpret rapid asset-price increases coexist in the literature, and they imply different prior beliefs about whether explosive dynamics observed during a technology boom should be attributed to $B_t$ at all.
+
+The strongest rejection of the bubble interpretation comes from the efficient market hypothesis \citep{fama1970}. In its strict form, asset prices at all times fully reflect available information, so sustained mispricings cannot occur: any deviation from fundamental value would be arbitraged away. Under this view, the divergence in returns between AI-exposed firms and the rest of the index, if it exists, reflects a rational updating of expectations about future earnings capacity and should not be interpreted as evidence of mispricing without additional evidence.
+
+A more nuanced rational benchmark is provided by \citet{pastorVeronesi2009}. They show that the arrival of a major new technology raises uncertainty about future productivity, which in turn raises both the level and the volatility of asset prices for firms exposed to the new technology. As information about the technology's true economic impact is gradually revealed, prices adjust, sometimes sharply downward. The mechanism produces price paths that are observationally similar to bubble episodes --- sharp run-ups followed by corrections --- but it generates them without any departure from rationality. Whether a specific episode reflects rational learning of this kind or a genuine bubble component cannot be determined from price data alone; the two hypotheses generate similar reduced-form patterns and must be distinguished, if at all, with additional structure or auxiliary evidence.
+
+A third view, due to \citet{shiller2000}, holds that financial markets are subject to waves of irrational exuberance, in which investor psychology, media-driven amplification, and feedback loops drive prices above any level justified by careful analysis of fundamentals. Under this view, the bubble component $B_t$ is not only theoretically admissible but empirically relevant, and explosive dynamics in asset prices during technology booms are natural candidates for speculative excess unless auxiliary evidence points to the rational-learning alternative.
+
+These three views set the interpretive boundaries for the empirical work that follows. The PSY procedure introduced in \cref{sec:detecting-bubbles} provides a formal test for explosive price dynamics, but it does not by itself discriminate between speculative excess and rational repricing under uncertainty. A finding of explosive dynamics is consistent with both \citet{shiller2000} and \citet{pastorVeronesi2009}; a finding of no explosive dynamics is consistent with \citet{fama1970} and with the rational-learning view in episodes where the underlying uncertainty has already been resolved. The cross-sectional design developed in this thesis (\cref{sec:bubbles-gap-contribution}) is intended to sharpen, not resolve, this identification challenge. If explosive dynamics are stronger in portfolios most closely tied to the AI narrative, and remain visible relative to broad-market and non-AI benchmarks, the evidence is more consistent with an AI-specific speculative component than with a purely aggregate market boom.
+
+\section{Technology and speculation: a recurring pattern}
+\label{sec:technology-speculation}
+
+The link between technological innovation and speculative excess is one of the most persistent features of financial history. The financial-crises literature documents a recurring sequence: a displacement, typically a new technology or financial innovation, triggers a period of rising asset prices, which attracts additional capital, loosens credit conditions, and produces a self-reinforcing cycle of enthusiasm that eventually overshoots any plausible estimate of fundamental value \citep{kindlebergerAliber2015}. The cycle resolves, in the canonical account, through a sharp correction in which prices fall back toward (or below) fundamentals as the original premise that motivated the rally is reassessed.
+
+The specific technologies change, but the pattern is remarkably stable. In the 1920s, the Radio Corporation of America (RCA) became a focal point for investor enthusiasm about radio broadcasting. Its stock rose from roughly \$94 to \$505 between early 1928 and September 1929, substantially outpacing the company's actual sales performance, before collapsing in the crash of October 1929 \citep{brunerMiller2019,sirkin1975}. The dot-com boom of the late 1990s followed a similar arc. Cisco Systems, the largest networking-equipment company on the Nasdaq, peaked at \$132 in March 2000 before declining to \$16 within a year \citep{hirschey2001}. In both cases the underlying technology proved economically transformative over a longer horizon; the speculative dynamic was not that the technology failed but that its near-term valuation had run far ahead of its near-term cash-flow capacity.
+
+These historical episodes are not only narrative parallels but also detectable in formal tests. Applying the GSADF procedure to the S\&P~500 price-dividend ratio, \citet{phillipsShiYu2015a} date-stamp explosive episodes that include the 1928--1929 run-up and the 1995--2001 dot-com bubble. This precedent motivates the use of the same class of recursive right-tailed tests in the present thesis, but the empirical object is different: rather than testing only a broad aggregate, the analysis below asks whether explosive dynamics vary systematically with AI exposure and market concentration.
+
+Two features of the historical record matter for the empirical strategy that follows. First, the price dynamics are not gradual: rapid acceleration is followed by a sharp correction. This is the signature pattern that recursive right-tailed unit-root tests of the kind developed by \citet{phillipsWuYu2011} and \citet{phillipsShiYu2015a} are designed to detect. Second, the episodes share an underlying structural feature with the current AI boom: a new technology with genuinely large but highly uncertain long-run economic potential, in which the market must price an asset whose fundamental value depends on outcomes that have not yet been realised. Whether the response to that uncertainty is rational learning, as in \citet{pastorVeronesi2009}, or speculative excess, as in \citet{shiller2000}, the resulting price paths can be similar in their reduced-form properties; this is the identification challenge raised in \cref{sec:asset-prices-fundamental-value} and revisited in \cref{sec:bubbles-gap-contribution}.
+
+\section{The productivity paradox and the lag problem}
+\label{sec:productivity-paradox}
+
+A central difficulty in evaluating whether AI valuations are justified is that transformative technologies often take far longer to generate measurable economic returns than initial market enthusiasm implies. This problem was formalised by \citet{brynjolfsson1993} as the ``productivity paradox'' of information technology: despite massive investment in computing power from the 1970s onward, aggregate productivity statistics showed little improvement. As Robert Solow famously remarked, computers could be seen everywhere except in the productivity statistics \citep{brynjolfsson1993}.
+
+\citet{brynjolfsson1993} identifies several possible explanations for this gap: measurement errors in output statistics, lags between investment and the organisational changes required to exploit new technology, redistribution of rents rather than creation of new value, and mismanagement. The most analytically important of these is the lag hypothesis. Drawing on an analogy to the electrification of factories, \citet{david1990} shows that major productivity gains from electric power did not materialise for roughly two decades, because the full benefits required redesigning production processes around the new technology.
+
+This pattern appears to be repeating with AI. Drawing on coordinated surveys of approximately 6{,}000 firms across the United States, the United Kingdom, Germany, and Australia conducted between November 2025 and January 2026, \citet{yotzovEtAl2026} document that around 70\% of firms now use AI in some form, with adoption skewed toward larger and more productive firms, but that the realised productivity impact over the preceding three years has been modest, with 89\% of firms reporting no impact and an average across all firms of approximately 0.3\%. Executives expect AI to raise productivity by approximately 1.4\% over the next three years, a figure that is positive but modest relative to the scale of corporate investment and equity-market repricing documented in \cref{ch:introduction}. The gap between expected and realised productivity impact --- substantial expectations, modest current contribution --- is the contemporary version of the pattern \citet{brynjolfsson1993} and \citet{david1990} describe for earlier technologies.
+
+This gap matters directly for the present analysis. The firms in the High AI Exposure group are, by construction, the firms that were already discussing AI as a meaningful part of their business before the post-2022 boom. If the productivity gains that justify these firms' current valuations follow the lag pattern documented for previous transformative technologies and now apparently for AI itself, the gap between current investment and future payoff is precisely the space in which the bubble component $B_t$ can develop.
+
+\section{Detecting bubbles: from theory to econometrics}
+\label{sec:detecting-bubbles}
+
+The conceptual framework developed in \cref{sec:asset-prices-fundamental-value,sec:technology-speculation,sec:productivity-paradox} establishes that speculative excess is plausible in the current AI boom but does not, on its own, determine whether it is actually present. Answering that question requires an econometric procedure that can test whether prices exhibit the explosive dynamics characteristic of a non-zero $B_t$. This section introduces the PSY procedure, which provides a formal test for such dynamics, while leaving the economic source of the explosiveness to be interpreted with auxiliary evidence and cross-sectional structure.
+
+The methodology was developed in a sequence of papers by Phillips and co-authors. \citet{phillipsWuYu2011} (PWY) proposed an initial recursive right-tailed augmented Dickey--Fuller (ADF) test, the SADF, applied to the 1990s Nasdaq and date-stamping bubble origination in July 1995. \citet{phillipsShiYu2015a,phillipsShiYu2015b} (PSY) then generalised the test to allow detection of \emph{multiple} bubbles within a single sample, an extension that matters when the sample period contains more than one candidate episode. The PSY framework is built as follows. Let $y_t$ be a dividend-adjusted price series. Under the null hypothesis of no bubble, the series satisfies
+
+\begin{equation}
+y_t = dT^{-\eta} + y_{t-1} + \varepsilon_t, \qquad \varepsilon_t \sim \text{iid}(0, \sigma^2),
+\label{eq:psy-null}
+\end{equation}
+
+\noindent where $d$ is a constant, $T$ is the sample size, and $\eta$ is a localising coefficient that accommodates an asymptotically negligible drift when $\eta > 1/2$. Under this specification, the series follows a unit-root process rather than a mildly explosive process. This is the statistical no-bubble benchmark used by the test; it is not a complete structural model of fundamentals.
+
+The alternative hypothesis of bubble presence is given by mildly explosive dynamics \citep{phillipsMagdalinos2007}:
+
+\begin{equation}
+y_t = \theta_T \, y_{t-1} + \varepsilon_t,
+\label{eq:psy-alternative}
+\end{equation}
+
+\noindent where the autoregressive parameter $\theta_T$ exceeds unity:
+
+\begin{equation}
+\theta_T = 1 + \frac{c}{T^{\alpha}}, \qquad \alpha \in (0,1), \quad c > 0.
+\label{eq:mildly-explosive-root}
+\end{equation}
+
+\noindent When $\theta_T > 1$, the price series exhibits explosive behaviour, growing at a rate that exceeds what a unit-root process would imply. The PSY procedure tests for this explosive behaviour using a sequence of right-tailed ADF statistics computed over recursive subsamples. The backward sup ADF (BSADF) statistic for each observation is
+
+\begin{equation}
+\text{BSADF}_t(\tau_0) = \sup_{\tau_1 \in [0,\, t - \tau_0]} \left\{ \text{ADF}_{\tau_1}^{t} \right\},
+\label{eq:bsadf}
+\end{equation}
+
+\noindent where $\tau_0$ is the minimum window size and $\text{ADF}_{\tau_1}^{t}$ is the ADF $t$-statistic estimated on the subsample from $\tau_1$ to $t$. The generalised sup ADF (GSADF) statistic is then
+
+\begin{equation}
+\text{GSADF}(\tau_0) = \sup_{\tau \in [\tau_0,\, 1]} \left\{ \text{BSADF}_\tau(\tau_0) \right\}.
+\label{eq:gsadf}
+\end{equation}
+
+Under the null hypothesis, the GSADF statistic has a known limiting distribution. Rejection of the null in favour of the explosive alternative provides evidence of bubble-like dynamics in the price series. The procedure also allows for date-stamping: a bubble is identified as originating at the first observation where the BSADF statistic exceeds the corresponding critical-value sequence, and as terminating when it falls back below.
+
+The methodology has been applied widely. \citet{phillipsShi2018} use it to study financial-bubble implosion in equity markets, \citet{etienneIrwinGarcia2015} apply it to commodity futures, \citet{caspiKatzkeGupta2018} to crude oil prices, and \citet{pavlidisEtAl2016} to housing markets across multiple metropolitan areas. The Federal Reserve Bank of Dallas uses the procedure to monitor global housing-market exuberance in real time \citep{phillipsShi2020}, and software implementations are available in EViews and R.
+
+The most direct methodological precedent for the present thesis is \citet{baselePhillipsShi2025}, who apply the PSY procedure to the Nasdaq index and to the seven individual stocks of the Magnificent Seven over January 2010 to January 2025. They use the price-to-index ratio as the test variable to control for market fundamentals and the wild bootstrap of \citet{harveyEtAl2016} for critical values that account for heteroskedasticity. Their findings indicate persistent speculative dynamics in the Nasdaq index across both halves of the sample, and explosive behaviour in six of the seven Mag-7 stocks during the December 2022 to January 2025 subperiod. The empirical strategy developed in \cref{ch:empirical-strategy} adopts the same procedure and the same bootstrap framework, but applies them to value- and equal-weighted portfolios of S\&P~500 firms grouped by their pre-2023 AI exposure, together with relative ratios and concentration baskets. The conceptual motivation for that extension is set out in \cref{sec:bubbles-gap-contribution}.
+
+
+\section{Gap and contribution}
+\label{sec:bubbles-gap-contribution}
+
+The literatures reviewed in \cref{sec:asset-prices-fundamental-value,sec:technology-speculation,sec:productivity-paradox,sec:detecting-bubbles} form four distinct strands. The first establishes a formal definition of a speculative bubble through the present-value model, in which a non-zero component $B_t$ satisfying the submartingale condition in \cref{eq:bubble-submartingale} drives explosive dynamics in the observed price series \citep{phillipsShiYu2015a}. The second documents that technological innovation has repeatedly been associated with asset-price dynamics that appear to run ahead of realised fundamentals, while also providing a rational benchmark in which genuine uncertainty about a transformative technology can generate bubble-like paths ex post \citep{kindlebergerAliber2015,pastorVeronesi2009}. The third shows that the economic benefits of transformative technologies typically lag their market impact by years or decades, creating a structural gap between investor expectations and realised returns in which $B_t$ can develop \citep{brynjolfsson1993,david1990}. The fourth provides a formal statistical test for explosive dynamics, together with a date-stamping procedure that identifies the origination and termination of candidate episodes \citep{phillipsWuYu2011,phillipsShiYu2015a,phillipsShiYu2015b}.
+
+The intersection of these strands has so far been examined mainly at the aggregate and mega-cap level. \citet{baselePhillipsShi2025} apply the PSY procedure to the Nasdaq and to the seven individual stocks of the Magnificent Seven over January 2010 to January 2025, finding evidence of speculative bubbles in the index and in six of the seven stocks during the December 2022 to January 2025 subperiod. Their analysis establishes that bubble-like dynamics are detectable in the headline aggregates of the current AI boom, but it does not address three questions that are central for this thesis: whether the dynamics extend beyond a small set of mega-cap firms, whether they vary systematically with a disclosure-based measure of AI engagement, and whether they remain visible after broad-market dynamics are netted out.
+
+The contribution of this thesis is therefore to extend the PSY framework along a cross-sectional and relative-pricing dimension. Rather than testing only a single index or a small set of pre-identified mega-cap stocks, the analysis groups S\&P~500 firms by their pre-2023 AI exposure score (\cref{ch:data}) and applies the PSY procedure to value- and equal-weighted portfolios, broad-market ratios, within-market High AI / No AI ratios, and concentration baskets. This design matters because absolute index rejections alone are not sufficient to establish an AI-specific interpretation: a broad bull market, changes in discount rates, risk appetite, or general technology-sector repricing can also generate explosive dynamics. The sharper test is whether explosiveness is stronger in High-AI portfolios than in Moderate- or No-AI portfolios, whether it survives relative to the S\&P~500 and to the No-AI group, and whether it becomes stronger when the portfolio is narrowed to the firms most closely associated with the AI narrative.
+
+The empirical sections that follow should therefore be read as evidence on the cross-sectional structure of bubble-like dynamics, not as a structural decomposition of prices into fundamentals and mispricing. A pattern in which High-AI ratios and AI-leader concentration baskets reject more strongly than broad-market and placebo ratios would support the interpretation that the current episode contains an AI-specific speculative component. A pattern in which all groups reject similarly would instead point toward market-wide forces. Intermediate patterns are informative because they show how much of the apparent AI boom is broad and how much is concentrated among firms most exposed to, or most identified with, the AI narrative. The empirical strategy that operationalises this design is developed in \cref{ch:empirical-strategy}.

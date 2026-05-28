@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrr}
+\toprule
+AI group & Total firms & Score inherited & Own filing & Inherited (\%) \\
+\midrule
+No AI Exposure & 311 & 10 & 301 & 3.2\% \\
+Moderate AI Exposure & 72 & 2 & 70 & 2.8\% \\
+High AI Exposure & 81 & 2 & 79 & 2.5\% \\
+Total & 464 & 14 & 450 & 3.0\% \\
+\bottomrule
+\multicolumn{5}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} AI-score inheritance by AI group (preferred 2010-2026 with YF extension, one row per firm; INCLUDES inherited-score firms). A firm's AI score is merged by ticker symbol; a permno that shares a reused ticker with another company but did not file the scored 10-K inherits that company's score (ai\_score\_inherited == 1). Score inherited counts such firms; Own filing counts firms scored from their own 10-K. See Docs/TICKER\_REUSE\_AI\_MISATTRIBUTION\_NOTE.md. Sample: Preferred 2010-2026 (sample\_preferred\_with\_yf\_extension == 1; event date in [2010-01-01, 2026-12-31]). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb Section 12c (2010-2026 window; YF-extended preferred sample).} \\
+\end{tabular}

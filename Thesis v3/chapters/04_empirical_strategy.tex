@@ -1,0 +1,375 @@
+\chapter{Empirical Strategy}
+\label{ch:empirical_strategy}
+
+This chapter sets out the empirical strategy used to estimate the differential equity-return response of S\&P~500 firms to forward-guidance monetary-policy shocks across pre-ChatGPT AI exposure groups, traced over a 61-trading-day horizon by panel local projection. The remainder of the chapter is organised as follows. \cref{sec:emp-estimand} sets out the estimand and its intuition. \cref{sec:emp-lp} describes the panel local-projection setup and writes the preferred regression. \cref{sec:emp-shock} reviews the identification of the path shock. \cref{sec:emp-ai} states the AI exposure classification and the omitted category. \cref{sec:emp-fe} discusses the fixed-effect structure and the identifying variation. \cref{sec:emp-inference} describes the inference and scaling conventions. \cref{sec:emp-sample} states the active sample restrictions. \cref{sec:emp-interpretation} fixes the interpretation of the coefficients of interest. \cref{sec:emp-limitations} closes with the design's limitations.
+
+\section{Research estimand and intuition}
+\label{sec:emp-estimand}
+
+The object of interest is the additional cumulative log-return response of a High AI Exposure firm relative to a No AI Exposure firm in the same GICS sector on the same FOMC event, per basis point of forward-guidance surprise, traced out as a function of the trading-day horizon $h = 0, 1, \dots, 60$ after the announcement. The same object is estimated for Moderate AI Exposure firms. Variation across firms in pre-ChatGPT AI exposure is taken from the strict + machine-learning classification of pre-2023 SEC 10-K filings described in \cref{sec:ai-exposure}; variation across events is taken from the 128 scheduled FOMC meetings between January 2010 and January 2026 and the associated path-factor surprises constructed in \cref{sec:lp-data}.
+
+The design isolates a cross-sectional differential response and is not informative about two other objects. It is not the unconditional response of the market or of any GICS sector to an FOMC announcement, which is absorbed by the sector\,$\times$\,event fixed effects. It is not a causal effect of "being AI-exposed" on returns, since AI exposure is a firm characteristic measured ex post from disclosure text. A positive realisation of the path surprise is signed as a hawkish/tightening forward-guidance shock; the sign reading of the differential coefficients is fixed in \cref{sec:emp-interpretation}.
+
+\section{Local projection setup}
+\label{sec:emp-lp}
+
+The empirical model is a panel local projection in the sense of \citet{jorda2005}; the recent survey of the technique used here is \citet{jordaTaylor2025}. The unit of observation is a firm~$\times$ scheduled FOMC event $\times$ horizon, where the horizon $h$ runs over the first 61 trading days after the announcement. The outcome at horizon $h$ is the cumulative log return $\mathtt{cum\_ret\_h}_{i,e,h}$ defined in \cref{eq:cum-ret} of \cref{sec:lp-data}, taken from the close of the trading day before the event to the close of trading day $t_e + h$, so that $h = 0$ is the close-to-close return over the FOMC trading day itself. A separate regression is run at each horizon $h$ and the sequence of estimated slope coefficients across $h$ forms the impulse response. The direct estimation of the horizon-$h$ slope is the standard advantage of local projection over a panel VAR: each $\hat\beta_h$ is identified from the data at horizon $h$ without imposing a parametric model for the joint dynamics of returns, shocks, and group membership.
+
+The preferred specification is
+\begin{equation}
+    \mathtt{cum\_ret\_h}_{i,e,h} \;=\; \beta_h^H \, (\mathtt{path\_3f}_e \times \mathtt{high\_ai}_i) \;+\; \beta_h^M \, (\mathtt{path\_3f}_e \times \mathtt{moderate\_ai}_i) \;+\; \alpha_i \;+\; \lambda_{s(i),e} \;+\; \varepsilon_{i,e,h},
+    \label{eq:lp-preferred}
+\end{equation}
+where $i$ indexes firms, $e$ indexes scheduled FOMC events, $\alpha_i$ is a firm fixed effect, $\lambda_{s(i),e}$ is a GICS-sector~$\times$~event fixed effect with $s(i)$ the sector of firm $i$, and $\beta_h^H$ and $\beta_h^M$ are the parameters of interest. The two interactions $\mathtt{path\_x\_high} = \mathtt{path\_3f} \times \mathtt{high\_ai}$ and $\mathtt{path\_x\_mod} = \mathtt{path\_3f} \times \mathtt{moderate\_ai}$ are constructed explicitly. The path surprise does not enter as a standalone regressor: it varies only across events, and the sector\,$\times$\,event fixed effects $\lambda_{s(i),e}$ are nested within events and therefore absorb all event-level variation. Any standalone shock term is collinear with the fixed effects and is dropped. By the same logic, the two indicator dummies \texttt{high\_ai} and \texttt{moderate\_ai} do not enter as standalone level terms, because they are absorbed by the firm fixed effect $\alpha_i$.
+
+The preferred specification contains no shock-by-control interactions and no raw firm controls. A 2$\times$2 baseline grid that adds firm FE alone, event FE alone, and the combination of both with shock-by-control terms is reported in \cref{ch:robustness} for transparency, but the preferred specification is~\eqref{eq:lp-preferred} as stated.
+
+\section{Monetary-policy shock identification}
+\label{sec:emp-shock}
+
+The shock series is \texttt{path\_3f}, the second factor in a three-factor rotation of intraday futures and yield surprises in a narrow window around scheduled FOMC announcements, measured in basis points. The construction is documented in \cref{sec:lp-data}: factor one (\texttt{target\_3f}) is aligned with the contemporaneous federal funds futures surprise, factor two (\texttt{path\_3f}) is orthogonal to the target factor by construction and is identified as forward-guidance news in the sense of \citet{gurkaynakSackSwanson2005} and \citet{swanson2021}, and factor three (\texttt{lsap\_3f}) captures balance-sheet news identified during the zero-lower-bound period.\footnote{The underlying US Monetary Policy Database file used to construct the factors is the 25 February 2026 release.}
+
+The identifying assumption is the standard high-frequency assumption: in a sufficiently narrow window around the FOMC announcement, intraday futures and yield surprises reflect monetary news rather than reverse causation or contemporaneous non-monetary news. Under this assumption, \texttt{path\_3f} measures revisions to the expected policy-rate path over horizons up to about one year that are orthogonal to the contemporaneous target-rate surprise. In the active event sample, \texttt{path\_3f} has mean $-0.030$ bp and standard deviation $1.800$ bp. Its near-zero mean and the orthogonal factor construction are consistent with the interpretation of \texttt{path\_3f} as a communication-driven forward-guidance surprise rather than a persistent level shift in policy rates.
+
+Two interpretive caveats follow directly from the literature and are taken up in \cref{ch:robustness} rather than in the preferred specification. First, high-frequency surprises may embed central-bank information about the economic outlook, as documented by \citet{nakamuraSteinsson2018} and operationalised as a monetary-versus-information split by \citet{jarocinskiKaradi2020}; \citet{bauerSwanson2023} offer an alternative reading of the same patterns. Second, the structural interpretation of \texttt{path\_3f} may differ across the early sample, the zero-lower-bound period, and the post-2019 normalisation, motivating a time-window sensitivity check. \cref{ch:robustness} accordingly reports the path--information split, an alternative-shock comparison against \texttt{target\_3f} and \texttt{lsap\_3f}, and time-window cuts; the preferred specification uses \texttt{path\_3f} on the full 2010--2026 active sample.
+
+\section{AI exposure groups and the omitted category}
+\label{sec:emp-ai}
+
+The AI exposure measure is the strict + machine-learning classification documented in \cref{sec:ai-exposure}: for each ticker in the 2022-12-22 S\&P~500 snapshot, the most recent SEC 10-K filed before 1~January~2023 is scored against four regexes (\textit{artificial intelligence}, \textit{machine learning}, the standalone token \textit{AI}, and \textit{A.I.}), the raw match count is normalised by document length to a score per ten thousand tokens, and firms are partitioned into three mutually exclusive and exhaustive groups. \texttt{no\_ai} firms have zero matches or no available 10-K; \texttt{moderate\_ai} firms have a positive score at or below the median among positive-mention firms, which is $0.3900$ in the estimation sample; \texttt{high\_ai} firms have a score strictly above that median. The construction follows the disclosure-based approach of \citet{anteSaggu2025}, with per-document length normalisation in the textual-disclosure tradition of \citet{loughranMcDonald2011} and \citet{hobergPhillips2016}. An alternative workforce-based AI exposure measure is developed by \citet{eisfeldtSchubertZhangTaska2023} but relies on occupational data not publicly available for the full sample used here.
+
+The No AI group is the omitted reference category in \eqref{eq:lp-preferred}: $\beta_h^H$ is the High AI minus No AI differential at horizon $h$ and $\beta_h^M$ is the Moderate AI minus No AI differential. Group assignment is cross-sectional and time-invariant within firm, so the indicators are absorbed by $\alpha_i$ as noted in \cref{sec:emp-lp}. The active sample contains 301 No AI firms (66.9\%), 70 Moderate AI firms (15.6\%), and 79 High AI firms (17.6\%), for a total of 450 own-filing firms. Because the entire 2010--2026 sample is scored from a single pre-2023 corpus, the classification is best read as a pre-ChatGPT cross-sectional exposure ranking rather than an event-time ex ante measure; the implications of this design choice for measurement error and the direction of bias are taken up in \cref{sec:emp-limitations}.
+
+Two alternative AI classifications are preserved in the panel and used in \cref{ch:robustness} only. The broad 8-keyword classification (\texttt{high2}/\texttt{moderate2}/\texttt{no2}) reproduces the original keyword set; the continuous score $\mathtt{logAIz}$ z-scores the log AI score across firms. Neither variant enters the preferred specification.
+
+\section{Fixed effects and identifying variation}
+\label{sec:emp-fe}
+
+Specification~\eqref{eq:lp-preferred} absorbs two sets of fixed effects. The firm fixed effect $\alpha_i$ absorbs any time-invariant difference across firms in the average level of $\mathtt{cum\_ret\_h}$ across FOMC events at horizon $h$. The sector\,$\times$\,event fixed effect $\lambda_{s(i),e}$ absorbs every component of the response that is common to firms in the same GICS sector on the same FOMC event, including the sector-average response to the path surprise at that event.
+
+The identifying variation for $\beta_h^H$ and $\beta_h^M$ is therefore the difference in cumulative returns between High AI (Moderate AI) firms and No AI firms within the same sector on the same FOMC event, scaled against the magnitude of \texttt{path\_3f} at that event. The within-industry identification logic follows the firm-level forward-guidance event-panel design of \citet{gurkaynakKarasoyCanLee2022}. Two consequences follow. First, the design is conservative: any AI heterogeneity that operates entirely between sectors --- for example, a generic Information Technology level response to forward guidance that is common to all IT firms regardless of their 10-K AI score --- is differenced out by $\lambda_{s(i),e}$. Within-sector cross-firm differences by AI group, which are exactly what the interaction terms isolate, are preserved. The differential must be present within a sector to register. Second, the preferred specification cannot speak to whether a sector responds to the shock on average, only to within-sector firm-level heterogeneity in that response.
+
+The within-sector identifying logic relies on having more than one AI exposure group represented inside the typical sector\,$\times$\,event cell. \cref{tab:sector_ai} in \cref{sec:ai-exposure} shows that AI exposure is concentrated in but not confined to Information Technology, and that all three exposure groups are present in Health Care, Industrials, Financials, and Consumer Discretionary, which together account for a large share of the cross-section. Sectors with negligible AI exposure (Utilities, Materials, Real Estate, Consumer Staples) contribute the No AI variation but do not identify $\beta_h^H$ and $\beta_h^M$ on their own.
+
+\section{Inference and scaling}
+\label{sec:emp-inference}
+
+Standard errors are two-way cluster-robust, clustered by \texttt{firm\_id} and \texttt{event\_id}. Clustering on the firm dimension allows for serial correlation in cumulative returns for the same firm across FOMC events and across overlapping horizon windows within an event; clustering on the event dimension allows for cross-sectional correlation in returns for different firms on the same FOMC trading date. Long-horizon LP residuals are mechanically correlated of order up to $h$ because of the overlapping cumulative-return outcome, so any inference procedure that ignored within-firm dependence would understate uncertainty.
+
+All reported impulse responses are rescaled to a $+25$ basis-point path-shock benchmark. Define
+\begin{equation}
+    \hat\beta_h^{\text{scaled}} \;=\; \hat\beta_h \times 25 \times 100,
+    \qquad
+    \hat{\sigma}_h^{\text{scaled}} \;=\; \hat\sigma_h \times 25 \times 100,
+    \label{eq:scaling}
+\end{equation}
+where $\hat\sigma_h$ is the two-way clustered standard error at horizon $h$. The factor of 25 converts a one-basis-point shock into a 25-basis-point shock; the factor of 100 converts a log-return response into percentage points. Pointwise 95\% confidence intervals are $\hat\beta_h^{\text{scaled}} \pm 1.96 \times \hat\sigma_h^{\text{scaled}}$. Reported responses are therefore interpretable as percentage-point differentials in cumulative returns relative to the No AI group, at horizon $h$, in response to a 25 bp hawkish forward-guidance surprise.
+
+The 95\% confidence intervals are pointwise and not joint across horizons. \cref{ch:robustness} reports alternative cluster choices and an inference-sensitivity check at selected key horizons. The cluster-robust two-way variance estimator is the standard choice in event-panel local projections.
+
+\section{Active sample restrictions}
+\label{sec:emp-sample}
+
+The active estimation sample is defined by three stacked gates, applied identically across every regression at every horizon. The first is a data-quality gate, $\mathtt{sample\_preferred} = 1$, which requires non-missing values of the outcome, the shock, the AI group, and the lagged firm controls and additionally restricts to scheduled FOMC meetings (so that unscheduled meetings are excluded). The second is a time-window gate that retains observations whose FOMC trading date falls in the closed interval \mbox{[2010-01-01, 2026-12-31]}. The third is a ticker-reuse correction, $\mathtt{ai\_score\_inherited} = 0$, which drops firms whose CRSP \texttt{permno} would inherit a foreign company's AI score because of ticker-string reuse across distinct legal entities; the construction of this flag is documented in \cref{sec:data-limitations}.
+
+After applying the three gates the active sample contains 450 unique firms, 128 unique scheduled FOMC events, and 53{,}679 firm--event observations at $h=0$, distributed across years at the regular eight-per-year FOMC cadence. The inherited-AI correction drops 14 of the 464 firms that satisfy the first two gates.
+% TODO: Re-check per-group means of log market cap, beta, and idiosyncratic volatility under 2010--2026 sample. Updated table_data_summary_statistics.tex gives pooled means (23.80 / 0.99 / 1.47%) but not per-group means.
+The pre-event firm characteristics across the three groups are similar in scale, with average pre-event log market capitalisation between 23.52 (No AI) and 23.77 (Moderate AI), average 252-day CAPM beta between 0.98 (No AI) and 1.11 (High AI), and average 252-day idiosyncratic volatility close to 1.5\% per day across all three groups. The outcome variable is not winsorised at the panel-construction stage.
+
+\section{Interpretation of \texorpdfstring{$\beta_h^H$}{betaH} and \texorpdfstring{$\beta_h^M$}{betaM}}
+\label{sec:emp-interpretation}
+
+The coefficient $\beta_h^H$ in \eqref{eq:lp-preferred} is the additional cumulative log-return response, at horizon $h$, of a High AI firm relative to a No AI firm in the same GICS sector on the same FOMC event, per basis point of \texttt{path\_3f}. The coefficient $\beta_h^M$ is the analogous Moderate AI minus No AI differential. After applying the scaling in \eqref{eq:scaling}, $\hat\beta_h^{H,\text{scaled}}$ and $\hat\beta_h^{M,\text{scaled}}$ are expressed in percentage points of cumulative log return at horizon $h$ in response to a 25 bp hawkish forward-guidance surprise.
+
+Three readings are explicitly not warranted by~\eqref{eq:lp-preferred}. First, $\hat\beta_h^H$ is not the unconditional response of High AI firms to the path shock: the unconditional response is the combined effect of the sector-average response (which is absorbed by $\lambda_{s(i),e}$) and the within-sector differential, and only the latter is recovered. Second, $\hat\beta_h^H$ is not "the effect of AI exposure" on returns at horizon $h$: it is the slope-difference in the response to forward guidance, not a level effect on returns. Third, $\hat\beta_h^H$ does not identify the channel through which AI exposure matters; the same horizon-indexed pattern can be produced by heterogeneity in discount-rate sensitivity, cash-flow news, or risk premia, and the design is not informative about which.
+
+The sign convention follows the construction of the path factor in \cref{sec:lp-data}: a positive realisation of \texttt{path\_3f} is a hawkish/tightening forward-guidance shock, in the sense that it raises the expected path of the federal funds rate over horizons up to about one year. A positive differential coefficient $\hat\beta_h^H > 0$ therefore means that the High AI group falls less than the No AI group after a tightening surprise; a negative differential $\hat\beta_h^H < 0$ means that it falls more. The same reading applies to $\hat\beta_h^M$.
+
+\section{Limitations of the design}
+\label{sec:emp-limitations}
+
+The empirical strategy has six limitations that bear directly on interpretation.
+
+\textit{Textual measurement of AI exposure.} The classification captures what firms disclose about AI in their 10-Ks, not what they do operationally; the well-known examples of Apple in the No AI group and Netflix in the Moderate AI group illustrate that operationally AI-intensive firms can be silent in their filings. Because such firms are mis-assigned to the reference group rather than to the AI-exposed groups, the resulting measurement noise is likely to attenuate the estimated differential rather than create one, though the design itself cannot correct for it.
+
+\textit{Pre-ChatGPT ranking applied to the full sample.} The same 2022-vintage classification is used for events from 2010 onward. The measure is therefore a pre-ChatGPT cross-sectional ranking rather than an event-time ex ante measure, and there is no within-firm variation in AI exposure that could be exploited in alternative specifications. The cost is staleness, especially for early events; noise in early-event classification is again likely to attenuate the differential towards zero \citep{davisHansenSeminarioAmez2020, anteSaggu2025}.
+
+\textit{Snapshot-based firm universe.} The firm universe is the 2022-12-22 S\&P~500 snapshot. Conditioning on membership at the end of the AI-measurement window induces selection relative to a point-in-time historical-membership design and over-represents firms that survived to that date.
+
+\textit{Structural interpretation of the path shock.} \texttt{path\_3f} is a market-perceived forward-guidance surprise rather than a structurally identified monetary shock. To the extent that announcement-window surprises embed central-bank information about the outlook, the structural reading is subject to the path--information separation robustness check in \cref{ch:robustness} \citep{nakamuraSteinsson2018, jarocinskiKaradi2020, bauerSwanson2023, mirandaAgrippinoRicco2021}.
+
+\textit{FOMC event-window content.} The path surprise is constructed in a narrow announcement window, while the outcome is measured from the close before the event to the close $h$ trading days after. Daily returns therefore include post-announcement news flow, and in the post-2011 sample they include the post-meeting press conference, which can be a quantitatively important source of policy news \citep{gurkaynakKarasoyCanLee2022, durante2022, acostaEtAl2025}.
+
+\textit{Within-cell identification.} The sector\,$\times$\,event fixed effects absorb sector-level co-movement by construction. The preferred specification therefore identifies a within-sector cross-firm differential and cannot speak to whether any sector responds on average to the path surprise. Combined with the inferential point that the 95\% bands are pointwise rather than joint across horizons, this means the design supports cross-sectional comparisons by AI exposure but does not provide a level estimate of the monetary transmission to equity prices.
+
+\section{Bubbles}
+
+% =====================================================================
+%  Empirical Strategy --- Bubble detection in AI-exposure portfolios
+%  Cross-references confirmed against ch:literature and ch:data:
+%    sec:detecting-bubbles, sec:psy-data, eq:psy-null, eq:bsadf
+% =====================================================================
+ 
+\subsection{Design overview}
+\label{subsec:bubble-overview}
+ 
+This part of the empirical strategy implements the PSY procedure
+introduced in \cref{sec:detecting-bubbles} on the monthly portfolio
+panel constructed in \cref{sec:psy-data}. The implementation has
+three design layers. First, the cross-section is widened from a single
+index to disclosure-based AI-exposure groups and to a set of
+concentration baskets. Second, the test is run once over the full
+sample with endogenous date-stamping; the November 2022 release of
+ChatGPT enters only as a plot marker. Third, every series is tested
+under both value- and equal-weighted constructions, with the divergence
+between the two used as a breadth diagnostic: a series that is
+explosive under value-weighting but not equal-weighting points to a
+small number of mega-cap firms driving the result, while explosiveness
+under both weightings indicates broader participation across the group.
+\Cref{subsec:bubble-test-variables} states the test series.
+\Cref{subsec:bubble-specification} fixes the recursive specification.
+\Cref{subsec:bubble-critical-values} describes the bootstrap.
+\Cref{subsec:bubble-date-stamping} fixes the date-stamping rule.
+\Cref{subsec:bubble-robustness-design} previews the robustness
+exercises. \Cref{subsec:bubble-design-limitations} closes with the
+design's identification limits.
+ 
+ 
+\subsection{Test variables}
+\label{subsec:bubble-test-variables}
+ 
+The recursive test is applied in levels to twenty-eight monthly series,
+constructed from the group and basket total-return indices defined in
+\cref{sec:psy-data}. The construction separates three questions:
+whether a group is in an explosive phase in its own level, whether it
+is explosive relative to the broad market, and whether any
+explosiveness is concentrated in a small number of firms.
+ 
+The first sixteen series form the \emph{headline} block. For each
+weighting $w \in \{\textsc{vw}, \textsc{ew}\}$, eight panels are tested:
+four absolute total-return indices --- the High AI, Moderate AI and No
+AI group indices, and the S\&P~500 --- and four price-to-index ratios
+in the spirit of \citet{baselePhillipsShi2025}: each AI group divided
+by the S\&P~500, and the High AI index divided by the No AI index. The
+absolute indices test whether a group is in an explosive phase in level
+terms; level rejections of the absolute indices reflect
+both bubble-type acceleration and the steady exponential growth
+that characterises monthly total-return indices. For this reason, the
+absolute-index evidence is treated mainly as a diagnostic and is read
+jointly with the ratio series and with the log robustness exercise in
+\cref{sec:rob-log}. The relative-form series in which the substantive
+identification lives are largely insensitive to this issue because
+common exponential dynamics cancel between numerator and denominator;
+\cref{sec:rob-log} confirms this empirically. The High AI /
+S\&P~500 and Moderate AI / S\&P~500 ratios net out broad-market
+dynamics and isolate any repricing of the exposed groups relative to
+the market. The No AI / S\&P~500 ratio is a placebo-style diagnostic:
+under a narrow AI-specific bubble story it should not reject, and a
+rejection here would suggest the explosive dynamics reflect something
+other than, or in addition to, AI-specific repricing. The \textbf{High AI / No AI} ratio is the
+primary identification: numerator and denominator are drawn from the
+same equity universe, so common factors --- the level of interest
+rates, the equity premium, broad risk appetite --- cancel by
+construction. A rejection in this ratio isolates the differential
+between the most and least AI-exposed firms within the S\&P~500 and is
+less readily attributed to ambient bull-market conditions than a
+rejection in an absolute index or in a ratio to the S\&P~500. It is the
+most demanding of the four ratios reported, and the substantive
+identification turns on its verdict, subject to the limitations stated
+in \cref{subsec:bubble-design-limitations}. Because a ratio can become
+explosive through an accelerating numerator or a collapsing
+denominator, every rejection in a ratio series is read jointly with
+the absolute indices that form its components.
+ 
+The remaining twelve series form the \emph{concentration} block. Three
+baskets are constructed: a Top-5 basket containing the five firms with
+the highest pre-2023 AI disclosure scores, a Top-decile basket
+containing the highest-scoring decile of firms with non-zero AI
+mentions (seventeen firms), and the market's Magnificent-7 basket
+(NVDA, MSFT, GOOGL, AAPL, AMZN, META, TSLA). The first two nest inside
+the High AI group and narrow it from above. Mag-7 is defined by market
+narrative rather than disclosure and is not a subset of High AI ---
+notably it contains AAPL, which has zero AI mentions --- so it
+contrasts the narrative- and disclosure-based notions of AI exposure
+and serves as a comparability anchor to \citet{baselePhillipsShi2025},
+who study the same set. Each basket is tested under both weightings
+against two denominators: the No AI group (the clean concentration
+test relative to firms with no disclosed AI engagement) and the
+broader High AI group (asking whether the leaders, rather than the
+whole AI-exposed universe, drive any exuberance).
+ 
+ 
+\subsection{Recursive specification}
+\label{subsec:bubble-specification}
+ 
+Three choices fix the recursive ADF regression in the BSADF
+construction of \cref{eq:bsadf}. First, the regression includes an
+intercept and no deterministic trend, so the null in \cref{eq:psy-null}
+is a unit root with drift. This is the specification of
+\citet{phillipsWuYu2011, phillipsShiYu2014, phillipsShiYu2015a} and
+the default in the \texttt{psymonitor} package of
+\citet{caspiPhillipsShi2018}. The economic content of including the
+intercept is that a total-return equity index trending at the
+equity-premium rate is not mechanically classified as explosive; only
+acceleration is.
+ 
+Second, the transient-dynamic lag order in the augmented regression
+is fixed at $k = 0$. This is not data-dependent selection.
+\citet[Section~4.1, Table~2]{phillipsShiYu2015a} show that data-driven
+lag rules induce substantial size distortion in the GSADF test:
+sequential significance testing with a maximum lag of twelve yields a
+size of \num{0.557} against a 5\,\% nominal level at $T = 200$ and
+$r_0 = 0.2$, and BIC selection yields a positive size distortion that
+grows with the sample size. A fixed lag minimises this distortion and
+renders the test conservative, which \citet{phillipsShiYu2015a} argue
+is desirable because consistent date-stamping requires the size to
+tend to zero. They accordingly recommend a fixed lag and adopt
+$k = 0$ in their own application to the S\&P~500, on which their
+tabulated critical values are computed. The choice is especially
+relevant here because the minimum estimation window is short, the
+regime in which data-dependent lag selection performs worst. A
+fixed-lag sweep over $k \in \{1, 2, 3\}$ is reported as robustness in
+\cref{subsec:bubble-robustness-design}.
+ 
+Third, the minimum window size is set by the
+\citet{phillipsWuYu2011, phillipsShiYu2015a} rule
+\begin{equation}
+\label{eq:bubble-swindow}
+r_0 = 0.01 + \frac{1.8}{\sqrt{T}},
+\qquad
+\textrm{\texttt{swindow0}} = \lfloor r_0 \cdot T \rfloor,
+\end{equation}
+which gives $\textrm{\texttt{swindow0}} = 27$ months at $T = 195$. The
+rule adapts the warm-up to the sample size and removes researcher
+discretion over the window. The first twenty-seven months of each
+series function as an implicit training period over which the BSADF
+sequence is not defined.
+ 
+All statistics are computed with the \texttt{PSY()} function of the
+\texttt{psymonitor} package \citep{caspiPhillipsShi2018}.
+ 
+ 
+\subsection{Critical values}
+\label{subsec:bubble-critical-values}
+ 
+Finite-sample critical values are obtained by the wild multiplier
+bootstrap of \citet{harveyEtAl2016} as implemented in
+\texttt{psymonitor}, with \num{2000} replications, a control sample
+size $T_b = 12 \cdot 2 + \textrm{\texttt{swindow0}} - 1 = 50$ months,
+and a fixed internal seed. The wild bootstrap is robust to the
+conditional heteroskedasticity that is characteristic of monthly
+equity returns, for which the asymptotic critical values tabulated by
+\citet{phillipsShiYu2015a} are not designed. The 90\,\%, 95\,\% and
+99\,\% quantiles of the bootstrapped supremum statistic fix the
+significance thresholds reported in the tables. Critical values are
+recomputed under each lag specification in the robustness sweep, so
+that every lag choice is evaluated against its own null distribution.
+ 
+The wild multiplier in the published \texttt{psymonitor} package is
+generated as \texttt{matrix(rnorm(1), Tb, nboot)}, which draws a
+single $\mathcal{N}(0, 1)$ value and recycles it into every cell of
+the $T_b \times \texttt{nboot}$ multiplier matrix.\footnote{The code
+is the same in the CRAN build of \texttt{psymonitor}~0.0.3 and the
+package's GitHub source, and was reported in the package's issue
+tracker in December~2020 without subsequent patch.} A single recycled draw is not the wild bootstrap of \citet{mammen1993} and \citet{harveyEtAl2016}: because the ADF $t$-statistic --- and therefore the BSADF and GSADF statistics --- is scale-invariant under a uniform rescaling of the regression errors, the recycled constant is absorbed exactly, and the package bootstrap is equivalent to a pure residual-resampling bootstrap that discards the per-observation $\mathcal{N}(0, 1)$ perturbations the wild multiplier is meant to supply.
+The implementation used here therefore draws an independent
+$\mathcal{N}(0, 1)$ multiplier for each observation and replication,
+leaving every other element of the procedure unchanged.
+A side-by-side comparison of the package and corrected
+critical values is reported in \cref{ch:robustness}; all critical
+values in the headline tables use the corrected multiplier.
+ 
+ 
+\subsection{Date-stamping}
+\label{subsec:bubble-date-stamping}
+ 
+The date-stamping rule of \cref{sec:detecting-bubbles} is
+operationalised with three conventions. The threshold is the 95\,\%
+bootstrap critical value, which is the canonical level used in
+\citet{phillipsShiYu2015a}. Candidate episodes shorter than
+$\lfloor \log T \rfloor = 5$ months are discarded, in keeping with
+the minimum-duration filter recommended in their Section~5 and
+footnote~8; the filter removes the brief flicker that the recursive
+construction of the BSADF sequence is known to produce around the
+threshold.
+ 
+The critical value used for date-stamping is a single,
+$T_b$-calibrated wild-bootstrap value, applied as a constant
+threshold across the BSADF sequence rather than as a time-varying
+sequence that rises with the subsample size. This is the standard
+usage of the \texttt{psymonitor} package and is not the time-varying
+critical-value sequence of \citet[Section~5]{phillipsShiYu2015a};
+the flat monitoring value is somewhat permissive in dating the later,
+larger-window portion of the sample. The interpretation reported here
+is consistent with that distinction: episode boundaries are read as
+indicative, and the formal statistical inference on whether a series
+exhibits explosive behaviour rests on the GSADF statistic compared
+against its bootstrap critical value.
+ 
+The figures reported in \cref{ch:results} show graded shading bands
+at the three nested levels at which the BSADF sequence exceeds the
+90\,\%, 95\,\% and 99\,\% critical values, with the minimum-duration
+filter applied to the broadest (90\,\%) band, so that the strength
+of each episode is visible without separate panels. Tables report
+the 95\,\% threshold only.
+ 
+ 
+\subsection{Robustness design}
+\label{subsec:bubble-robustness-design}
+ 
+Three robustness exercises are reported in \cref{ch:robustness}.
+The first re-estimates every series under fixed lag orders
+$k \in \{1, 2, 3\}$, with the bootstrap critical values recomputed
+at each lag so that every specification is evaluated against its
+own null. The value $k = 3$ is the alternative used as the
+robustness anchor by \citet[footnote~22]{phillipsShiYu2015a};
+reporting $k = 1$ and $k = 2$ in addition shows the robustness
+pattern across the whole range between the headline ($k = 0$) and
+the PSY anchor. The second exercise re-estimates the twenty-eight
+series under the corrected and the package wild-bootstrap
+multipliers side by side, recording the GSADF statistic and the
+90/95/99\,\% critical values under each version so that any change
+in significance classification is transparent. The third exercise
+re-estimates the twenty-eight series in logs and reads the
+significance pattern against the level specification reported in
+\cref{ch:results}; the log specification is strictly more
+conservative for series with strong compound dynamics, and the
+exercise therefore tests whether the cross-sectional verdicts
+depend on the level-versus-log choice.
+ 
+ 
+\subsection{Identification limits of the bubble design}
+\label{subsec:bubble-design-limitations}
+ 
+Three limitations of the design are stated up front, because the
+substantive interpretation of the results in
+\cref{ch:results,ch:robustness} depends on them.
+ 
+First, the GSADF test is a test for explosive dynamics relative to a
+unit-root-with-drift null. A rejection is evidence that the price
+trajectory is mildly explosive in the sense of
+\citet{phillipsMagdalinos2007}; it is not by itself evidence that
+prices exceed fundamentals. The empirical results speak only to the
+shape of the trajectory.
+ 
+Second, although the High AI / No AI ratio is the most demanding of
+the four ratio constructions, the High AI group inherits a
+long-running pattern of technology-sector outperformance that
+pre-dates the AI episode. A ratio that remains elevated against its
+bootstrap critical-value sequence for an extended period reflects, in
+part, the persistent relative repricing of the technology-heavy High
+AI cohort across the post-2010 expansion --- it is not a clean
+isolate of the post-2022 AI episode. The interpretation of the High
+AI / No AI series therefore relies on a joint reading with the No AI
+absolute index, with the concentration-basket ratios, and with the
+date-stamping in \cref{subsec:bubble-date-stamping}; it is not read
+off the binary verdict alone.
+ 
+Third, the cohort fixes group membership in the pre-ChatGPT period
+and tracks it forward. As documented in \cref{sec:psy-data}, this is
+what makes the classification predetermined for the post-2022
+episode, but it also means the test is silent on firms that became
+AI-exposed after the classification date, on firms delisted before
+end-2022, and on within-group changes in AI emphasis over the
+sample. The identification is of a fixed, point-in-time cohort, not
+of ``AI-exposed firms'' as a moving population.

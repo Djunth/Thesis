@@ -1,0 +1,21 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:alt_outcomes_key}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Outcome & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\\hline
+cum\_ret\_h $\times$ High AI & -0.709 & -0.054 &  0.419 & -3.550 & -5.973 & -6.508 & -6.235 \\
+ & ( 0.520) & ( 0.885) & ( 1.319) & ( 1.926) & ( 2.144) & ( 2.186) & ( 2.486) \\
+cum\_ret\_h $\times$ Moderate AI &  0.192 & -0.083 & -0.692 & -3.404 & -1.390 & -2.219 & -1.753 \\
+ & ( 0.302) & ( 0.595) & ( 0.972) & ( 1.688) & ( 1.800) & ( 1.699) & ( 1.613) \\
+car\_mktadj\_h $\times$ High AI & -0.709 & -0.054 &  0.424 & -3.545 & -5.967 & -6.497 & -6.223 \\
+ & ( 0.520) & ( 0.885) & ( 1.319) & ( 1.926) & ( 2.144) & ( 2.185) & ( 2.485) \\
+car\_mktadj\_h $\times$ Moderate AI &  0.192 & -0.083 & -0.687 & -3.399 & -1.384 & -2.208 & -1.740 \\
+ & ( 0.302) & ( 0.595) & ( 0.972) & ( 1.688) & ( 1.800) & ( 1.700) & ( 1.612) \\
+car\_betaadj\_h $\times$ High AI & -0.487 &  0.145 &  0.870 & -3.118 & -5.326 & -5.762 & -4.919 \\
+ & ( 0.505) & ( 0.845) & ( 1.365) & ( 2.007) & ( 2.207) & ( 2.219) & ( 2.454) \\
+car\_betaadj\_h $\times$ Moderate AI &  0.307 &  0.034 & -0.458 & -3.121 & -1.128 & -1.868 & -1.221 \\
+ & ( 0.264) & ( 0.592) & ( 0.974) & ( 1.743) & ( 1.941) & ( 1.821) & ( 1.711) \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Preferred specification: firm FE + Sector $\times$ Event FE; two-way clustered SEs by firm and event in parentheses.}
+\multicolumn{8}{l}{\footnotesize Coefficients rescaled to a +25 bp shock: $\hat\beta \times 25 \times 100$, in percentage points.}
+\multicolumn{8}{l}{\footnotesize Omitted group: No AI. Intersection sample of 49863 observations from the active sample where all three outcomes are non-missing.}
+\multicolumn{8}{l}{\footnotesize ``---'' denotes horizons where the two-way clustered SE numerically collapses to zero. Firm-clustered SEs at these horizons are well-defined and reported in \cref{tab:car_vce_appendix}.}
+\end{tabular}

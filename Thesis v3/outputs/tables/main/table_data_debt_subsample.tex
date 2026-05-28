@@ -1,0 +1,16 @@
+\begin{tabular}{l r r r r r}
+\toprule
+\multicolumn{6}{l}{\textit{Panel A: Coverage}} \\
+\midrule
+\multicolumn{5}{l}{Firms with debt data} & 409 / 450 (90.9\%) \\
+\multicolumn{5}{l}{Events covered} & 119 / 128 (93.0\%) \\
+\multicolumn{5}{l}{Firm-event observations (h=0)} & 37,105 / 53,679 (69.1\%) \\
+\midrule
+\multicolumn{6}{l}{\textit{Panel B: Debt-to-assets distribution at h=0 (winsorized 1/99 pct)}} \\
+\midrule
+N & Mean & SD & p25 & Median & p75 \\
+\midrule
+37,105 & 0.244 & 0.175 & 0.105 & 0.233 & 0.350 \\
+\bottomrule
+\multicolumn{6}{p{\linewidth}}{\footnotesize \textit{Notes:} Matched SEC XBRL subsample for the 2010-2026 window with YF extension. sample\_debt = sample\_preferred\_with\_yf\_extension AND has\_debt\_data. The debt-to-assets ratio (debt\_assets\_lag\_w) uses lagged total debt over lagged total assets from each firm's most recent 10-Q prior to the FOMC event, winsorized at the 1st/99th percentiles. Panel A denominators are the in-window preferred sample. Sample: Preferred 2010-2026 (sample\_preferred\_with\_yf\_extension == 1; event date in [2010-01-01, 2026-12-31]). Built by Section 12c (2010-2026 window; YF-extended preferred sample).} \\
+\end{tabular}
