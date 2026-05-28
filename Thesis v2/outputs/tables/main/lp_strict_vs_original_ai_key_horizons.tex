@@ -1,0 +1,16 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{...}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Coefficient & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\\hline
+Strict+ML $\times$ High AI & -0.625 & -0.339 & -0.600 & -4.199 & -6.485 & -7.375 & -7.596 \\
+ & ( 0.504) & ( 0.899) & ( 1.356) & ( 1.916) & ( 2.110) & ( 2.240) & ( 2.533) \\
+Strict+ML $\times$ Moderate AI &  0.188 & -0.444 & -1.153 & -3.899 & -2.024 & -3.332 & -3.218 \\
+ & ( 0.310) & ( 0.638) & ( 0.994) & ( 1.632) & ( 1.833) & ( 1.787) & ( 1.850) \\
+Original broad $\times$ High AI & -0.660 & -1.015 & -0.779 & -4.212 & -5.675 & -7.038 & -6.945 \\
+ & ( 0.000) & ( 0.943) & ( 1.356) & ( 1.774) & ( 1.870) & ( 1.971) & ( 2.281) \\
+Original broad $\times$ Moderate AI &  0.419 & -0.471 & -0.726 & -1.793 & -0.959 & -1.982 & -2.443 \\
+ & ( 0.000) & ( 0.628) & ( 0.828) & ( 1.454) & ( 1.685) & ( 1.664) & ( 1.614) \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Preferred specification: firm FE + Sector $\times$ Event FE; two-way clustered SEs by firm and event in parentheses.}
+\multicolumn{8}{l}{\footnotesize Coefficients rescaled to a +25 bp shock: $\hat\beta \times 25 \times 100$, in percentage points.}
+\multicolumn{8}{l}{\footnotesize Omitted group: No AI (no\_ai for Strict+ML; no2 for Original broad). Active sample: sample\_preferred\_with\_yf\_extension == 1, 2010--2026, ai\_score\_inherited == 0.}
+\end{tabular}

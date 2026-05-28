@@ -1,0 +1,58 @@
+\documentclass[11pt,a4paper,oneside,openany]{report}
+
+\input{preamble}
+\input{commands}
+
+\assignment{Master's thesis}
+
+\title{AI boom }
+\subtitle{?????}
+
+\author{Daniel Juncker Thomsen and Lukas Mittelberger}
+\advisor{Supervisor: Manuel Menkhoff}
+
+\date{Submitted: \today}
+
+\begin{document}
+
+\begingroup
+  \maketitle
+\endgroup
+
+\clearpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\input{frontmatter/abstract}
+\clearpage
+
+\input{frontmatter/acknowledgements}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+
+\pagenumbering{arabic}
+
+\include{chapters/01_introduction}
+\include{chapters/02_literature}
+\include{chapters/03_data}
+\include{chapters/04_empirical_strategy}
+\include{chapters/05_results}
+\include{chapters/06_robustness}
+\include{chapters/07_conclusion}
+
+\appendix
+\include{appendices/appendix_a_data}
+\include{appendices/appendix_b_additional_results}
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography/references}
+
+\end{document}

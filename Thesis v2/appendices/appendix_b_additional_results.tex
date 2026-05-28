@@ -1,0 +1,592 @@
+\section{Date-stamped explosive episodes: full tables}
+\label{app:episodes-full}
+ 
+This appendix reports the date-stamped explosive episodes deferred from \cref{sec:results-episodes,sec:results-concentration}. \Cref{tab:episodes-headline-deferred} reports the episodes for the headline series that are not shown in \cref{tab:episodes-headline}, namely the Moderate~AI, No~AI and S\&P~500 absolute indices under both weightings, and the equal-weighted episodes for the High-AI series. \Cref{tab:episodes-topn} reports the episodes for the twelve concentration-basket series. The date-stamping rule of \cref{subsec:bubble-date-stamping} is applied throughout: an episode is recorded whenever the BSADF sequence exceeds the 95\,\% wild-multiplier bootstrap critical value for at least $\lfloor \log T \rfloor = 5$ consecutive months.
+ 
+\begin{table}[!htbp]
+\centering
+\caption{Date-stamped explosive episodes: headline series deferred from \cref{tab:episodes-headline}.}
+\label{tab:episodes-headline-deferred}
+\small
+\begin{tabular}{l c l l S[table-format=2.0] S[table-format=1.3] l}
+\toprule
+Series & Weighting & Start & End & {Months} & {Peak BSADF} & Peak date \\
+\midrule
+Moderate AI (abs)     & vw & 2021-04 & 2021-08 &  5 & 1.798 & 2021-08 \\
+Moderate AI (abs)     & ew & 2021-03 & 2022-01 & 11 & 2.244 & 2021-08 \\
+\midrule
+No AI (abs)           & ew & 2021-04 & 2021-08 &  5 & 1.910 & 2021-05 \\
+\midrule
+S\&P~500 (abs)        & vw & 2021-04 & 2021-08 &  5 & 2.167 & 2021-08 \\
+S\&P~500 (abs)        & vw & 2025-07 & 2026-02 &  8 & 2.092 & 2025-10 \\
+S\&P~500 (abs)        & ew & 2021-04 & 2021-08 &  5 & 2.167 & 2021-08 \\
+S\&P~500 (abs)        & ew & 2025-07 & 2026-02 &  8 & 2.092 & 2025-10 \\
+\midrule
+High AI (abs)         & ew & 2017-04 & 2018-09 & 18 & 3.673 & 2018-08 \\
+High AI (abs)         & ew & 2020-11 & 2022-03 & 17 & 4.247 & 2021-08 \\
+\midrule
+High AI / No AI       & ew & 2020-02 & 2021-04 & 15 & 3.193 & 2020-06 \\
+High AI / No AI       & ew & 2021-06 & 2021-12 &  7 & 2.562 & 2021-11 \\
+\midrule
+High AI / S\&P~500    & ew & 2017-01 & 2021-12 & 60 & 2.850 & 2018-09 \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Episodes for the headline AI-exposure series not reported in \cref{tab:episodes-headline}, which lists the value-weighted episodes for the High-AI series only. Peak BSADF is the supremum of the BSADF sequence within the episode; peak date is the month in which it is attained. Dating rule, bootstrap setup and sample as in \cref{tab:episodes-headline}.}
+\end{table}
+ 
+\begin{table}[!htbp]
+\centering
+\caption{Date-stamped explosive episodes: concentration baskets.}
+\label{tab:episodes-topn}
+\small
+\begin{tabular}{l l c l l S[table-format=2.0] S[table-format=1.3] l}
+\toprule
+Basket & Denominator & Weighting & Start & End & {Months} & {Peak BSADF} & Peak date \\
+\midrule
+Top-5      & No AI    & vw & 2020-01 & 2020-10 & 10 & 4.094 & 2020-06 \\
+Top-5      & No AI    & vw & 2021-06 & 2021-12 &  7 & 3.052 & 2021-11 \\
+Top-5      & No AI    & vw & 2024-01 & 2024-07 &  7 & 3.457 & 2024-06 \\
+Top-5      & No AI    & vw & 2025-06 & 2025-10 &  5 & 2.648 & 2025-07 \\
+Top-5      & No AI    & ew & 2018-01 & 2018-05 &  5 & 2.617 & 2018-02 \\
+\midrule
+Top-decile & No AI    & vw & 2020-02 & 2020-11 & 10 & 3.350 & 2020-06 \\
+Top-decile & No AI    & vw & 2021-06 & 2021-12 &  7 & 3.315 & 2021-11 \\
+\midrule
+Mag-7      & No AI    & vw & 2020-03 & 2021-02 & 12 & 5.204 & 2020-08 \\
+Mag-7      & No AI    & vw & 2021-06 & 2021-12 &  7 & 2.598 & 2021-11 \\
+Mag-7      & No AI    & ew & 2020-02 & 2021-02 & 13 & 6.722 & 2020-08 \\
+Mag-7      & No AI    & ew & 2021-06 & 2021-12 &  7 & 3.246 & 2021-11 \\
+\midrule
+Mag-7      & High AI  & ew & 2020-06 & 2020-10 &  5 & 4.491 & 2020-08 \\
+Mag-7      & High AI  & ew & 2024-10 & 2025-02 &  5 & 2.448 & 2024-12 \\
+Mag-7      & High AI  & ew & 2025-05 & 2026-01 &  9 & 2.566 & 2025-10 \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Episodes for the twelve concentration-basket series defined in \cref{subsec:bubble-test-variables}. The Top-5~/~High AI, Top-decile~/~High AI and Mag-7~/~High AI series (under one or both weightings) and the equal-weighted Top-decile~/~No AI series produce GSADF rejections (\cref{tab:gsadf-topn}) but no episodes that survive the $\lfloor \log T \rfloor = 5$-month duration filter, and are therefore absent from this table. Peak BSADF, dating rule, bootstrap setup and sample as in \cref{tab:episodes-headline}.}
+\end{table}
+ 
+ 
+% ---------------------------------------------------------------------
+\section{Equal-weighted shaded-index and shaded-ratio figures}
+\label{app:psy-ew}
+ 
+This appendix reports the equal-weighted counterparts of the shaded figures discussed in \cref{sec:results-episodes,sec:results-concentration}. The same date-stamping rule and graded shading convention are applied as in the main text (\cref{subsec:bubble-date-stamping}); only the portfolio weighting changes. Read alongside the value-weighted versions in \cref{fig:groups-vw-fullsample,fig:topn-vw-fullsample}, the equal-weighted figures support the breadth diagnostic of \cref{subsec:bubble-overview}: series that are shaded under both weightings reflect broad participation across the group, whereas series shaded only under value-weighting are carried by the largest constituents.
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_groups_ew_fullsample.png}
+\caption{Shaded-index plot of the headline AI-exposure series, equal-weighted, full sample.}
+\label{fig:groups-ew-fullsample}
+\caption*{\footnotesize \textit{Notes.} Equal-weighted counterpart of \cref{fig:groups-vw-fullsample}. Top four panels: absolute total-return indices (start $= 100$ in January~2010) for the High~AI, Moderate~AI, No~AI and S\&P~500 series. Bottom four panels: corresponding ratios to the S\&P~500 total-return index and the High~AI / No~AI within-equity contrast. Graded shading marks months in which the BSADF sequence exceeds the 90\,\%, 95\,\% and 99\,\% wild-multiplier bootstrap critical values (light to dark), with the minimum-duration filter of \cref{subsec:bubble-date-stamping} applied to the 90\,\% envelope. The dashed vertical line marks the release of ChatGPT on 30~November~2022 and is a reference marker only. $n_{\mathrm{boot}} = \num{2000}$.}
+\end{figure}
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_topN_ew_fullsample.png}
+\caption{Shaded-ratio plot of the concentration baskets, equal-weighted, full sample.}
+\label{fig:topn-ew-fullsample}
+\caption*{\footnotesize \textit{Notes.} Equal-weighted counterpart of \cref{fig:topn-vw-fullsample}. Ratios of the Top-5, Top-decile and Mag-7 baskets to the No-AI and High-AI denominators, under equal-weighting. Basket definitions as in \cref{subsec:bubble-test-variables}. Shading and reference line as in \cref{fig:groups-vw-fullsample}.}
+\end{figure}
+ 
+ 
+% ---------------------------------------------------------------------
+\section{BSADF-vs-critical-value figures}
+\label{app:psy-bsadf-cv}
+ 
+The shaded-index figures in \cref{ch:results} and \cref{app:psy-ew} mark whether the BSADF sequence exceeds the bootstrap critical values, but suppress the magnitude of any exceedance. This appendix reports the canonical Phillips--Shi monitoring view: for each series, the BSADF statistic sequence is plotted in levels against a flat 95\,\% bootstrap critical value (red dashed), with the 90\,\% and 99\,\% values shown as grey dotted reference lines. The same critical values are used as in the main-text tables and figures; the figures here therefore preserve the information in the shading at the cost of being more cluttered. They are useful for reading off the magnitude of the BSADF exceedance during the dated episodes of \cref{sec:results-episodes,sec:results-concentration} --- for example, the August~2020 spike in the Mag-7 / No AI series exceeds the 95\,\% critical value by a wider margin than any other point in the analysis, and is visible directly in the bottom-left panel of \cref{fig:topn-vw-bsadf-cv}.
+ 
+A small interpretive note. The flat critical value reflects the wild-bootstrap monitoring value calibrated to the control window $T_b$ described in \cref{subsec:bubble-critical-values}, not the time-varying critical-value sequence of \citet[Section~5]{phillipsShiYu2015a}. As warned in \cref{subsec:bubble-date-stamping}, this is the standard usage of \texttt{psymonitor} and is somewhat permissive in dating the later, larger-window portion of the sample; the BSADF-vs-CV figures should therefore be read for magnitude rather than as a precise alternative date-stamping device.
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_groups_vw_bsadf_cv.png}
+\caption{BSADF statistic versus bootstrap critical values: headline series, value-weighted.}
+\label{fig:groups-vw-bsadf-cv}
+\caption*{\footnotesize \textit{Notes.} Eight panels, corresponding one-to-one with the panels of \cref{fig:groups-vw-fullsample}. Solid line: BSADF statistic sequence. Red dashed line: 95\,\% wild-multiplier bootstrap critical value. Grey dotted lines: 90\,\% and 99\,\% critical values. Sequences begin in month~28 (the first observation after \texttt{swindow0}~$=27$). The dashed vertical line marks the release of ChatGPT on 30~November~2022. $n_{\mathrm{boot}} = \num{2000}$.}
+\end{figure}
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_groups_ew_bsadf_cv.png}
+\caption{BSADF statistic versus bootstrap critical values: headline series, equal-weighted.}
+\label{fig:groups-ew-bsadf-cv}
+\caption*{\footnotesize \textit{Notes.} Equal-weighted counterpart of \cref{fig:groups-vw-bsadf-cv}, paired with \cref{fig:groups-ew-fullsample}. Plotting conventions as in \cref{fig:groups-vw-bsadf-cv}.}
+\end{figure}
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_topN_vw_bsadf_cv.png}
+\caption{BSADF statistic versus bootstrap critical values: concentration baskets, value-weighted.}
+\label{fig:topn-vw-bsadf-cv}
+\caption*{\footnotesize \textit{Notes.} Six panels, corresponding one-to-one with the panels of \cref{fig:topn-vw-fullsample}. Plotting conventions as in \cref{fig:groups-vw-bsadf-cv}.}
+\end{figure}
+ 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{outputs/figures/appendix/ai_topN_ew_bsadf_cv.png}
+\caption{BSADF statistic versus bootstrap critical values: concentration baskets, equal-weighted.}
+\label{fig:topn-ew-bsadf-cv}
+\caption*{\footnotesize \textit{Notes.} Equal-weighted counterpart of \cref{fig:topn-vw-bsadf-cv}, paired with \cref{fig:topn-ew-fullsample}. Plotting conventions as in \cref{fig:groups-vw-bsadf-cv}.}
+\end{figure}
+
+\section{Lag-order robustness: concentration baskets}
+\label{app:rob-lags-topn}
+ 
+\Cref{tab:rob-lags-topn} reports the lag-order robustness exercise from \cref{sec:rob-lags} applied to the twelve concentration baskets. The basket definitions follow \cref{subsec:bubble-test-variables}: Top-5 is the five firms with the highest pre-2023 normalised AI keyword score; Top-decile is the firms in the top decile of the score among firms with at least one AI mention; Mag-7 is NVDA, MSFT, GOOGL, AAPL, AMZN, META and TSLA. Wild-multiplier bootstrap critical values are recomputed at each lag.
+ 
+\begin{table}[!htbp]
+\centering
+\caption{Lag-order robustness: concentration baskets.}
+\label{tab:rob-lags-topn}
+\small
+\begin{tabular}{l l c S[table-format=1.3] c S[table-format=1.3] c S[table-format=1.3] c S[table-format=1.3] c c}
+\toprule
+ & & & \multicolumn{2}{c}{$k=0$} & \multicolumn{2}{c}{$k=1$} & \multicolumn{2}{c}{$k=2$} & \multicolumn{2}{c}{$k=3$} & \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+Basket & Den. & Wgt. & {GSADF} & sig & {GSADF} & sig & {GSADF} & sig & {GSADF} & sig & all stable \\
+\midrule
+Top-5      & High AI & vw & 2.011 & **  & 2.761 & *** & 2.525 & **  & 2.936 & **  & no \\
+Top-5      & No AI   & vw & 4.094 & *** & 4.123 & *** & 3.374 & *** & 2.801 & **  & no \\
+Top-decile & High AI & vw & 1.419 & *   & 2.402 & **  & 1.697 & *   & 1.672 & *   & no \\
+Top-decile & No AI   & vw & 3.350 & *** & 3.746 & *** & 3.137 & *** & 2.628 & **  & no \\
+Mag-7      & High AI & vw & 3.329 & *** & 3.169 & *** & 2.385 & **  & 1.939 & *   & no \\
+Mag-7      & No AI   & vw & 5.204 & *** & 4.565 & *** & 3.706 & *** & 2.772 & **  & no \\
+\midrule
+Top-5      & High AI & ew & 1.593 & *   & 2.154 & **  & 1.877 & *   & 2.044 & *   & no \\
+Top-5      & No AI   & ew & 2.617 & *** & 3.096 & *** & 2.990 & **  & 2.909 & **  & no \\
+Top-decile & High AI & ew & 1.377 & *   & 1.152 & --- & 1.590 & *   & 1.124 & --- & no \\
+Top-decile & No AI   & ew & 2.044 & **  & 2.055 & **  & 2.144 & **  & 1.884 & *   & no \\
+Mag-7      & High AI & ew & 4.491 & *** & 3.984 & *** & 2.996 & *** & 2.555 & **  & no \\
+Mag-7      & No AI   & ew & 6.722 & *** & 4.990 & *** & 4.030 & *** & 3.233 & *** & yes \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Full-sample GSADF statistic and significance verdict at lag orders $k\in\{0,1,2,3\}$ for the twelve concentration-basket series. Significance conventions, sample, recursive specification and bootstrap setup as in \cref{tab:rob-lags-headline}.}
+\end{table}
+ 
+ 
+% ---------------------------------------------------------------------
+\section{Wild-bootstrap multiplier comparison}
+\label{app:rob-multiplier}
+ 
+\Cref{tab:rob-multiplier} reports the GSADF statistic, the 95\,\% and 99\,\% wild-multiplier bootstrap critical values, and the significance verdict for each of the twenty-eight series in the analysis, under the \texttt{psymonitor}~0.0.3 multiplier (a single recycled $N(0,1)$ draw per call, equivalent to a pure residual-resampling bootstrap by scale-invariance of the ADF $t$-statistic) and under the corrected $N(0,1)$ multiplier (the i.i.d.~implementation of \citealt{harveyEtAl2016}). The GSADF statistic itself is identical across multipliers; only the critical values, and therefore the significance verdicts, change. The ``shift'' column marks the eight series for which the significance bin changes by one level under the correction; all shifts are downward (the package over-states significance), and no series loses significance entirely.
+ 
+\begin{table}[!htbp]
+\centering
+\caption{Wild-bootstrap multiplier comparison: all twenty-eight series.}
+\label{tab:rob-multiplier}
+\small
+\begin{tabular}{l c S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] c c}
+\toprule
+ & & & \multicolumn{3}{c}{\texttt{psymonitor}~0.0.3} & \multicolumn{3}{c}{Corrected} & \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}
+Series & Wgt. & {GSADF} & {CV95} & {CV99} & sig & {CV95} & {CV99} & sig & shift \\
+\midrule
+High AI (abs)              & vw & 4.037 & 1.496 & 2.317 & *** & 1.559 & 2.572 & *** & \\
+Moderate AI (abs)          & vw & 2.345 & 1.402 & 2.237 & *** & 1.493 & 2.539 & **  & $\checkmark$ \\
+No AI (abs)                & vw & 1.860 & 1.268 & 2.001 & **  & 1.524 & 2.438 & **  & \\
+S\&P~500 (abs)             & vw & 2.167 & 1.363 & 2.166 & *** & 1.488 & 2.615 & **  & $\checkmark$ \\
+High AI / S\&P~500         & vw & 3.408 & 1.312 & 2.395 & *** & 1.405 & 2.337 & *** & \\
+Moderate AI / S\&P~500     & vw & 1.382 & 1.272 & 1.977 & **  & 1.382 & 2.036 & **  & \\
+No AI / S\&P~500           & vw & 1.453 & 1.462 & 2.360 & *   & 1.545 & 2.338 & *   & \\
+High AI / No AI            & vw & 3.147 & 1.473 & 2.577 & *** & 1.426 & 2.455 & *** & \\
+Top-5 / No AI              & vw & 4.094 & 1.541 & 2.431 & *** & 1.595 & 2.769 & *** & \\
+Top-5 / High AI            & vw & 2.011 & 1.246 & 1.986 & *** & 1.560 & 2.338 & **  & $\checkmark$ \\
+Top-decile / No AI         & vw & 3.350 & 1.419 & 2.272 & *** & 1.556 & 2.530 & *** & \\
+Top-decile / High AI       & vw & 1.419 & 1.214 & 1.938 & **  & 1.546 & 2.405 & *   & $\checkmark$ \\
+Mag-7 / No AI              & vw & 5.204 & 1.257 & 2.142 & *** & 1.490 & 2.391 & *** & \\
+Mag-7 / High AI            & vw & 3.329 & 1.253 & 1.946 & *** & 1.396 & 2.104 & *** & \\
+\midrule
+High AI (abs)              & ew & 4.247 & 1.307 & 2.261 & *** & 1.603 & 2.615 & *** & \\
+Moderate AI (abs)          & ew & 2.244 & 1.300 & 2.059 & *** & 1.473 & 2.437 & **  & $\checkmark$ \\
+No AI (abs)                & ew & 1.966 & 1.256 & 2.139 & **  & 1.548 & 2.544 & **  & \\
+S\&P~500 (abs)             & ew & 2.167 & 1.363 & 2.166 & *** & 1.488 & 2.615 & **  & $\checkmark$ \\
+High AI / S\&P~500         & ew & 2.850 & 1.225 & 2.071 & *** & 1.460 & 2.289 & *** & \\
+Moderate AI / S\&P~500     & ew & 1.569 & 1.319 & 2.003 & **  & 1.395 & 2.385 & **  & \\
+No AI / S\&P~500           & ew & 1.631 & 1.299 & 2.102 & **  & 1.418 & 2.175 & **  & \\
+High AI / No AI            & ew & 3.193 & 1.322 & 2.007 & *** & 1.529 & 2.350 & *** & \\
+Top-5 / No AI              & ew & 2.617 & 1.429 & 2.187 & *** & 1.548 & 2.557 & *** & \\
+Top-5 / High AI            & ew & 1.593 & 1.307 & 2.043 & **  & 1.615 & 2.502 & *   & $\checkmark$ \\
+Top-decile / No AI         & ew & 2.044 & 1.355 & 2.210 & **  & 1.530 & 2.602 & **  & \\
+Top-decile / High AI       & ew & 1.377 & 1.228 & 1.932 & **  & 1.548 & 2.455 & *   & $\checkmark$ \\
+Mag-7 / No AI              & ew & 6.722 & 1.353 & 2.067 & *** & 1.515 & 2.448 & *** & \\
+Mag-7 / High AI            & ew & 4.491 & 1.325 & 1.935 & *** & 1.435 & 2.235 & *** & \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} The 90\,\% critical values are omitted for compactness; no series in the analysis sits near the 90\,\% boundary under either multiplier. Bootstrap setup, sample, and significance conventions as in \cref{tab:rob-lags-headline}; lag order $k=0$.}
+\end{table}
+ 
+ 
+% ---------------------------------------------------------------------
+\section{Log-versus-level specification}
+\label{app:rob-loglevel}
+ 
+\Cref{tab:rob-loglevel} reports the GSADF statistic and significance verdict for each of the twenty-eight series under the level specification ($y_t$ as the test variable) and the log specification ($\log y_t$ as the test variable). The bootstrap critical values are recomputed under the log specification so that each verdict is evaluated against its own null. All three log critical values (90\,\%, 95\,\%, 99\,\%) are reported because thirteen of the twenty-eight series sit between the 90\,\% and 95\,\% critical values---or, in two cases, below the 90\,\% value---under the log specification. The ``shift'' column marks the series whose significance bin changes between the two specifications.
+ 
+\begin{table}[!htbp]
+\centering
+\caption{Log-versus-level specification: all twenty-eight series.}
+\label{tab:rob-loglevel}
+\small
+\begin{tabular}{l c S[table-format=1.3] c S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] c c}
+\toprule
+ & & \multicolumn{2}{c}{Levels} & \multicolumn{5}{c}{Logs} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-9}
+Series & Wgt. & {GSADF} & sig & {GSADF} & {CV90} & {CV95} & {CV99} & sig & shift \\
+\midrule
+High AI (abs)              & vw & 4.037 & *** & 1.436 & 0.960 & 1.464 & 2.373 & *   & $\checkmark$ \\
+Moderate AI (abs)          & vw & 2.345 & **  & 0.755 & 0.984 & 1.328 & 2.448 & --- & $\checkmark$ \\
+No AI (abs)                & vw & 1.860 & **  & 1.256 & 1.013 & 1.326 & 2.073 & *   & $\checkmark$ \\
+S\&P~500 (abs)             & vw & 2.167 & **  & 1.338 & 0.958 & 1.363 & 2.296 & *   & $\checkmark$ \\
+High AI / S\&P~500         & vw & 3.408 & *** & 2.438 & 1.006 & 1.395 & 2.211 & *** & \\
+Moderate AI / S\&P~500     & vw & 1.382 & **  & 1.559 & 1.030 & 1.400 & 2.123 & **  & \\
+No AI / S\&P~500           & vw & 1.453 & *   & 1.293 & 1.138 & 1.550 & 2.330 & *   & \\
+High AI / No AI            & vw & 3.147 & *** & 2.145 & 1.035 & 1.468 & 2.252 & **  & $\checkmark$ \\
+Top-5 / No AI              & vw & 4.094 & *** & 2.033 & 0.977 & 1.401 & 2.337 & **  & $\checkmark$ \\
+Top-5 / High AI            & vw & 2.011 & **  & 1.527 & 1.084 & 1.518 & 2.186 & **  & \\
+Top-decile / No AI         & vw & 3.350 & *** & 2.024 & 0.989 & 1.513 & 2.376 & **  & $\checkmark$ \\
+Top-decile / High AI       & vw & 1.419 & *   & 1.162 & 1.064 & 1.547 & 2.346 & *   & \\
+Mag-7 / No AI              & vw & 5.204 & *** & 2.825 & 0.940 & 1.361 & 2.274 & *** & \\
+Mag-7 / High AI            & vw & 3.329 & *** & 2.642 & 1.034 & 1.424 & 2.003 & *** & \\
+\midrule
+High AI (abs)              & ew & 4.247 & *** & 1.257 & 0.995 & 1.397 & 2.392 & *   & $\checkmark$ \\
+Moderate AI (abs)          & ew & 2.244 & **  & 1.043 & 0.972 & 1.353 & 2.294 & *   & $\checkmark$ \\
+No AI (abs)                & ew & 1.966 & **  & 1.211 & 0.976 & 1.407 & 2.262 & *   & $\checkmark$ \\
+S\&P~500 (abs)             & ew & 2.167 & **  & 1.338 & 0.958 & 1.363 & 2.296 & *   & $\checkmark$ \\
+High AI / S\&P~500         & ew & 2.850 & *** & 2.002 & 1.074 & 1.426 & 2.269 & **  & $\checkmark$ \\
+Moderate AI / S\&P~500     & ew & 1.569 & **  & 1.321 & 0.974 & 1.411 & 2.425 & *   & $\checkmark$ \\
+No AI / S\&P~500           & ew & 1.631 & **  & 1.418 & 0.921 & 1.370 & 2.287 & **  & \\
+High AI / No AI            & ew & 3.193 & *** & 2.376 & 1.098 & 1.459 & 2.219 & *** & \\
+Top-5 / No AI              & ew & 2.617 & *** & 1.599 & 1.072 & 1.575 & 2.300 & **  & $\checkmark$ \\
+Top-5 / High AI            & ew & 1.593 & *   & 0.894 & 1.124 & 1.515 & 2.295 & --- & $\checkmark$ \\
+Top-decile / No AI         & ew & 2.044 & **  & 1.303 & 1.032 & 1.439 & 2.471 & *   & $\checkmark$ \\
+Top-decile / High AI       & ew & 1.377 & *   & 1.593 & 1.088 & 1.515 & 2.370 & **  & $\checkmark$ \\
+Mag-7 / No AI              & ew & 6.722 & *** & 3.472 & 0.916 & 1.252 & 2.269 & *** & \\
+Mag-7 / High AI            & ew & 4.491 & *** & 3.033 & 0.896 & 1.272 & 2.047 & *** & \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize \textit{Notes.} Level critical values match those reported in the main-text GSADF tables (\cref{ch:results}) and are omitted for compactness; log critical values are recomputed under the log specification so that each verdict is evaluated against its own null. ``---'' indicates failure to reject at 90\,\%. Sample, lag order ($k=0$), control window ($T_b=50$), bootstrap seed, and bootstrap count ($n_{\mathrm{boot}} = \num{2000}$) are otherwise as in \cref{ch:results}.}
+\end{table}
+
+
+ % =====================================================================
+% Appendix block: complementary checks relocated from the main robustness
+% chapter. Place inside appendix_b_additional_results.tex (or wherever
+% \appendix{app:additional-results} is defined), as three new sections
+% under that appendix.
+% =====================================================================
+
+% =====================================================================
+% Appendix block: complementary checks relocated from the main robustness
+% chapter. Place inside appendix_b_additional_results.tex (or wherever
+% \appendix{app:additional-results} is defined), as three new sections
+% under that appendix.
+% =====================================================================
+
+\section{Continuous AI exposure}
+\label{app:rob-altai-continuous}
+
+The headline result in \cref{ch:results} and the discrete-classification
+check in \cref{sec:rob-altai} both rely on the three-way grouping
+\{\texttt{high\_ai}, \texttt{moderate\_ai}, \texttt{no\_ai}\}.
+A complementary check replaces the discrete groupings entirely with
+a continuous standardised log AI score, \texttt{logAIz}, interacted
+with \texttt{path\_3f}. The estimating equation collapses to a single
+interaction term:
+\begin{equation*}
+    \mathtt{cum\_ret\_h}_{i,e,h}
+    \;=\; \alpha_i + \gamma_{s(i)\times e}
+    \;+\; \beta_h\,\mathtt{path\_x\_logAIz}_{i,e}
+    \;+\; \varepsilon_{i,e,h},
+\end{equation*}
+where \texttt{logAIz} is approximately mean zero and unit variance on
+the active sample (mean $0.006$, SD $1.007$). The scaled coefficient
+$\hat\beta \times 25 \times 100$ is interpreted as the differential
+cumulative-return response in percentage points to a $+25$ bp path
+surprise per one-standard-deviation increase in \texttt{logAIz}.
+
+Point estimates are uniformly negative at horizons $h \geq 15$ and
+grow in absolute value with the horizon, reaching $-3.50$~pp per SD
+at $h = 60$. The shape closely tracks the High AI differential under
+the discrete specification: roughly flat through $h = 20$, then a
+steady decline. Under the preferred two-way clustering by firm and
+event, however, the standard-error estimator collapses at a
+substantial fraction of horizons --- including two of the seven key
+horizons ($h = 20$, $h = 40$) --- returning a numerical value of
+zero that the do-file replaces with missing. The collapse reflects
+the limited between-cluster variation in \texttt{logAIz} relative to
+the discrete-group interactions and is a known property of the
+cluster-robust variance estimator rather than a regression bug; it
+is not specific to any one horizon.
+
+Sensitivity to the clustering choice resolves the inference issue.
+Under firm-only clustering, event-only clustering, or
+heteroskedasticity-robust standard errors, the standard error is
+well defined at every horizon and the point estimates are unchanged
+by construction. Under any of these three alternative inference
+schemes the long-horizon coefficient is distinguishable from zero at
+the $5\%$ level: at $h = 60$, for example, the firm-clustered
+standard error is $1.15$~pp, giving a $95\%$ confidence interval of
+$[-5.75, -1.26]$.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Continuous \texttt{logAIz}: VCE sensitivity]{Continuous
+\texttt{logAIz}: VCE sensitivity at key horizons}
+\label{tab:logaiz_vce_sensitivity}
+\input{outputs/tables/main/lp_continuous_ai_vce_sensitivity}
+\end{table}
+
+The continuous-exposure evidence is therefore qualitatively
+consistent with the discrete-classification results, though the
+formal inference at the preferred two-way clustering is sensitive to
+the well-known small-cluster issue and is reported with the
+appropriate caveat.
+
+\section{Volatility outcomes}
+\label{app:rob-volatility}
+
+\Cref{sec:rob-altoutcomes} addresses whether the headline mean
+differential survives stripping out market-wide returns; the answer is
+yes. A distinct second-moment question is whether the path shock
+generates a differential \emph{volatility} response across AI groups,
+in addition to or independent of the mean response. The distinction
+matters for interpretation: a cash-flow- or discount-rate-channel
+response shifts expected payoffs and would not necessarily raise
+return dispersion, while an information-content interpretation
+(under which the path shock conveys more news about the fundamentals
+of AI-exposed firms than other firms) would predict differential
+volatility alongside the differential mean. The check is reported
+here in the appendix rather than as part of the main robustness
+chapter because a null on volatility is not a threat to the
+headline mean claim --- the result is best read as complementary
+evidence about mechanism rather than as defensive evidence about
+the result itself.
+
+\paragraph{Specification.} The preferred specification is unchanged
+except for the outcome. Two volatility measures are used:
+\texttt{avg\_abs\_ret\_h}, the average absolute daily log return over
+the post-event window of $h+1$ trading days (event day inclusive),
+and \texttt{realized\_vol\_h}, the square root of the sum of squared
+daily log returns over the same window. Neither outcome is
+annualised, demeaned, or winsorised; both are constructed in the
+master analysis panel in fractional units. Coefficients are rescaled
+to a $+25$ bp path-shock surprise as in the preferred specification,
+with the $\times 100$ factor converting fractional units to
+percentage points. The active sample, fixed effects, clustering, and
+AI grouping are identical to the preferred specification;
+volatility-outcome sample sizes coincide with the headline regression
+sample at every key horizon.
+
+\Cref{tab:volatility_key} reports the High AI and Moderate AI
+interaction coefficients at the seven key horizons under both
+volatility outcomes. \Cref{fig:volatility_irf} plots the
+corresponding impulse responses across $h = 0,\ldots,60$.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Volatility outcomes: key-horizon estimates]{Volatility
+outcomes: key-horizon estimates}
+\label{tab:volatility_key}
+\input{outputs/tables/main/lp_volatility_path3f_high_ai_key_horizons}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\WideFigureWidth]{fig_10_volatility_outcome_path_high_mod_vs_no.pdf}
+    \caption[Volatility outcomes: impulse responses]{Volatility
+    outcomes: differential volatility response to a $+25$ bp
+    path-shock surprise by AI exposure group, at trading-day
+    horizons $h = 0,\ldots,60$.}
+    \label{fig:volatility_irf}
+    \floatfoot{\footnotesize Notes. Outcome, fixed effects,
+    clustering, scaling, and active sample as in
+    \cref{fig:preferred_path_irf}, with \texttt{realized\_vol\_h} (or
+    \texttt{avg\_abs\_ret\_h}) in place of \texttt{cum\_ret\_h}.
+    Shaded bands are pointwise $95\%$ confidence intervals from
+    clustered standard errors.}
+\end{figure}
+
+The High AI volatility response is statistically indistinguishable
+from zero at every key horizon under both measures. Under
+\texttt{realized\_vol\_h}, the High AI differential at $h = 60$ is
+$+0.72$~pp (s.e.~$0.84$, $95\%$ CI $[-0.92, +2.35]$); under
+\texttt{avg\_abs\_ret\_h} it is $+0.10$~pp (s.e.~$0.07$, CI $[-0.05,
++0.24]$). Point estimates are positive at every key horizon under
+\texttt{avg\_abs\_ret\_h} and at all key horizons except $h = 5$
+under \texttt{realized\_vol\_h}, broadly consistent with the
+direction of a volatility increase, but the data do not support the
+claim that the path shock generates a detectable differential
+second-moment response for the firms that exhibit the largest mean
+response in \cref{ch:results}.
+
+The Moderate AI volatility response shows a different pattern, but
+the signal is confined to a single horizon and measure. Under
+\texttt{realized\_vol\_h}, the Moderate AI differential is positive
+at every medium horizon and is statistically distinguishable from
+zero only at $h = 30$ ($+1.22$~pp, s.e.~$0.35$, CI $[+0.54, +1.90]$);
+at $h = 20$ the differential is positive but imprecise ($+0.43$~pp,
+s.e.~$0.33$, CI $[-0.21, +1.07]$), with the $95\%$ CI containing
+zero. Under \texttt{avg\_abs\_ret\_h} the $h = 20$ differential is
+small and indistinguishable from zero ($+0.07$~pp, s.e.~$0.04$, CI
+$[-0.01, +0.15]$). The signal attenuates at the longest horizons
+($h = 50$ and $h = 60$) where the CIs contain zero under both
+measures.
+
+\paragraph{Reading.} The volatility check produces a qualitatively
+distinct picture from the mean response. The path shock is
+associated with higher return volatility for Moderate AI firms at a
+single medium horizon ($h = 30$ under \texttt{realized\_vol\_h}) by
+a modest amount, but does not produce a detectable differential
+volatility response for High AI firms --- the very group that
+exhibits the largest \emph{mean} response at long horizons. The
+absence of a detectable differential volatility response in the
+High AI group is consistent with the headline mean differential
+reflecting a shift in expected payoffs rather than a shift in
+payoff dispersion: a cash-flow- or discount-rate-channel
+interpretation predicts mean movement without necessarily implying
+variance movement, while an information-content interpretation
+under which the path shock conveys more news about AI-exposed firms
+than other firms would predict differential variance movement
+alongside the mean. The data are noisy enough that the
+information-content interpretation cannot be ruled out, but the
+volatility evidence is not on its side. The medium-horizon Moderate
+AI signal does not have a clean mean-response counterpart to anchor
+against and cannot exclude that the pattern reflects statistical
+chance across the multiple horizons and outcomes considered.
+
+The volatility outcomes \texttt{avg\_abs\_ret\_h} and
+\texttt{realized\_vol\_h} are constructed in the master Python
+analysis-panel notebook \texttt{00\_build\_final\_lp\_analysis\_panel.ipynb},
+not in the Stata pipeline that builds every other variable used in
+the thesis. The construction is straightforward (a non-annualised
+mean-absolute-deviation and a non-annualised realized volatility on
+daily log returns) but the pipeline split is a minor
+reproducibility note.
+
+\section{Symmetry of the response to tightening and easing surprises}
+\label{app:rob-asymmetry}
+
+The preferred specification treats \texttt{path\_3f} as a linear
+regressor and pools tightening and easing surprises. A natural
+follow-up is whether the long-horizon differential response of High
+AI firms is symmetric across the two directions of the surprise.
+Under a textbook discount-rate channel, a $+25$ bp tightening
+surprise should reduce long-horizon cumulative returns of High AI
+firms by the same magnitude as a $-25$ bp easing surprise raises
+them. Departures from symmetry would suggest a non-linear mechanism,
+for example differential leverage effects, asymmetric attention to
+policy surprises, or convex responses to uncertainty. The check is
+reported here in the appendix rather than as part of the main
+robustness chapter because it speaks to the mechanism (linearity of
+the response in the size and direction of the shock) rather than to
+the existence of the headline differential.
+
+This appendix section re-estimates the preferred specification with
+the path factor decomposed by sign,
+$\texttt{path\_tight} = \texttt{path\_3f}$ if $\texttt{path\_3f} > 0$
+and zero otherwise, $\texttt{path\_ease} = \texttt{path\_3f}$ if
+$\texttt{path\_3f} < 0$ and zero otherwise. By construction
+$\texttt{path\_tight} + \texttt{path\_ease} = \texttt{path\_3f}$
+event by event. The estimating equation replaces the two preferred
+interactions with four, one for each (direction $\times$ AI group)
+combination. The active sample splits into $69$ tightening events
+and $57$ easing events of the $128$ scheduled FOMC events. Fixed
+effects, clustering, and the $\times 25 \times 100$ rescaling are
+unchanged from the preferred specification.
+
+\Cref{tab:asymmetry_key} reports the four interaction coefficients
+at the seven key horizons together with the per-group symmetry
+test. \Cref{fig:asymmetry} plots the corresponding impulse
+responses over $h = 0,\ldots,60$.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Symmetry of the response to tightening and easing
+surprises]{Symmetry of the response to tightening and easing
+surprises: key-horizon estimates}
+\label{tab:asymmetry_key}
+\input{outputs/tables/main/lp_path_asymmetry_key_horizons}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig_08_path_tight_high_mod_vs_no.pdf}
+        \caption{Tightening surprises}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig_08_path_ease_high_mod_vs_no.pdf}
+        \caption{Easing surprises}
+    \end{subfigure}
+    \caption[Symmetry of the response to tightening and easing
+    surprises: impulse responses]{Symmetry of the response to
+    tightening and easing surprises: differential cumulative-return
+    response per $+25$ bp under \texttt{path\_tight} (panel a) and
+    per $+25$ bp under \texttt{path\_ease} (panel b, raw sign
+    convention preserved), by AI exposure group, at trading-day
+    horizons $h = 0,\ldots,60$.}
+    \label{fig:asymmetry}
+    \floatfoot{\footnotesize Notes. Outcome, fixed effects,
+    clustering, scaling, and active sample as in
+    \cref{fig:preferred_path_irf}. The two panels share a common
+    $y$-axis range. Under perfect symmetry the two panels are
+    mirror images. Shaded bands are pointwise $95\%$ confidence
+    intervals from clustered standard errors.}
+\end{figure}
+
+The High AI point estimates are pattern-consistent with a symmetric
+response. The High AI coefficient on \texttt{path\_tight} is
+negative at the longer horizons, reaching $-5.77$~pp at $h = 40$
+and $-6.65$~pp at $h = 60$. The coefficient on \texttt{path\_ease}
+is correspondingly positive at the longer horizons --- meaning
+that the easing surprise (a negative regressor) raises cumulative
+returns of High AI firms --- with values of $+7.00$~pp at
+$h = 40$, $+10.26$~pp at $h = 50$, and $+8.28$~pp at $h = 60$.
+The implied magnitudes from the two directions are comparable in
+absolute value. The per-horizon symmetry test for the High AI
+interaction, H$_0$:
+$\beta_{\text{tight}}^{H} + \beta_{\text{ease}}^{H} = 0$, fails to
+reject at every key horizon, with $p$-values ranging from $0.33$
+(at $h = 50$) to $0.83$ (at $h = 60$). The data are therefore consistent with the High AI response
+being symmetric across the two directions of the surprise.
+
+The Moderate AI estimates show a different and weaker pattern. Both
+the tightening and easing interactions are negative at every key
+horizon, implying that Moderate AI firms underperform under either
+direction of the path surprise. The Moderate AI symmetry test
+rejects symmetry at the $10\%$ level at the shorter horizons ($p =
+0.062$ at $h = 0$ to $p = 0.055$ at $h = 20$) and weakens at longer
+horizons ($p = 0.169$ at $h = 60$). Given that the pooled Moderate
+AI differential in the preferred specification is itself not
+statistically distinguishable from zero at any key horizon, this
+asymmetry is best read as a statistical curiosity rather than a
+substantive finding about Moderate AI firms.
+
+Two caveats are important. First, splitting the shock by sign halves
+the identifying variation per coefficient and the direction-specific
+standard errors are roughly double those of the pooled headline
+specification (at $h = 60$, the High AI \texttt{path\_tight} standard
+error of $4.99$~pp compares to $2.53$~pp in the preferred
+specification). None of the direction-specific High AI coefficients
+individually cross the $5\%$ significance threshold at the key
+horizons, even though their point estimates are economically large.
+The substantive content of this section is the qualitative
+consistency of the sign and magnitude pattern, not a precise
+inference about either direction in isolation. Second, the symmetry
+test is a joint restriction that can fail to reject either because
+the true response is symmetric or because the data are not powerful
+enough to detect departures from symmetry; the latter cannot be
+ruled out at this sample size.
+
+With those caveats, the qualitative reading is that the long-horizon
+negative differential for High AI firms documented in
+\cref{ch:results} is not driven by tightening surprises alone. Point
+estimates indicate a comparable positive response to easing
+surprises, and a formal symmetry test does not reject the null of
+equal-magnitude opposite-direction responses. The result is
+qualitatively consistent with a linear, symmetric discount-rate
+channel; the data are not powerful enough to detect any non-linear
+departure if one is present.

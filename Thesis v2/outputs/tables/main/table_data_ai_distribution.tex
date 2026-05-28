@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+AI group & N firms & Firms (\%) & N obs (h=0) & Obs (\%) & Score: mean & Score: median & Score: max \\
+\midrule
+No AI & 301 & 66.9\% & 36,049 & 67.2\% & 0.000 & 0.000 & 0.000 \\
+Moderate AI & 70 & 15.6\% & 8,255 & 15.4\% & 0.224 & 0.225 & 0.380 \\
+High AI & 79 & 17.6\% & 9,375 & 17.5\% & 1.973 & 1.100 & 17.170 \\
+Total & 450 & 100.0\% & 53,679 & 100.0\% & 0.381 & 0.000 & 17.170 \\
+\bottomrule
+\multicolumn{8}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Cross-section of firms in the new preferred 2010-2026 sample with Yahoo Finance extension. Main classification uses four strict keywords: artificial intelligence, machine learning, standalone AI, and A.I. The continuous score ai\_score\_normalized counts AI mentions per 1,000 tokens. No AI = zero mentions; the Moderate/High cutoff is the median score among firms with positive mentions (cutoff = 0.3900). Score statistics are at the firm level. N obs counts firm-event observations at h=0. Sample: Preferred 2010-2026 (sample\_preferred\_with\_yf\_extension == 1; event date in [2010-01-01, 2026-12-31]). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb Section 12c (2010-2026 window; YF-extended preferred sample).} \\
+\end{tabular}

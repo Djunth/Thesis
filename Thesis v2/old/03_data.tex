@@ -1,0 +1,96 @@
+\chapter{Data and AI Exposure Classification}
+\label{ch:data}
+
+\section{AI Exposure Classification}
+\label{sec:ai-exposure-classification}
+
+After documenting the recent rise in AI-related equity valuations, the next step is to define which firms should be considered AI exposed. This is not straightforward. AI exposure is not directly observable, and there is no standard industry classification that cleanly separates AI-dependent firms from the rest of the market. Many firms have increasingly described themselves as AI-related, but such descriptions vary in credibility, intensity, and economic relevance. Before comparing market outcomes across firms, the thesis therefore needs a transparent and reproducible measure of firm-level AI exposure.
+
+One approach is to infer AI exposure from firms' workforces. \citet{eisfeldtSchubertZhangTaska2023} map occupational exposure to generative AI into firm-level measures using workforce composition. This approach is conceptually attractive because it links AI exposure to the tasks performed within firms, but it relies on detailed workforce data that are not publicly available for the full sample used here. A more accessible alternative is to use firms' own regulatory disclosures. \citet{anteSaggu2025} construct AI-related firm measures from SEC 10-K filings, based on the idea that firms for which AI is economically relevant are more likely to discuss AI-related technologies in their annual reports.
+
+This thesis follows that disclosure-based logic. By counting the frequency of AI-related terms in 10-K filings, it constructs an ex-ante measure of AI engagement across S\&P 500 firms. The measure is not intended to capture every dimension of AI use. Rather, it provides a transparent and reproducible proxy for whether AI was already part of a firm's business narrative before the generative-AI boom became a dominant market theme.
+
+\subsection{Data and keyword selection}
+\label{subsec:data-keyword-selection}
+
+The sample consists of all firms included in the S\&P 500 index as of 22 December 2022, the last available rebalancing date before year-end. The cutoff date of 31 December 2022 is chosen because it immediately precedes the period in which generative AI became a dominant market narrative. OpenAI released ChatGPT on 30 November 2022, and while the product attracted significant public attention within days, the broader repricing of AI-exposed equities unfolded primarily from early 2023 onward. By restricting the classification to information available before this date, the measure captures firms' pre-existing engagement with AI rather than their response to the boom itself, or the market's retrospective reinterpretation of which firms stood to benefit.
+
+Although ChatGPT was released on 30 November 2022, the 10-K filings retrieved under this cutoff were prepared and in most cases submitted before the product's launch. Annual reports reflect the fiscal year just ended and are drafted over a period of weeks to months; they cannot be meaningfully revised in response to a late-November event. The classification therefore captures pre-boom AI engagement despite the nominal overlap in calendar dates. An alternative cutoff of 31 December 2021 would avoid this overlap entirely, but at the cost of relying on older filings that are less reflective of firms' AI positioning at the onset of the boom.
+
+Three firms that subsequently failed during the banking turmoil of early 2023 are excluded: Silicon Valley Bank, Signature Bank, and First Republic Bank. One duplicate share class is also excluded: Alphabet Class C, traded under the ticker GOOG. One additional firm, BlackRock, is excluded because the size and structure of its regulatory filings made its 10-K inaccessible through the automated retrieval process. This leaves a final sample of 498 firms.
+
+The AI exposure measure is based on a dictionary of eight terms: ``artificial intelligence'', ``AI'' as a standalone word, ``machine learning'', ``deep learning'', ``neural network(s)'', ``natural language processing'', ``computer vision'', and ``data science/scientist''. Each term is directly related to artificial intelligence or machine learning, and the list is informed by the keyword-based approach in \citet{anteSaggu2025}. Word-boundary matching is applied to ``AI'' to prevent false positives from common words containing the letters, and plural forms are captured where relevant.
+
+The choice to limit the dictionary to eight terms is deliberate. An initial screening of 65 candidate terms revealed that broader technology language, such as ``automation'', ``algorithm'', ``cloud computing'', and ``data center'', appears frequently in 10-K filings but does not reliably distinguish AI-engaged firms from the rest. A utility company operating a data center or a bank describing its fraud-detection algorithms would otherwise score alongside firms such as NVIDIA and Alphabet, reducing the discriminating power of the measure. At the other end, terms that emerged primarily after the generative-AI boom, such as ``large language model'', ``generative AI'', and ``agentic'', have near-zero frequency in pre-2023 filings and therefore contribute little to the cross-sectional variation. The eight retained terms capture the majority of meaningful AI-related disclosure while excluding both sources of noise.
+
+\subsection{AI exposure score}
+\label{subsec:ai-exposure-score}
+
+For each firm, the raw count of AI-related keyword appearances is divided by the total word count of the filing and multiplied by 10,000. This produces a normalised AI exposure score expressed as mentions per 10,000 words:
+
+\begin{equation}
+    \text{AI Score}_i
+    =
+    \frac{\text{AI keyword mentions}_i}{\text{Total words}_i}
+    \times 10{,}000.
+    \label{eq:ai-score}
+\end{equation}
+
+\noindent The normalisation is necessary because 10-K filings vary considerably in length. A 200-page filing will mechanically contain more words, and potentially more mentions of any term, than a 50-page filing. Without adjustment, the measure would partly capture disclosure length rather than AI engagement.
+
+The resulting distribution is heavily right-skewed. Of the 498 firms in the sample, 319 have zero AI-related mentions in their most recent pre-2023 filing. Among the remaining 179 firms, scores range from marginal to substantial. NVIDIA leads with 110 mentions and a normalised score of 22.49, more than double the next-highest firm, Hewlett Packard Enterprise, which has a score of 10.66. A cluster of semiconductor and software firms, including Intel, Adobe, Microsoft, IBM, and Juniper Networks, score in the 6--8 range, representing companies for which AI was already a meaningful part of the business narrative. Beyond this upper tail, scores decline rapidly: the median among mentioning firms is just 0.38. The left panel of \cref{fig:ai-score-distribution} illustrates this distribution.
+
+The right panel of \cref{fig:ai-score-distribution} provides a point of comparison using the most recent available filings. The number of firms mentioning AI rose from 179 to 479, from roughly one-third to nearly the entire index. The distribution shifted substantially to the right, with the bulk of firms now scoring between 1 and 5, and the upper tail extending well beyond the pre-2023 maximum. Firms such as AMD, Adobe, and ServiceNow now reach scores above 30, a range that only NVIDIA occupied before the boom. This convergence supports the usefulness of the pre-2023 measure: the variation it captures has since compressed as AI disclosure became near-universal across the index.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{outputs/figures/main/ai_score_comparison_pre_vs_post.png}
+    \caption{Distribution of AI exposure scores before and after the generative-AI boom}
+    \label{fig:ai-score-distribution}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure shows the distribution of AI exposure scores among S\&P 500 firms with at least one AI-related keyword mention. The left panel uses the most recent 10-K filing available before 31 December 2022. The right panel uses the most recent available filing. The number of firms mentioning AI increased from 179 to 479, and the distribution shifted substantially to the right after the release of ChatGPT.
+    \end{minipage}
+\end{figure}
+
+The skewness of the pre-2023 distribution means that a standard quintile split would be uninformative. A quintile split would place roughly 100 firms in each group, but because 319 firms have zero AI-related mentions, the bottom three groups would be effectively identical. The thesis therefore assigns firms to three groups based on the natural structure of the data. Firms with no AI-related mentions are classified as having No AI Exposure. Among the 179 firms with at least one mention, those with a normalised score below the group median are classified as Moderate AI Exposure, while those at or above the median are classified as High AI Exposure.
+
+This approach produces groups that are meaningfully distinct. The High AI Exposure group contains 92 firms and has an average of 12.20 AI mentions per filing, with a mean normalised score of 1.97. The Moderate AI Exposure group contains 87 firms and has an average of 1.79 mentions, with a mean score of 0.21. The No AI Exposure group contains 319 firms and is identically zero by construction. \Cref{tab:ai-exposure-summary} reports the resulting group-level summary statistics.
+
+\begin{table}[htbp]
+\centering
+\caption{Summary statistics by AI exposure group}
+\label{tab:ai-exposure-summary}
+\small
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\toprule
+Group & Firms & Mean mentions & Median mentions & Mean score & Median score \\
+\midrule
+High AI Exposure     & 92  & 12.20 & 7.0 & 1.97 & 1.06 \\
+Moderate AI Exposure & 87  & 1.79  & 1.0 & 0.21 & 0.19 \\
+No AI Exposure       & 319 & 0.00  & 0.0 & 0.00 & 0.00 \\
+\midrule
+Total                & 498 &       &     &      &      \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes:} AI exposure score is measured as AI-related keyword mentions per 10,000 words in the latest 10-K filing available by 31 December 2022. Firms with zero AI mentions are classified as No AI Exposure. The remaining firms are split at the median normalised AI score into Moderate and High AI Exposure.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Limitations of the AI exposure measure}
+\label{subsec:ai-measure-limitations}
+
+Any text-based classification involves trade-offs, and the approach adopted here is no exception. Several limitations should be noted.
+
+First, the keyword-based approach measures what firms disclose about AI, not necessarily what they actually do with it. Two cases illustrate this distinction. Apple is classified as having no AI exposure despite possessing significant internal machine learning capabilities, including its Siri voice assistant and on-device intelligence features. Netflix presents a similar case: its recommendation engine is one of the most prominent applications of machine learning in consumer technology, yet the company does not describe it in AI terms in its 10-K filings. These examples point to a genuine limitation of the measure. Firms that invest heavily in AI but describe it in proprietary or non-standard language will be underrepresented.
+
+Second, the keyword approach is necessarily coarse. The measure treats all mentions equally, whether a firm discusses AI as a core product, a future aspiration, or a risk factor. A company that warns about AI-related competitive threats in its risk disclosures receives the same score contribution as one that describes AI as central to its revenue model.
+
+Third, the measure is limited to the eight keywords selected for the dictionary. While the expanded screening of 65 candidate terms suggests that the retained keywords capture most of the relevant variation, some firms may describe AI-related activities using terminology not included in the dictionary.
+
+These limitations imply that the measure should be interpreted as a disclosure-based proxy for pre-boom AI engagement, not as a direct measure of technological capability or realised AI investment. Its main advantage is that it is transparent, reproducible, and available for the full S\&P 500 sample using public regulatory filings.

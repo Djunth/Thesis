@@ -1,0 +1,218 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Motivation}
+\label{sec:motivation}
+
+\subsection{The recent boom in AI stocks and concentration risk}
+\label{subsec:ai-stock-boom}
+
+Over the past three years, the U.S.\ stock market has increasingly come to reflect investor enthusiasm about artificial intelligence. What began as broad interest in a promising new technology evolved into one of the most concentrated equity rallies in recent history. The public release of ChatGPT on November 30, 2022, did not create this trend on its own, but it became a visible turning point in market narratives around generative AI and was followed by a marked revaluation of firms perceived to be central to the AI economy.
+
+At the centre of this revaluation are seven large-capitalisation technology firms, collectively known as the Magnificent Seven: Apple, Amazon, Alphabet, Meta Platforms, Microsoft, Nvidia, and Tesla. These companies, all of which are widely viewed as builders, deployers, or enablers of AI infrastructure, have dramatically outperformed the rest of the market since late 2022. \Cref{fig:mag7-sp500} illustrates this development. The figure plots the cumulative return of three portfolios from January 2021 through April 2026: an equal-weighted portfolio of the Magnificent Seven, the S\&P 500 index, and the S\&P 500 with the Magnificent Seven removed. Before the release of ChatGPT, the three portfolios moved broadly together, including through the sharp drawdown of 2022. The divergence begins in late 2022 and accelerates throughout 2023 and 2024. By early 2026, the Magnificent Seven had gained approximately 200 percent relative to the start of 2021, compared with around 80 percent for the S\&P 500 as a whole. The remaining 493 companies in the index returned roughly 50 percent. In other words, a large share of the headline index performance over this period was driven by a very small number of firms.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_mag7_sp500}
+    \caption{Cumulative returns: Magnificent Seven, S\&P 500, and S\&P 500 excluding the Magnificent Seven, January 2021 to April 2026}
+    \label{fig:mag7-sp500}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure plots cumulative returns for an equal-weighted Magnificent Seven portfolio, the S\&P 500 index, and the S\&P 500 excluding the Magnificent Seven. Sources: CRSP via WRDS, Investing.com, and FRED.
+    \end{minipage}
+\end{figure}
+
+According to analysis by M\&G Investments, roughly 70 percent of the approximately \$24 trillion in market value added to the S\&P 500 since ChatGPT's launch can be attributed to companies linked to AI infrastructure and semiconductors, with around 65 percent of the total index rise coming from just ten stocks \citep{vine2025}. Vontobel Asset Management similarly reports that just 42 AI-related stocks accounted for more than half of total market returns since the launch of ChatGPT \citep{souccar2026}. 
+
+The degree of concentration is unusual in historical context. At the start of 2015, the Magnificent Seven collectively represented roughly 12 percent of the S\&P 500's total market capitalisation. By the end of 2025, that share had risen to more than 34 percent, meaning that seven firms out of five hundred accounted for more than one third of the index \citep{motleyFoolNasdaq2026}. Market breadth has also narrowed considerably. In 2023 and 2024, fewer than 28 percent of S\&P 500 constituents outperformed the index, the narrowest breadth since at least 1995 \citep{firstTrust2025}. For the hundreds of millions of investors around the world who hold passive exposure to the S\&P 500 through index funds and pension products, returns have therefore become unusually dependent on the valuation of a small number of technology firms.
+
+\Cref{fig:mag7-share-sp500} shows that this was not only a story of strong returns, but also of rising index concentration. Over the past decade, the combined market capitalisation of the Magnificent Seven increased sharply both in absolute terms and as a share of the S\&P 500. What had been a large but manageable group of firms in the mid-2010s gradually came to dominate the index, with their combined weight rising from around the low teens to more than one third of total market capitalisation by 2025--2026. This is important because it means that the recent AI rally did not simply lift a handful of stocks; it also changed the structure of the market itself. As the weight of these firms increased, the performance of the S\&P 500 became increasingly tied to the valuation of a very small group of companies, all heavily linked to the same technological narrative.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_mag7_share_sp500}
+    \caption{Combined market capitalisation of the Magnificent Seven and their share of total S\&P 500 market capitalisation, 2016--2026}
+    \label{fig:mag7-share-sp500}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure reports the combined market capitalisation of the Magnificent Seven and their share of total S\&P 500 market capitalisation. Source: MacroMicro.
+    \end{minipage}
+\end{figure}
+
+This concentration also introduces substantial downside risk. During the 2022 sell-off, the Magnificent Seven declined by approximately 41 percent, roughly double the S\&P 500's 20 percent decline \citep{motleyFool2026Mag7}. The same mechanism that amplifies gains during a rally can also magnify losses when sentiment turns, especially when the rally is closely tied to a single investment theme.
+
+That theme is the expectation that artificial intelligence will reshape the global economy. The companies driving the rally are also the firms most directly associated with AI. Nvidia, which designs the processors used to train and run large language models, saw its stock price increase by a factor of twelve between January 2023 and December 2025. Meta and Alphabet experienced sharp re-ratings as investors attached greater value to the potential of AI in advertising and cloud services. Microsoft, through its partnership with OpenAI, became one of the clearest corporate symbols of the generative AI wave. Exposure to artificial intelligence has therefore been treated by markets not merely as a positive attribute, but increasingly as a defining valuation narrative.
+
+Whether this response is proportionate remains an open question. Behind the surge in equity valuations lies an equally striking surge in corporate capital expenditure. The largest technology companies have committed to AI-related infrastructure investment on a scale with little recent precedent, with hundreds of billions of dollars flowing into data centres, semiconductors, and power generation capacity. It is to this investment boom, and the questions it raises about fundamentals, expectations, and market risk, that we now turn.
+
+A useful way to frame the current episode is to compare it with the dot-com boom. As \cref{fig:dotcom-price-earnings,fig:ai-price-earnings} show, the late-1990s rally was characterised by stock prices rising far faster than the earnings outlook of the leading firms, whereas in the current AI episode the rise in the share prices of major AI-exposed companies has to a greater extent been accompanied by stronger earnings growth. This does not imply that current valuations are necessarily justified. Earnings projections may still embed overly optimistic assumptions about adoption, monetisation, and future market power. But when assessing whether the current episode repeats earlier patterns of overestimating the near-term potential of new technology, the comparison suggests a more nuanced interpretation.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig_pe_dotcom}
+        \caption{Dot-com era}
+        \label{fig:dotcom-price-earnings}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig_pe_ai}
+        \caption{AI era}
+        \label{fig:ai-price-earnings}
+    \end{subfigure}
+    \caption{Stock prices and forward earnings in the dot-com era and the current AI era}
+    \label{fig:price-earnings-comparison}
+\end{figure}
+
+\Cref{fig:nasdaq-price-return} reinforces the point that the current AI rally, while unusually strong, has not yet reached the same degree of market excess as the final phase of the dot-com boom. The Nasdaq rose much more violently in the run-up to March 2000, suggesting a faster and broader detachment of prices from fundamentals than has so far been observed in the present boom. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_nasdaq_price_return}
+    \caption{Composite cumulative price return of the Nasdaq: dot-com era versus current period}
+    \label{fig:nasdaq-price-return}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure compares cumulative Nasdaq price returns during the dot-com period and the current AI-related rally. Source: FRED; own calculations.
+    \end{minipage}
+\end{figure}
+
+An additional difference relative to the dot-com episode is that some of the most prominent firms associated with the current AI wave remain privately held. OpenAI, which played a central role in the renewed market enthusiasm surrounding generative AI after the release of ChatGPT in November 2022, is not publicly listed, and neither are several other high-profile AI firms. This matters because speculative dynamics often intensify when fast-growing firms become accessible to public equity investors. In the late 1990s, high-growth technology firms were able to attract large public valuations before profitability was firmly established. A similar pattern could emerge if leading AI startups eventually enter public markets \citep{capitalIdeas2025}.
+
+Whether the current market response is proportionate nevertheless remains an open question. Rising share prices and stronger earnings expectations suggest that the AI boom cannot be dismissed as a purely speculative episode. At the same time, valuations ultimately depend on whether the anticipated gains from artificial intelligence are matched by real economic investment and future returns. The next step is therefore to move from financial markets to the underlying corporate response. If firms themselves believe that AI will transform production, this should be visible not only in asset prices, but also in the scale and composition of their investment spending.
+
+\subsection{Capital expenditure and AI infrastructure investment}
+\label{subsec:capex-ai-investment}
+
+The strong rise in AI-related stock prices naturally raises a deeper question: is this mainly a story about market excitement, or is something real also happening underneath? One way to get closer to that question is to look at what firms are actually doing with their money. If companies truly believe that artificial intelligence will change how business is done, then that belief should show up not only in share prices, but also in investment decisions.
+
+\Cref{fig:ai-capex} shows that this is exactly what we see. Capital expenditure among the largest technology firms has risen sharply, reflecting very large investments in data centres, semiconductors, and other infrastructure needed to develop and run AI systems. This matters because it suggests that the current AI boom is not just being driven by investors in financial markets. The firms at the centre of the story are also making large, concrete bets on AI themselves. In that sense, the figure points to something more substantial than a pure speculative narrative. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\MainFigureWidth]{fig_ai_capex}
+    \caption{Capital expenditure among major technology firms, 2015--2027E}
+    \label{fig:ai-capex}
+    \begin{minipage}{0.90\textwidth}
+    \vspace{0.5em}
+    \footnotesize
+    \textit{Notes:} The figure reports capital expenditure among major technology firms. Sources: SEC filings, FactSet consensus estimates, and \citet{golan2025}.
+    \end{minipage}
+\end{figure}
+
+At the same time, the graph does not make the valuation question disappear. If anything, it makes it more important. Once firms begin spending at this scale, the success of the AI story depends not only on expectations, but on whether those investments eventually generate the profits, productivity gains, or cost savings that markets seem to anticipate.
+
+The spending is concentrated among a remarkably small number of firms. Microsoft, Amazon, Alphabet, and Meta, the four largest hyperscalers, account for the vast majority of AI-related capital expenditure, and their announced plans continue to be revised upward. Capex projections for 2026 came in roughly 27 percent higher than projections made just a quarter earlier \citep{paydenRygel2026}. A McKinsey report from August 2025 projected \$6.7 trillion in global data centre buildout through 2030, equivalent to more than one percent of global GDP annually, with approximately 52 percent of this spending allocated to servers and chips \citep{mckinsey2025,mercer2025}. Meanwhile, Nvidia's sales surged from \$24 billion in 2021 to \$187 billion in 2025, driven almost entirely by demand for GPUs from these same hyperscalers \citep{mercer2025}. The infrastructure investment is therefore not only large in absolute terms but also highly concentrated in the same cluster of firms whose share prices dominate the S\&P 500.
+ 
+An important counterargument to the view that this spending constitutes excessive risk is that, unlike in previous technology investment cycles, the current buildout has been largely self-financed. U.S. public technology companies have funded their AI capital expenditure almost entirely from free cash flow. As of late 2025, the ratio of aggregate free cash flow to capital spending among the top 3,000 U.S. stocks stood below one, meaning that firms were spending within their means. This stands in stark contrast to the dot-com era, when capital spending peaked at nearly four times free cash flow amid a debt-fuelled boom \citep{ojjehFronczke2026}. The Magnificent Seven have also seen a notable shift in cost structure: operating expenditure growth has slowed sharply while capex has accelerated, with the ratio of opex to capex falling from a long-run range of 2.5--4x to approximately 1.5x since mid-2024 \citep{ojjehFronczke2026}. In one reading, this represents a rational substitution of labour costs for compute capacity, with firms spending less on headcount and more on infrastructure that may eventually do the work of the employees they are not hiring.
+ 
+This view is further supported by the observation that return on invested capital among the largest AI-investing firms has remained resilient. Despite the sharp step-up in capex, ROIC for Meta and Alphabet has stayed above 30 percent for more than two consecutive years, suggesting that AI-driven productivity gains may already be helping to stabilise margins even as capital intensity rises \citep{ojjehFronczke2026}. The current cycle also differs from the late-1990s internet buildout in one important respect. During the dot-com era, large volumes of fibre-optic cable, so-called ``dark fibre,'' were installed far ahead of actual demand, leading to years of idle capacity and poor returns on invested capital as telecom companies poured billions into infrastructure that sat unused. Eventually, capital markets shut down, driven by higher interest rates and a lack of near-term revenues. In the current AI cycle, GPUs have reportedly been deployed at or near full utilisation from day one, consistent with a pattern of demand pulling supply forward rather than supply racing ahead of demand \citep{golan2025}.
+ 
+However, these reassurances are not without qualification. The fact that current spending is self-financed does not mean that it will generate adequate returns. Free cash flow funding reduces the risk of a credit-driven collapse of the kind seen in 2000--2002, but it does not eliminate the risk of overinvestment. If the revenue that these investments are expected to generate does not materialise at the scale or pace that markets anticipate, the result would not be a wave of bankruptcies but rather a sustained period of compressed returns, asset writedowns, and downward pressure on the valuations of the firms at the centre of the index.
+ 
+Several indicators suggest that the gap between investment and revenue remains wide. OpenAI, the most prominent model developer, has projected revenues rising from \$13 billion in 2025 to \$200 billion by 2030, an extraordinary growth trajectory, while simultaneously forecasting cumulative cash burn of approximately \$119 billion before reaching profitability in 2030 \citep{mercer2025}. These projections embed highly optimistic assumptions about the pace at which enterprises and consumers will adopt and pay for AI services. If adoption is slower than expected, or if competition drives down pricing, as the emergence of efficient open-source models such as DeepSeek has begun to suggest, then the returns on the hundreds of billions of dollars in infrastructure now being built may fall substantially short of expectations.
+ 
+During the telecom buildout of the late 1990s, fibre-optic infrastructure was installed on the assumption that bandwidth demand would grow exponentially. Demand did eventually materialise, and the infrastructure did eventually prove useful, but the lag between investment and payoff was long enough to destroy the firms that had financed the buildout \citep{golan2025}. The current AI infrastructure cycle avoids some of the worst features of that episode. The firms are profitable, the financing is internal, and utilisation rates are currently high. But it shares the same underlying vulnerability: the investment thesis depends on future demand materialising at a pace and scale that justifies present spending. If it does not, the market's current pricing of these firms will prove to have been too optimistic.
+
+To investigate this, the next step is to define more precisely what it means for a firm to be exposed to artificial intelligence, and to construct a measure that allows us to compare outcomes across firms with different levels of AI engagement.
+
+\section{Research question and contributions}
+\label{sec:intro-rq}
+
+The descriptive evidence reviewed above shows that AI-exposed and
+AI-associated firms have driven a disproportionate share of recent
+U.S.\ equity returns and that the underlying corporate response is
+non-trivial in scale. It does not, however, settle whether AI exposure
+is a dimension along which firms behave differently in the stock
+market. The thesis asks a single question along that dimension:
+
+\begin{quote}
+\emph{Does pre-ChatGPT, disclosure-based AI exposure distinguish the
+stock-market behaviour of S\&P~500 firms --- in their conditional
+return response to identified forward-guidance monetary-policy
+shocks, and in the time-series dynamics of their price levels?}
+\end{quote}
+
+The question is studied along two complementary empirical exercises
+on a common cross-section. The first measures conditional return
+behaviour: whether AI-exposed firms display a systematically different
+cumulative-return response to identified forward-guidance/path
+surprises at scheduled FOMC announcements, conditional on sector and
+event. The second measures price-level behaviour: whether the price
+series of AI-grouped and AI-concentration portfolios exhibit
+explosive dynamics, both in absolute levels and in ratios that net
+out broad-market dynamics. The two exercises share a common partition
+of the S\&P~500 by pre-2023 10-K AI exposure
+(\cref{sec:ai-exposure}) and a common sample window of 2010 to 2026;
+they differ in unit of observation, in time horizon, and in what
+their statistical rejection licenses one to claim. Neither, on its
+own, would license a strong statement about AI exposure as a
+dimension of differential stock-market behaviour; the two together
+do more than either alone.
+
+The thesis makes three contributions.
+
+\paragraph{Contribution to the firm-level monetary-transmission
+literature.} The literature on firm-level heterogeneity in monetary
+transmission documents systematic differences in equity-return
+responses to FOMC surprises along financial and structural firm
+characteristics, with leverage and debt structure receiving the most
+attention \citep{ottonelloWinberry2020, gurkaynakKarasoyCanLee2022,
+cloyneEtAl2023, arinEtAl2025}. The literature does not currently
+include AI exposure as a heterogeneity dimension. The thesis adds it.
+Using panel local projections on the S\&P~500 across scheduled FOMC
+events between 2010 and 2026, the analysis estimates the differential
+cumulative return response of High~AI and Moderate~AI firms relative
+to No~AI firms in the same GICS sector on the same event, to a
+forward-guidance/path surprise \citep{swanson2021}. The
+leverage-amplification check in \cref{sec:res-heterogeneity}
+establishes that the AI differential is not a relabelled
+financial-leverage differential, positioning AI exposure as a
+candidate firm-level characteristic for inclusion in this literature
+alongside the established financial dimensions.
+
+\paragraph{Contribution to the literature on the recent AI boom and
+explosive price dynamics.} \Citet{baselePhillipsShi2025} document
+explosive dynamics in the Nasdaq aggregate and in six of seven
+Magnificent~Seven stocks during the December~2022 to January~2025
+sub-period. The PSY exercise here extends that evidence along a
+cross-sectional and relative-pricing dimension: instead of testing a
+single index or a fixed mega-cap basket, the procedure is applied to
+value- and equal-weighted portfolios of S\&P~500 firms partitioned
+by their pre-2023 disclosure-based AI exposure, together with
+within-equity-universe and broad-market relative ratios and three
+AI-concentration baskets. The exercise speaks to whether the
+explosive dynamics identified in the aggregate extend beyond the
+mega-cap tail, whether they vary systematically with disclosed AI
+engagement, and whether they remain visible after broad-market
+dynamics are netted out.
+
+\paragraph{Joint contribution from combining the two exercises.} The
+most distinctive contribution comes from holding the cross-sectional
+AI partition fixed across two non-nested empirical exercises on the
+same 2010--2026 sample window, and asking whether AI-exposed firms
+behave differently from non-AI firms on each. The LP exercise
+characterises the firm-level cross-sectional response of the
+partition to identified forward-guidance shocks; the PSY exercise
+characterises the time-series structure of the price series
+constructed from the same partition. Neither exercise alone is
+sufficient to claim that AI exposure marks a distinct dimension of
+differential stock-market behaviour. The LP exercise on its own
+could be read as evidence that AI-exposed firms inherit the
+discount-rate sensitivity of growth firms documented in the prior
+asset-pricing literature; the PSY exercise on its own could be read
+as a cross-sectional extension of an already-documented
+Magnificent~Seven phenomenon. The combined evidence is informative
+about whether the AI partition along which explosive price-level
+dynamics are strongest is the same partition along which the
+shock-conditional differential is strongest. That joint pattern is
+the substantive content of the thesis. It is reported as a pattern,
+not identified as a mechanism: the design does not separate the
+\citet{campbellAmmer1993} discount-rate, cash-flow, and risk-premium
+channels, and the PSY rejection is evidence of explosive dynamics
+rather than of mispricing.

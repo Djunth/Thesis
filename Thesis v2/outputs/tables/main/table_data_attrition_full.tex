@@ -1,0 +1,19 @@
+\begin{tabular}{lrr}
+\toprule
+Stage & Unit & N \\
+\midrule
+Matched to CRSP and in preferred 2010-2026 (YF-extended) & Firms & 464 \\
+... of which with an own-filing AI score (not ticker-inherited) & Firms & 450 \\
+Events mapped to a CRSP trading day (in window) & Events & 136 \\
+Scheduled events (sample\_scheduled == 1, in window) & Events & 128 \\
+Full firm x event grid at h=0 (in window) & Firm-event h=0 rows & 58,549 \\
+Valid return (has\_valid\_return == 1, in window) & Firm-event h=0 rows & 58,546 \\
+Valid shock (has\_valid\_shock == 1, in window) & Firm-event h=0 rows & 58,549 \\
+Valid AI group (has\_valid\_ai\_group == 1, in window) & Firm-event h=0 rows & 58,549 \\
+Valid controls (has\_valid\_controls == 1, in window) & Firm-event h=0 rows & 53,925 \\
+sample\_main == 1 (in window) & Firm-event h=0 rows & 53,925 \\
+sample\_preferred\_with\_yf\_extension == 1 (in window) & Firm-event h=0 rows & 54,302 \\
+sample\_preferred\_with\_yf\_extension AND 2010-01-01 to 2026-12-31 (final estimation sample) & Firm-event h=0 rows & 54,302 \\
+\bottomrule
+\multicolumn{3}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Sample-attrition funnel for the NEW preferred 2010-2026 window with the Yahoo Finance post-CRSP date extension. Block A counts firms matched to CRSP and kept in the in-window preferred sample (then restricted to firms with an own-filing AI score). Block B counts FOMC events mapped and scheduled within the window. Block C counts firm-event observations at h=0, from the in-window grid through validity filters to the final estimation sample. The three blocks use different units and are not nested; within Block C, stages applying independent data-quality filters need not be strictly monotone. Sample: Preferred 2010-2026 (sample\_preferred\_with\_yf\_extension == 1; event date in [2010-01-01, 2026-12-31]). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb Section 12c (2010-2026 window; YF-extended preferred sample).} \\
+\end{tabular}

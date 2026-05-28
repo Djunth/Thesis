@@ -1,0 +1,15 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:debt_amplification_key}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+ & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\
+\hline
+No AI: high $-$ low debt (baseline gap) & -0.096 & -0.944 & -1.638 & -2.407 & -3.009 & -1.968 & -1.634 \\
+ & ( 0.324) & ( 0.545) & ( 0.797) & ( 1.407) & ( 1.611) & ( 1.619) & ( 1.727) \\
+High AI: amplification vs.\ baseline & -1.045 & -0.011 &  0.789 &  1.495 &  2.660 &  0.085 & -1.201 \\
+ & ( 0.579) & ( 0.764) & ( 1.957) & ( 3.189) & ( 3.931) & ( 3.850) & ( 3.676) \\
+Moderate AI: amplification vs.\ baseline &  0.317 &  0.512 &  1.382 &  2.591 &  1.897 &  3.256 &  3.866 \\
+ & ( 0.504) & ( 1.215) & ( 1.626) & ( 2.670) & ( 2.347) & ( 2.680) & ( 2.714) \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Preferred specification extended with sector-event median debt split: firm FE + Sector $\times$ Event FE; two-way clustered SEs by firm and event in parentheses.} \\
+\multicolumn{8}{l}{\footnotesize Coefficients rescaled to a +25 bp shock: $\hat\beta \times 25 \times 100$, in percentage points. Amplification rows report \texttt{path\_x\_high\_hdebt} (row 2) and \texttt{path\_x\_mod\_hdebt} (row 3): the additional leverage gap inside each AI group, over and above the no-AI baseline gap in row 1.} \\
+\multicolumn{8}{l}{\footnotesize Active sample: \texttt{sample\_debt == 1}, \texttt{ai\_score\_inherited == 0}, 2010--2026; $n_{obs} = 37{,}092$ at $h = 0$.} \\
+\end{tabular}

@@ -1,0 +1,19 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:asymmetry_key}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Coefficient & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\\hline
+path\_tight $\times$ High AI & -0.597 & -0.931 & -2.616 & -6.049 & -7.023 & -5.806 & -8.671 \\
+ & ( 0.836) & ( 1.851) & ( 2.520) & ( 3.091) & ( 3.282) & ( 3.629) & ( 4.606) \\
+path\_tight $\times$ Moderate AI & -0.776 & -2.118 & -3.985 & -6.644 & -5.262 & -6.202 & -6.936 \\
+ & ( 0.466) & ( 1.105) & ( 2.256) & ( 3.284) & ( 3.248) & ( 3.553) & ( 3.697) \\
+path\_ease $\times$ High AI &  0.122 & -0.294 & -1.104 &  2.743 &  5.076 &  8.139 &  7.010 \\
+ & ( 0.887) & ( 1.250) & ( 1.854) & ( 2.740) & ( 3.466) & ( 4.391) & ( 4.700) \\
+path\_ease $\times$ Moderate AI & -0.384 & -1.131 & -2.099 & -1.626 & -2.623 & -0.874 & -0.880 \\
+ & ( 0.407) & ( 0.944) & ( 1.299) & ( 2.033) & ( 2.472) & ( 2.806) & ( 2.738) \\
+\hline
+Symmetry test (High AI): $p$-value &  0.733 &  0.634 &  0.316 &  0.481 &  0.721 &  0.727 &  0.831 \\
+Symmetry test (Moderate AI): $p$-value &  0.062 &  0.058 &  0.055 &  0.070 &  0.126 &  0.228 &  0.169 \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Preferred specification with path\_3f decomposed by sign into path\_tight (path\_3f > 0) and path\_ease (path\_3f < 0). Firm FE + Sector $\times$ Event FE; two-way clustered SEs by firm and event in parentheses.}
+\multicolumn{8}{l}{\footnotesize Coefficients rescaled to a +25 bp shock: $\hat\beta \times 25 \times 100$, in percentage points. Sign convention preserved: a positive coefficient on path\_ease indicates positive returns at easing surprises (consistent with symmetry against a negative tightening coefficient).}
+\multicolumn{8}{l}{\footnotesize Symmetry test: H$_0$: $\beta_{\text{tight}} + \beta_{\text{ease}} = 0$. Failure to reject indicates the magnitude of response to tightening and easing surprises is statistically indistinguishable.}
+\end{tabular}

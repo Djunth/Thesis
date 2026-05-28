@@ -1,0 +1,12 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{...}\end{table} at the call site.
+\begin{tabular}{lcccccc}\hline\hline
+Group & h=0 & h=1 & h=5 & h=20 & h=40 & h=60 \\\hline
+High AI -- No AI & -0.625 & -0.249 & -0.339 & -0.600 & -6.485 & -7.596 \\
+  (SE) & ( 0.504) & ( 1.106) & ( 0.899) & ( 1.356) & ( 2.110) & ( 2.533) \\
+Moderate AI -- No AI &  0.188 & -0.240 & -0.444 & -1.153 & -2.024 & -3.218 \\
+  (SE) & ( 0.310) & ( 0.532) & ( 0.638) & ( 0.994) & ( 1.833) & ( 1.850) \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Preferred spec: Firm FE + Sector$\times FE. Two-way clustered SEs (firm, event).}
+\multicolumn{7}{l}{\footnotesize Shock scaled to +25 bp. Sample: 01jan2010--31dec2026. No shock$\times.}
+\multicolumn{7}{l}{\footnotesize Active sample excludes inherited AI scores (ai\_score\_inherited==0).}
+\end{tabular}

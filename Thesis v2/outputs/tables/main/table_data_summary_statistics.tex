@@ -1,0 +1,17 @@
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Variable & N & Mean & SD & P25 & Median & P75 & Min & Max \\
+\midrule
+cum\_ret\_h (h=0) & 53,679 & 0.0010 & 0.0216 & -0.0092 & 0.0004 & 0.0103 & -0.4859 & 0.3808 \\
+cum\_ret\_h (h=20) & 53,658 & 0.0093 & 0.0833 & -0.0325 & 0.0128 & 0.0545 & -2.0250 & 3.8382 \\
+cum\_ret\_h (h=60) & 53,626 & 0.0259 & 0.1396 & -0.0467 & 0.0332 & 0.1061 & -1.7172 & 4.1146 \\
+path\_3f (bp) & 128 & -0.0297 & 1.7999 & -0.5296 & 0.1233 & 0.7944 & -6.4698 & 4.8416 \\
+target\_3f (bp) & 128 & 0.8625 & 2.4598 & 0.0879 & 0.9724 & 1.8033 & -12.3780 & 9.0266 \\
+lsap\_3f (bp) & 128 & 0.0531 & 2.8698 & -1.0961 & 0.1699 & 1.4754 & -13.5599 & 10.1524 \\
+ai\_score\_normalized & 53,679 & 0.3784 & 1.2880 & 0.0000 & 0.0000 & 0.2200 & 0.0000 & 17.1700 \\
+log\_mktcap\_lag & 49,863 & 23.7953 & 1.2245 & 23.0205 & 23.6970 & 24.5220 & 17.9412 & 28.9646 \\
+beta\_252d\_lag & 49,863 & 0.9893 & 0.3901 & 0.7419 & 0.9787 & 1.2218 & -0.4596 & 3.5231 \\
+ivol\_252d\_lag & 49,863 & 0.0147 & 0.0067 & 0.0104 & 0.0132 & 0.0172 & 0.0047 & 0.0984 \\
+\bottomrule
+\multicolumn{9}{p{0.95\linewidth}}{\footnotesize \textit{Notes:} Preferred 2010-2026 sample with YF extension. cum\_ret\_h at h=0/20/60 (firm-event); shocks event-level in bp; controls raw, lagged one trading day. Sample: Preferred 2010-2026 (sample\_preferred\_with\_yf\_extension == 1; event date in [2010-01-01, 2026-12-31]). Built by 00\_master\_data\_pipeline\_and\_data\_section.ipynb Section 12c (2010-2026 window; YF-extended preferred sample).} \\
+\end{tabular}

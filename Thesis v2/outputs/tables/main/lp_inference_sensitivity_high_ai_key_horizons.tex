@@ -1,0 +1,16 @@
+% Bare tabular. Wrap in \begin{table}...\caption{...}\label{tab:inference_sens_high}\end{table} at the call site.
+\begin{tabular}{lccccccc}\hline\hline
+Inference scheme & h=0 & h=5 & h=20 & h=30 & h=40 & h=50 & h=60 \\\hline
+Coefficient (scaled) & -0.625 & -0.339 & -0.600 & -4.199 & -6.485 & -7.375 & -7.596 \\
+\hline
+Two-way cluster (firm $\times$ event) [preferred] & ( 0.504) & ( 0.899) & ( 1.356) & ( 1.916) & ( 2.110) & ( 2.240) & ( 2.533) \\
+Firm cluster & ( 0.350) & ( 0.644) & ( 1.224) & ( 1.903) & ( 2.166) & ( 2.243) & ( 2.400) \\
+Event cluster & ( 0.497) & ( 0.980) & ( 1.324) & ( 1.618) & ( 1.763) & ( 2.021) & ( 2.369) \\
+Heteroskedasticity-robust & ( 0.337) & ( 0.752) & ( 1.184) & ( 1.593) & ( 1.820) & ( 2.018) & ( 2.218) \\
+\hline
+Wild-cluster bootstrap by event: 95\% CI &   &   &   & --- & --- & --- & --- \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Point estimate $\hat\beta \times 25 \times 100$ (in percentage points) is constant across rows by construction; only the variance estimator differs.}
+\multicolumn{8}{l}{\footnotesize Two-way clustering by firm and event is the preferred specification. Firm- and event-only clustering are nested in the two-way scheme. Heteroskedasticity-robust is reported as a lower bound on the SE.}
+\multicolumn{8}{l}{\footnotesize Wild-cluster bootstrap by event ($9{,}999$ replications, percentile-$t$ CI) addresses the small number of event clusters ($n = 128$). Reported at the four long horizons where the headline differential is statistically distinguishable from zero in the preferred specification.}
+\end{tabular}
